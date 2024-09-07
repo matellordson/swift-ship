@@ -23,7 +23,7 @@ export default async function PackageDetails({
         <Card>
           <CardHeader>
             <CardTitle>Sender Information</CardTitle>
-            <CardContent className="pt-3">
+            <CardContent className="space-y-1 pt-2">
               <div className="flex items-center justify-start gap-3 text-lg">
                 <p className="scroll-m-20 font-semibold tracking-tight">
                   Name:

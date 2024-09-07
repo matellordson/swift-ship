@@ -89,7 +89,6 @@ export function PackageForm() {
     handleSubmit,
     formState: { errors, isValid },
     trigger,
-    watch,
     clearErrors,
   } = form;
 

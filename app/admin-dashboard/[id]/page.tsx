@@ -1,4 +1,4 @@
-import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
+import { Card, CardContent } from "@/components/ui/card";
 import { db } from "@/src/db";
 import { packages } from "@/src/db/schema";
 import { eq } from "drizzle-orm";

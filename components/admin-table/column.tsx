@@ -81,7 +81,9 @@ export const columns: ColumnDef<Shipment>[] = [
             </DropdownMenuItem>
             <DropdownMenuSeparator />
             <DropdownMenuItem>
-              <Link href={"#"}>View Package</Link>
+              <Link href={`/admin-dashboard/${shipment.tracking_id}`}>
+                View Package
+              </Link>
             </DropdownMenuItem>
           </DropdownMenuContent>
         </DropdownMenu>

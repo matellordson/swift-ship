@@ -2,8 +2,6 @@ import { Card, CardContent } from "@/components/ui/card";
 import { db } from "@/src/db";
 import { packages } from "@/src/db/schema";
 import { eq } from "drizzle-orm";
-import { ArrowLeft } from "lucide-react";
-import Link from "next/link";
 
 export default async function PackageDetails({
   params,

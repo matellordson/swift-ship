@@ -59,7 +59,7 @@ type FormValues = z.infer<typeof formSchema>;
 export function PackageForm() {
   const [step, setStep] = useState(1);
   const [isOpen, setIsOpen] = useState(false);
-  const [progress, setProgress] = useState(50);
+  const [progress, setProgress] = useState(25);
 
   const form = useForm<FormValues>({
     resolver: zodResolver(formSchema),

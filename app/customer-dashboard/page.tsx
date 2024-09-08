@@ -1,5 +1,4 @@
-import { Card, CardContent, CardTitle, CardHeader } from "@/components/ui/card";
-import { CheckCircle2Icon, Package, Ship } from "lucide-react";
+import { Card } from "@/components/ui/card";
 
 export default function CustomerDashboard() {
   return (

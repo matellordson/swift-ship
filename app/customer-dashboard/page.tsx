@@ -33,9 +33,7 @@ export default function CustomerDashboard() {
               </div>
             </div>
             <div>
-              <p className="text-sm font-semibold text-muted-foreground">
-                Package Type:
-              </p>
+              <p className="text-sm font-semibold">Package Type:</p>
               <p className="text-sm text-muted-foreground">Furniture</p>
             </div>
           </div>

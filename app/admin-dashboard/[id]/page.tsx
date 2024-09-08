@@ -2,6 +2,8 @@ import { Card, CardContent } from "@/components/ui/card";
 import { db } from "@/src/db";
 import { packages } from "@/src/db/schema";
 import { eq } from "drizzle-orm";
+import { ArrowLeft } from "lucide-react";
+import Link from "next/link";
 
 export default async function PackageDetails({
   params,
@@ -21,7 +23,7 @@ export default async function PackageDetails({
       </h1>
       <div className="mt-5 grid gap-5 lg:grid-cols-2">
         <Card className="p-5">
-          <p className="relative w-fit rounded bg-muted px-[0.3rem] py-[0.2rem] font-mono text-sm font-semibold">
+          <p className="scroll-m-20 text-xl font-semibold tracking-tight">
             Sender Information
           </p>
           <CardContent className="space-y-1 px-0 pt-2">
@@ -60,7 +62,7 @@ export default async function PackageDetails({
           </CardContent>
         </Card>
         <Card className="p-5">
-          <p className="relative w-fit rounded bg-muted px-[0.3rem] py-[0.2rem] font-mono text-sm font-semibold">
+          <p className="scroll-m-20 text-xl font-semibold tracking-tight">
             Receiver Information
           </p>
           <CardContent className="space-y-1 px-0 pt-2">
@@ -103,7 +105,7 @@ export default async function PackageDetails({
           </CardContent>
         </Card>
         <Card className="p-5">
-          <p className="relative w-fit rounded bg-muted px-[0.3rem] py-[0.2rem] font-mono text-sm font-semibold">
+          <p className="scroll-m-20 text-xl font-semibold tracking-tight">
             Package Information
           </p>
           <CardContent className="space-y-1 px-0 pt-2">

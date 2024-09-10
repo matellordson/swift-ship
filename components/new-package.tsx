@@ -59,7 +59,7 @@ type FormValues = z.infer<typeof formSchema>;
 export function PackageForm() {
   const [step, setStep] = useState(1);
   const [isOpen, setIsOpen] = useState(false);
-  const [progress, setProgress] = useState(25);
+  const [progress, setProgress] = useState(50);
 
   const form = useForm<FormValues>({
     resolver: zodResolver(formSchema),
@@ -238,7 +238,7 @@ export function PackageForm() {
           size={"sm"}
         >
           <Plus className="size-4" />
-          New Package
+          New
         </Button>
       </DialogTrigger>
       <DialogContent className="h-full max-w-xl overflow-y-auto lg:h-[600px]">
@@ -298,13 +298,13 @@ export function PackageForm() {
                   )}
                   {renderField(
                     "dimension",
-                    "Dimension",
+                    "Dimension (optional)",
                     "text",
                     "Length x Width x Height (e.g., 10cm x 5cm x 3cm)",
                   )}
                   {renderField(
                     "weight",
-                    "Weight",
+                    "Weight (optional)",
                     "text",
                     "Weight in kg (e.g., 1.5 kg)",
                   )}

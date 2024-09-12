@@ -1,5 +1,6 @@
 import { Shipment, columns } from "@/components/admin-table/column";
 import { DataTable } from "@/components/admin-table/data-table";
+import { CustomerChatButton } from "@/components/customer-chat";
 import { db } from "@/src/db";
 import { packages } from "@/src/db/schema";
 
@@ -30,6 +31,7 @@ export default async function AdminDashboard() {
         Admin Dashboard
       </h1>
       <DataTable columns={columns} data={data} />
+      <CustomerChatButton />
     </div>
   );
 }

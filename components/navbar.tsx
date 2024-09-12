@@ -1,7 +1,7 @@
 "use client";
 
 import * as React from "react";
-import { HeadsetIcon, Moon, Sun } from "lucide-react";
+import { Moon, Sun } from "lucide-react";
 import { useTheme } from "next-themes";
 
 import { Button } from "@/components/ui/button";
@@ -43,11 +43,8 @@ function ModeToggle() {
 }
 export function Navbar() {
   return (
-    <nav className="fixed top-0 flex h-14 w-screen items-center justify-end gap-2 border-b px-3 backdrop-blur-sm">
+    <nav className="fixed top-0 flex h-14 w-screen items-center justify-end gap-2 border-b px-3 backdrop-blur">
       <div className="flex items-center justify-center gap-1">
-        <Button variant="outline" size="icon" className="rounded-full">
-          <HeadsetIcon className="h-4 w-4" />
-        </Button>
         <ModeToggle />
         {/* <DropdownMenu>
           <DropdownMenuTrigger>

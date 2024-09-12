@@ -6,6 +6,7 @@ import { db } from "@/src/db";
 import { packages } from "@/src/db/schema";
 import { eq } from "drizzle-orm";
 import { auth } from "@/auth";
+import { SupportButton } from "@/components/support";
 
 export const revalidate = 0;
 
@@ -28,7 +29,7 @@ export default async function CustomerDashboard() {
           <PackageForm />
         </div>
         <Input className="mt-3 max-w-sm" placeholder="Filter tracking ID..." />
-        <div className="mt-3 grid grid-cols-1 gap-3 lg:grid-cols-3">
+        <div className="mb-5 mt-3 grid grid-cols-1 gap-3 lg:grid-cols-3">
           {data.map((packages) => (
             <Card className="p-4" key={packages.id}>
               <div className="mb-4 grid grid-cols-2 gap-4">
@@ -85,6 +86,7 @@ export default async function CustomerDashboard() {
             </Card>
           ))}
         </div>
+        <SupportButton />
       </div>
     );
   }

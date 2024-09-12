@@ -7,6 +7,8 @@ import { packages } from "@/src/db/schema";
 import { eq } from "drizzle-orm";
 import { auth } from "@/auth";
 
+export const revalidate = 0;
+
 export default async function CustomerDashboard() {
   const userId = await auth();
   const data = await db

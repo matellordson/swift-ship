@@ -31,6 +31,7 @@ import {
 import { updateShipmentStatus } from "@/app/_action/update-package";
 import { useState } from "react";
 import { toast } from "sonner";
+import { useRouter } from "next/navigation";
 
 // This type is used to define the shape of our data.
 // You can use a Zod schema here if you want.
@@ -80,6 +81,7 @@ export const columns: ColumnDef<Shipment>[] = [
       const shipment = row.original;
       const [isOpen, setIsOpen] = useState(false);
       const [newStatus, setNewStatus] = useState(shipment.status || "");
+      const router = useRouter();
 
       const handleStatusUpdate = async () => {
         const result = await updateShipmentStatus(
@@ -92,6 +94,7 @@ export const columns: ColumnDef<Shipment>[] = [
         } else {
           toast("Unsuccessful");
         }
+        router.refresh();
       };
 
       return (
@@ -131,7 +134,7 @@ export const columns: ColumnDef<Shipment>[] = [
                   </SelectTrigger>
                   <SelectContent>
                     <SelectItem value="processing">Processing</SelectItem>
-                    <SelectItem value="in_transit">In Transit</SelectItem>
+                    <SelectItem value="in transit">In Transit</SelectItem>
                     <SelectItem value="delivered">Delivered</SelectItem>
                   </SelectContent>
                 </Select>

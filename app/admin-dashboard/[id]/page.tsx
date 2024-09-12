@@ -3,6 +3,8 @@ import { db } from "@/src/db";
 import { packages } from "@/src/db/schema";
 import { eq } from "drizzle-orm";
 
+export const revalidate = 0;
+
 export default async function PackageDetails({
   params,
 }: {

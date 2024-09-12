@@ -3,6 +3,8 @@ import { DataTable } from "@/components/admin-table/data-table";
 import { db } from "@/src/db";
 import { packages } from "@/src/db/schema";
 
+export const revalidate = 0;
+
 async function getData(): Promise<Shipment[]> {
   const data = await db
     .select({

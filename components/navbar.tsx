@@ -21,8 +21,6 @@ import {
   DropdownMenuSeparator,
   DropdownMenuTrigger,
 } from "@/components/ui/dropdown-menu";
-import { buttonVariants } from "@/components/ui/button";
-import Link from "next/link";
 
 function ModeToggle() {
   const { setTheme } = useTheme();
@@ -30,9 +28,9 @@ function ModeToggle() {
   return (
     <DropdownMenu>
       <DropdownMenuTrigger asChild>
-        <Button variant="ghost" size="icon" className="h-[27px] w-fit px-1">
-          <Sun className="h-[15px] rotate-0 scale-100 transition-all dark:-rotate-90 dark:scale-0" />
-          <Moon className="absolute h-[15px] rotate-90 scale-0 transition-all dark:rotate-0 dark:scale-100" />
+        <Button variant="ghost" size="icon">
+          <Sun className="h-4 rotate-0 scale-100 transition-all dark:-rotate-90 dark:scale-0" />
+          <Moon className="absolute h-4 rotate-90 scale-0 transition-all dark:rotate-0 dark:scale-100" />
           <span className="sr-only">Toggle theme</span>
         </Button>
       </DropdownMenuTrigger>
@@ -53,13 +51,13 @@ function ModeToggle() {
 export function Navbar() {
   return (
     <nav className="fixed top-0 flex h-12 w-screen items-center justify-end gap-2 border-b px-3 backdrop-blur-sm">
-      <div className="flex items-center justify-center gap-1">
-        <Button variant={"ghost"} size={"sm"} className="h-[27px] px-1">
-          <HeadsetIcon className="h-[15px]" />
+      <div className="flex items-center justify-center">
+        <Button variant="ghost" size="icon">
+          <HeadsetIcon className="h-4 w-4" />
         </Button>
         <ModeToggle />
-        <Button variant={"ghost"} size={"sm"} className="h-[27px] px-1">
-          <LogOutIcon className="h-[15px]" />
+        <Button variant="ghost" size="icon">
+          <LogOutIcon className="h-4 w-4" />
         </Button>
       </div>
     </nav>

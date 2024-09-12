@@ -28,7 +28,7 @@ export default async function CustomerDashboard() {
         <Input className="mt-3 max-w-sm" placeholder="Filter tracking ID..." />
         <div className="mt-3 grid grid-cols-1 gap-3 lg:grid-cols-3">
           {data.map((packages) => (
-            <Card className="p-4">
+            <Card className="p-4" key={packages.id}>
               <div className="mb-4 grid grid-cols-2 gap-4">
                 <div>
                   <p className="text-sm font-semibold">Package ID:</p>

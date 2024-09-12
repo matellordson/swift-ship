@@ -1,15 +1,7 @@
 "use client";
 
 import * as React from "react";
-import {
-  HeadsetIcon,
-  LogOutIcon,
-  MessageCircleDashedIcon,
-  Moon,
-  MoreHorizontal,
-  MoreVertical,
-  Sun,
-} from "lucide-react";
+import { HeadsetIcon, Moon, Sun } from "lucide-react";
 import { useTheme } from "next-themes";
 
 import { Button } from "@/components/ui/button";
@@ -21,6 +13,7 @@ import {
   DropdownMenuSeparator,
   DropdownMenuTrigger,
 } from "@/components/ui/dropdown-menu";
+import { GetUserProfilePicture } from "@/components/user-pic";
 
 function ModeToggle() {
   const { setTheme } = useTheme();
@@ -28,7 +21,7 @@ function ModeToggle() {
   return (
     <DropdownMenu>
       <DropdownMenuTrigger asChild>
-        <Button variant="ghost" size="icon">
+        <Button variant="outline" size="icon">
           <Sun className="h-4 rotate-0 scale-100 transition-all dark:-rotate-90 dark:scale-0" />
           <Moon className="absolute h-4 rotate-90 scale-0 transition-all dark:rotate-0 dark:scale-100" />
           <span className="sr-only">Toggle theme</span>
@@ -50,15 +43,20 @@ function ModeToggle() {
 }
 export function Navbar() {
   return (
-    <nav className="fixed top-0 flex h-12 w-screen items-center justify-end gap-2 border-b px-3 backdrop-blur-sm">
-      <div className="flex items-center justify-center">
-        <Button variant="ghost" size="icon">
+    <nav className="fixed top-0 flex h-14 w-screen items-center justify-end gap-2 border-b px-3 backdrop-blur-sm">
+      <div className="flex items-center justify-center gap-1">
+        <Button variant="outline" size="icon" className="rounded-full">
           <HeadsetIcon className="h-4 w-4" />
         </Button>
         <ModeToggle />
-        <Button variant="ghost" size="icon">
-          <LogOutIcon className="h-4 w-4" />
-        </Button>
+        {/* <DropdownMenu>
+          <DropdownMenuTrigger>
+            <GetUserProfilePicture />
+          </DropdownMenuTrigger>
+          <DropdownMenuContent align="end">
+            <DropdownMenuItem>Log out</DropdownMenuItem>
+          </DropdownMenuContent>
+        </DropdownMenu> */}
       </div>
     </nav>
   );

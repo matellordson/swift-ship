@@ -12,6 +12,8 @@ import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
 import { Textarea } from "@/components/ui/textarea";
 import { Plus, TriangleAlert } from "lucide-react";
+import { toast } from "sonner";
+import { useRouter } from "next/navigation";
 
 import {
   Dialog,
@@ -60,6 +62,7 @@ export function PackageForm() {
   const [step, setStep] = useState(1);
   const [isOpen, setIsOpen] = useState(false);
   const [progress, setProgress] = useState(50);
+  const router = useRouter();
 
   const form = useForm<FormValues>({
     resolver: zodResolver(formSchema),
@@ -99,6 +102,8 @@ export function PackageForm() {
     });
     await submitPackage(formData);
     setIsOpen(false);
+    toast("Package added successfully");
+    router.refresh();
   }, []);
 
   const nextStep = useCallback(async () => {

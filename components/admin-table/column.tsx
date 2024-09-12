@@ -14,6 +14,23 @@ import {
 } from "@/components/ui/dropdown-menu";
 
 import Link from "next/link";
+import {
+  Dialog,
+  DialogContent,
+  DialogHeader,
+  DialogTitle,
+  DialogTrigger,
+} from "../ui/dialog";
+import {
+  Select,
+  SelectContent,
+  SelectItem,
+  SelectTrigger,
+  SelectValue,
+} from "../ui/select";
+import { updateShipmentStatus } from "@/app/_action/update-package";
+import { useState } from "react";
+import { toast } from "sonner";
 
 // This type is used to define the shape of our data.
 // You can use a Zod schema here if you want.
@@ -61,6 +78,21 @@ export const columns: ColumnDef<Shipment>[] = [
     id: "actions",
     cell: ({ row }) => {
       const shipment = row.original;
+      const [isOpen, setIsOpen] = useState(false);
+      const [newStatus, setNewStatus] = useState(shipment.status || "");
+
+      const handleStatusUpdate = async () => {
+        const result = await updateShipmentStatus(
+          shipment.tracking_id,
+          newStatus,
+        );
+        if (result.success) {
+          toast("Package updated successfully");
+          setIsOpen(false);
+        } else {
+          toast("Unsuccessful");
+        }
+      };
 
       return (
         <DropdownMenu>
@@ -80,12 +112,32 @@ export const columns: ColumnDef<Shipment>[] = [
               Copy tracking ID
             </DropdownMenuItem>
             <DropdownMenuSeparator />
-            <DropdownMenuItem>
-              <Link href={`/admin-dashboard/${shipment.tracking_id}`}>
-                View Package
-              </Link>
-            </DropdownMenuItem>
-            <DropdownMenuItem>Update Status</DropdownMenuItem>
+            <Link href={`/admin-dashboard/${shipment.tracking_id}`}>
+              <DropdownMenuItem>View Package</DropdownMenuItem>
+            </Link>
+            <Dialog open={isOpen} onOpenChange={setIsOpen}>
+              <DialogTrigger asChild>
+                <DropdownMenuItem onSelect={(e) => e.preventDefault()}>
+                  Update Status
+                </DropdownMenuItem>
+              </DialogTrigger>
+              <DialogContent className="max-w-sm">
+                <DialogHeader>
+                  <DialogTitle>Update Shipment Status</DialogTitle>
+                </DialogHeader>
+                <Select value={newStatus} onValueChange={setNewStatus}>
+                  <SelectTrigger>
+                    <SelectValue placeholder="Select new status" />
+                  </SelectTrigger>
+                  <SelectContent>
+                    <SelectItem value="processing">Processing</SelectItem>
+                    <SelectItem value="in_transit">In Transit</SelectItem>
+                    <SelectItem value="delivered">Delivered</SelectItem>
+                  </SelectContent>
+                </Select>
+                <Button onClick={handleStatusUpdate}>Update Status</Button>
+              </DialogContent>
+            </Dialog>
           </DropdownMenuContent>
         </DropdownMenu>
       );

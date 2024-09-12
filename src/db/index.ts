@@ -1,4 +1,5 @@
-import { sql } from "@vercel/postgres";
-import { drizzle } from "drizzle-orm/vercel-postgres";
+import { drizzle } from "drizzle-orm/neon-http";
+import { neon } from "@neondatabase/serverless";
 
+const sql = neon(process.env.DATABASE_URL!);
 export const db = drizzle(sql);

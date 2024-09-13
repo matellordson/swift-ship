@@ -8,8 +8,25 @@ import { NoPackage } from "@/components/no-package";
 import { SupportButton } from "@/components/support";
 import { filterPackages } from "../_action/filter-package";
 
-export default function CustomerDashboard({ initialData, userId }) {
-  const [packages, setPackages] = useState(initialData);
+interface Package {
+  id: string;
+  tracking_number: string;
+  sender_country: string;
+  receiver_country: string;
+  status: "processing" | "in transit" | "delivered";
+  package_type: string;
+}
+
+interface CustomerDashboardProps {
+  initialData: Package[];
+  userId: string;
+}
+
+export default function CustomerDashboard({
+  initialData,
+  userId,
+}: CustomerDashboardProps) {
+  const [packages, setPackages] = useState<Package[]>(initialData);
   const [trackingFilter, setTrackingFilter] = useState("");
 
   const handleFilterChange = async (e: any) => {

@@ -13,8 +13,6 @@ import { Label } from "@/components/ui/label";
 import { Textarea } from "@/components/ui/textarea";
 import { Plus, TriangleAlert } from "lucide-react";
 import { toast } from "sonner";
-import { useRouter } from "next/navigation";
-
 import {
   Dialog,
   DialogContent,
@@ -51,9 +49,9 @@ const formSchema = z.object({
   receiver_city: z.string(),
   receiver_address: z.string().min(1, "Address is required"),
   package_type: z.string().min(1, "Package type is required"),
-  dimension: z.string().min(1, "Dimension is required"),
-  weight: z.string().min(1, "Weight is required"),
-  description: z.string(),
+  dimension: z.string().nullable(),
+  weight: z.string().nullable(),
+  description: z.string().nullable(),
 });
 
 type FormValues = z.infer<typeof formSchema>;
@@ -62,7 +60,6 @@ export function PackageForm() {
   const [step, setStep] = useState(1);
   const [isOpen, setIsOpen] = useState(false);
   const [progress, setProgress] = useState(50);
-  const router = useRouter();
 
   const form = useForm<FormValues>({
     resolver: zodResolver(formSchema),
@@ -103,7 +100,6 @@ export function PackageForm() {
     await submitPackage(formData);
     setIsOpen(false);
     toast("Package added successfully");
-    router.refresh();
   }, []);
 
   const nextStep = useCallback(async () => {
@@ -314,7 +310,7 @@ export function PackageForm() {
                     "Weight in kg (e.g., 1.5 kg)",
                   )}
                   <div className="space-y-2">
-                    <Label htmlFor="description">Description</Label>
+                    <Label htmlFor="description">Description (optional)</Label>
                     <Controller
                       name="description"
                       control={control}

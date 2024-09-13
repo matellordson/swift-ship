@@ -1,0 +1,23 @@
+CREATE TABLE IF NOT EXISTS "package" (
+	"id" text PRIMARY KEY NOT NULL,
+	"userId" text NOT NULL,
+	"date" date,
+	"sender_full_name" text,
+	"sender_email" text,
+	"sender_phone_number" text,
+	"sender_country" text,
+	"sender_city" text,
+	"sender_address" text,
+	"receiver_full_name" text,
+	"receiver_email" text,
+	"receiver_phone_number" text,
+	"receiver_country" text,
+	"receiver_city" text,
+	"receiver_address" text,
+	"package_type" text,
+	"dimension" text,
+	"weight" text,
+	"description" text,
+	"tracking_number" text NOT NULL,
+	"status" text DEFAULT 'processing'
+);

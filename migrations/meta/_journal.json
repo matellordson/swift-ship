@@ -5,8 +5,15 @@
     {
       "idx": 0,
       "version": "7",
-      "when": 1726100580746,
-      "tag": "0000_silent_norrin_radd",
+      "when": 1726158496947,
+      "tag": "0000_exotic_arclight",
+      "breakpoints": true
+    },
+    {
+      "idx": 1,
+      "version": "7",
+      "when": 1726160206468,
+      "tag": "0001_worthless_robin_chapel",
       "breakpoints": true
     }
   ]

@@ -1,6 +1,5 @@
 "use client";
 
-import * as React from "react";
 import { Moon, Sun } from "lucide-react";
 import { useTheme } from "next-themes";
 
@@ -9,13 +8,10 @@ import {
   DropdownMenu,
   DropdownMenuContent,
   DropdownMenuItem,
-  DropdownMenuLabel,
-  DropdownMenuSeparator,
   DropdownMenuTrigger,
 } from "@/components/ui/dropdown-menu";
-import { GetUserProfilePicture } from "@/components/user-pic";
 
-function ModeToggle() {
+export function ModeToggle() {
   const { setTheme } = useTheme();
 
   return (
@@ -41,20 +37,10 @@ function ModeToggle() {
     </DropdownMenu>
   );
 }
-export function Navbar() {
+export function Navbar({ children }: { children: React.ReactNode }) {
   return (
     <nav className="fixed top-0 flex h-14 w-screen items-center justify-end gap-2 border-b px-3 backdrop-blur">
-      <div className="flex items-center justify-center gap-1">
-        <ModeToggle />
-        {/* <DropdownMenu>
-          <DropdownMenuTrigger>
-            <GetUserProfilePicture />
-          </DropdownMenuTrigger>
-          <DropdownMenuContent align="end">
-            <DropdownMenuItem>Log out</DropdownMenuItem>
-          </DropdownMenuContent>
-        </DropdownMenu> */}
-      </div>
+      <div className="flex items-center justify-center gap-1">{children}</div>
     </nav>
   );
 }

@@ -1,6 +1,6 @@
 {
-  "id": "39d80793-702b-4f17-8c75-89f6baa4e5d2",
-  "prevId": "00000000-0000-0000-0000-000000000000",
+  "id": "c0079cef-f034-4773-90f6-cc4d63baf46a",
+  "prevId": "39d80793-702b-4f17-8c75-89f6baa4e5d2",
   "version": "7",
   "dialect": "postgresql",
   "tables": {
@@ -19,12 +19,6 @@
           "type": "text",
           "primaryKey": false,
           "notNull": true
-        },
-        "date": {
-          "name": "date",
-          "type": "date",
-          "primaryKey": false,
-          "notNull": false
         },
         "sender_full_name": {
           "name": "sender_full_name",

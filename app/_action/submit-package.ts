@@ -1,9 +1,10 @@
 "use server";
 
-import { auth } from "@/auth";
 import { db } from "@/src/db";
 import { packages } from "@/src/db/schema";
 import { customAlphabet } from "nanoid";
+import { getKindeServerSession } from "@kinde-oss/kinde-auth-nextjs/server";
+import { revalidatePath } from "next/cache";
 
 function generateTrackingId() {
   const nanoid = customAlphabet("ABCDEFGHJKLMNPQRSTUVWXYZ23456789", 10);
@@ -11,21 +12,21 @@ function generateTrackingId() {
 }
 
 export async function submitPackage(formData: FormData) {
-  const session = await auth();
-  const getUserId = session?.user?.id as string;
+  const { getUser } = getKindeServerSession();
+  const user = await getUser();
+  const getUserId = user.id;
+
   const trackingId = generateTrackingId();
 
   const packageData = {
     userId: getUserId,
     tracking_number: trackingId,
-    // step1: Sender Information
     sender_full_name: formData.get("sender_full_name") as string,
     sender_email: formData.get("sender_email") as string,
     sender_phone_number: formData.get("sender_phone_number") as string,
     sender_country: formData.get("sender_country") as string,
     sender_city: formData.get("sender_city") as string,
     sender_address: formData.get("sender_address") as string,
-    // step2: REciever
     receiver_full_name: formData.get("receiver_full_name") as string,
     receiver_email: formData.get("receiver_email") as string,
     receiver_phone_number: formData.get("receiver_phone_number") as string,
@@ -40,4 +41,5 @@ export async function submitPackage(formData: FormData) {
   };
 
   await db.insert(packages).values(packageData);
+  revalidatePath("/customer-dashboard");
 }

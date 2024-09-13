@@ -171,6 +171,7 @@ export function PackageForm() {
                 {...field}
                 type={type}
                 id={fieldName}
+                value={field.value ?? ""}
                 placeholder={placeholder}
                 className={errors[fieldName] ? "border-red-500" : ""}
                 onChange={(e) => {
@@ -318,6 +319,7 @@ export function PackageForm() {
                         <Textarea
                           {...field}
                           id="description"
+                          value={field.value ?? ""}
                           placeholder="Briefly describe the contents of your package"
                           className={errors.description ? "border-red-500" : ""}
                           onChange={(e) => {

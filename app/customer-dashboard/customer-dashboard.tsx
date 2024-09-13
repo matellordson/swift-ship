@@ -8,24 +8,7 @@ import { NoPackage } from "@/components/no-package";
 import { SupportButton } from "@/components/support";
 import { filterPackages } from "../_action/filter-package";
 
-interface PackageTypeArray {
-  initialData: [
-    {
-      id: string;
-      tracking_number: string;
-      sender_country: string;
-      receiver_country: string;
-      status: string;
-      package_type: string;
-    },
-  ];
-  userId: string;
-}
-
-export default function CustomerDashboard({
-  initialData,
-  userId,
-}: PackageTypeArray) {
+export default function CustomerDashboard({ initialData, userId }) {
   const [packages, setPackages] = useState(initialData);
   const [trackingFilter, setTrackingFilter] = useState("");
 

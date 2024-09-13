@@ -1,7 +1,7 @@
 import type { Metadata } from "next";
 import "./globals.css";
 import { GeistSans } from "geist/font/sans";
-import { ModeToggle, Navbar } from "@/components/navbar";
+import { Navbar } from "@/components/navbar";
 import { ThemeProvider } from "@/components/theme-provider";
 import { Toaster } from "@/components/ui/sonner";
 import { NavbarItems } from "@/components/nav-items";
@@ -26,7 +26,6 @@ export default function RootLayout({
           disableTransitionOnChange
         >
           <Navbar>
-            <ModeToggle />
             <NavbarItems />
           </Navbar>
           <div className="mt-20">{children}</div>

@@ -13,8 +13,6 @@ export async function NavbarItems() {
   const { getUser } = getKindeServerSession();
   const user = await getUser();
 
-  console.log(user);
-
   return (
     <div>
       {user ? (
@@ -31,14 +29,11 @@ export async function NavbarItems() {
           </DropdownMenuContent>
         </DropdownMenu>
       ) : (
-        <>
-          <LoginLink postLoginRedirectURL="/customer-dashboard">
-            Sign in
-          </LoginLink>
+        <div className="flex items-center justify-center gap-3">
           <RegisterLink postLoginRedirectURL="/customer-dashboard">
-            Sign up
+            <Button size={"sm"}>Get Started</Button>
           </RegisterLink>
-        </>
+        </div>
       )}
     </div>
   );

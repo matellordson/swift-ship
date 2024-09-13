@@ -95,7 +95,7 @@ export function PackageForm() {
   const onSubmit = useCallback(async (data: FormValues) => {
     const formData = new FormData();
     Object.entries(data).forEach(([key, value]) => {
-      formData.append(key, value);
+      formData.append(key, value as string | Blob);
     });
     await submitPackage(formData);
     setIsOpen(false);
@@ -203,7 +203,7 @@ export function PackageForm() {
                   field.onChange(value);
                   validateField(fieldName);
                 }}
-                defaultValue={field.value}
+                defaultValue={field.value as string | undefined}
               >
                 <SelectTrigger
                   id={fieldName}

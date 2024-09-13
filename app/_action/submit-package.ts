@@ -4,7 +4,6 @@ import { db } from "@/src/db";
 import { packages } from "@/src/db/schema";
 import { customAlphabet } from "nanoid";
 import { getKindeServerSession } from "@kinde-oss/kinde-auth-nextjs/server";
-import { revalidatePath } from "next/cache";
 
 function generateTrackingId() {
   const nanoid = customAlphabet("ABCDEFGHJKLMNPQRSTUVWXYZ23456789", 10);
@@ -41,5 +40,4 @@ export async function submitPackage(formData: FormData) {
   };
 
   await db.insert(packages).values(packageData);
-  revalidatePath("/customer-dashboard");
 }

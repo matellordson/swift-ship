@@ -1,7 +1,6 @@
 "use client";
 
 import { useState } from "react";
-import { useRouter } from "next/navigation";
 import { PackageForm } from "@/components/new-package";
 import { Card } from "@/components/ui/card";
 import { Input } from "@/components/ui/input";
@@ -9,7 +8,24 @@ import { NoPackage } from "@/components/no-package";
 import { SupportButton } from "@/components/support";
 import { filterPackages } from "../_action/filter-package";
 
-export default function CustomerDashboard({ initialData, userId }: any) {
+interface PackageTypeArray {
+  initialData: [
+    {
+      id: string;
+      tracking_number: string;
+      sender_country: string;
+      receiver_country: string;
+      status: string;
+      package_type: string;
+    },
+  ];
+  userId: string;
+}
+
+export default function CustomerDashboard({
+  initialData,
+  userId,
+}: PackageTypeArray) {
   const [packages, setPackages] = useState(initialData);
   const [trackingFilter, setTrackingFilter] = useState("");
 

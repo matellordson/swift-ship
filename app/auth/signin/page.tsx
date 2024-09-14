@@ -20,7 +20,7 @@ import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import Link from "next/link";
 import { CheckCircle2Icon, CircleX } from "lucide-react";
 
-export const SigninSchema = z.object({
+const SigninSchema = z.object({
   username: z.string().min(2, {
     message: "Username must be at least 2 characters.",
   }),

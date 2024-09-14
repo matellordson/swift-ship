@@ -31,10 +31,6 @@ export default async function AdminDashboard() {
     redirect("/auth/signin");
   }
 
-  if (user.user?.role !== "admin") {
-    redirect("/dashboard");
-  }
-
   return (
     <div className="mx-auto max-w-xl px-3 lg:container">
       <h1 className="scroll-m-20 text-xl font-semibold tracking-tight">

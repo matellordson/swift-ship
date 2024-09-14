@@ -23,10 +23,6 @@ export default async function PackageDetails({
     redirect("/auth/signin");
   }
 
-  if (user.user?.role !== "admin") {
-    redirect("/dashboard");
-  }
-
   return (
     <div className="mx-auto mb-20 px-3 lg:container">
       <h1 className="scroll-m-20 text-xl font-semibold tracking-tight">

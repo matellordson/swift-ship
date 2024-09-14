@@ -21,7 +21,7 @@ import Link from "next/link";
 import SignupAction from "@/app/_action/signup";
 import { CheckCircle2Icon, CircleX } from "lucide-react";
 
-const SignupSchema = z.object({
+export const SignupSchema = z.object({
   username: z.string().min(2, {
     message: "Username must be at least 2 characters.",
   }),

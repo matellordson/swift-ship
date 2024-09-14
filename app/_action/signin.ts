@@ -1,6 +1,6 @@
 "use server";
 
-import { SigninSchema } from "../auth/signin/page";
+import { SigninSchemaTypes } from "../auth/signin/page";
 import { z } from "zod";
 import * as argon2 from "argon2";
 import { db } from "@/src/db";
@@ -8,9 +8,7 @@ import { lucia } from "@/utils/auth";
 import { cookies } from "next/headers";
 import { eq } from "drizzle-orm";
 
-export default async function SigninAction(
-  values: z.infer<typeof SigninSchema>,
-) {
+export default async function SigninAction(values: SigninSchemaTypes) {
   const existingUser = await db.query.userTable.findFirst({
     where: (table) => eq(table.username, values.username),
   });

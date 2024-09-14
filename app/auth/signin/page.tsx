@@ -20,7 +20,7 @@ import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import Link from "next/link";
 import { CheckCircle2Icon, CircleX } from "lucide-react";
 
-export const SigninSchema = z.object({
+const SigninSchema = z.object({
   username: z.string().min(2, {
     message: "Username must be at least 2 characters.",
   }),
@@ -28,6 +28,8 @@ export const SigninSchema = z.object({
     message: "Password must be at least 6 characters.",
   }),
 });
+
+export type SigninSchemaTypes = z.infer<typeof SigninSchema>;
 
 export default function Signin() {
   const router = useRouter();

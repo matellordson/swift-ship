@@ -1,6 +1,6 @@
 "use server";
 
-import { SignupSchema } from "../auth/signup/page";
+import { SignupSchemaTypes } from "../auth/signup/page";
 import { z } from "zod";
 import * as argon2 from "argon2";
 import { generateId } from "lucia";
@@ -9,9 +9,7 @@ import { userTable } from "@/src/db/schema";
 import { lucia } from "@/utils/auth";
 import { cookies } from "next/headers";
 
-export default async function SignupAction(
-  values: z.infer<typeof SignupSchema>,
-) {
+export default async function SignupAction(values: SignupSchemaTypes) {
   const hashedPassword = await argon2.hash(values.password_hash);
   const userId = generateId(15);
 

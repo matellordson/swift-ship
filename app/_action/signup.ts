@@ -2,7 +2,7 @@
 
 import { SignupSchemaTypes } from "../auth/signup/page";
 import { z } from "zod";
-import * as argon2 from "argon2";
+import * as bcrypt from "bcrypt";
 import { generateId } from "lucia";
 import { db } from "@/src/db";
 import { userTable } from "@/src/db/schema";
@@ -10,7 +10,8 @@ import { lucia } from "@/utils/auth";
 import { cookies } from "next/headers";
 
 export default async function SignupAction(values: SignupSchemaTypes) {
-  const hashedPassword = await argon2.hash(values.password_hash);
+  const saltRounds = 10;
+  const hashedPassword = await bcrypt.hash(values.password_hash, saltRounds);
   const userId = generateId(15);
 
   try {

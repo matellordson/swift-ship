@@ -1,8 +1,7 @@
 "use server";
 
 import { SigninSchemaTypes } from "../auth/signin/page";
-import { z } from "zod";
-import * as argon2 from "argon2";
+import * as bcrypt from "bcrypt";
 import { db } from "@/src/db";
 import { lucia } from "@/utils/auth";
 import { cookies } from "next/headers";
@@ -25,9 +24,9 @@ export default async function SigninAction(values: SigninSchemaTypes) {
     };
   }
 
-  const isValidPassword = await argon2.verify(
-    existingUser.password_hash as string,
+  const isValidPassword = await bcrypt.compare(
     values.password_hash,
+    existingUser.password_hash,
   );
 
   if (!isValidPassword) {

@@ -63,7 +63,7 @@ export default function Signin() {
   }
 
   return (
-    <div className="mx-auto mt-32 max-w-sm px-5 lg:px-0">
+    <div className="mx-auto max-w-sm px-5 lg:px-0">
       <Card>
         <CardHeader className="text-center">
           <div className="mx-auto mb-3 h-16 w-16 rounded-full bg-primary-foreground"></div>

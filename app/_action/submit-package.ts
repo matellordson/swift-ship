@@ -1,9 +1,9 @@
 "use server";
 
 import { db } from "@/src/db";
-import { packages } from "@/src/db/schema";
+import { packageTable } from "@/src/db/schema";
+import { validateRequest } from "@/utils/auth";
 import { customAlphabet } from "nanoid";
-import { getKindeServerSession } from "@kinde-oss/kinde-auth-nextjs/server";
 
 function generateTrackingId() {
   const nanoid = customAlphabet("ABCDEFGHJKLMNPQRSTUVWXYZ23456789", 10);
@@ -11,9 +11,8 @@ function generateTrackingId() {
 }
 
 export async function submitPackage(formData: FormData) {
-  const { getUser } = getKindeServerSession();
-  const user = await getUser();
-  const getUserId = user.id;
+  const user = await validateRequest();
+  const getUserId = user?.user?.id as string;
 
   const trackingId = generateTrackingId();
 
@@ -38,6 +37,14 @@ export async function submitPackage(formData: FormData) {
     weight: formData.get("weight") as string,
     description: formData.get("description") as string,
   };
-
-  await db.insert(packages).values(packageData);
+  try {
+    await db.insert(packageTable).values(packageData);
+    return {
+      success: "Package Submitted Successfully",
+    };
+  } catch (error: any) {
+    return {
+      error: error.message,
+    };
+  }
 }

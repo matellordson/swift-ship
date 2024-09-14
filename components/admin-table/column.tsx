@@ -1,7 +1,7 @@
 "use client";
 
 import { ColumnDef } from "@tanstack/react-table";
-import { MoreHorizontal } from "lucide-react";
+import { CheckCircle2Icon, CircleX, MoreHorizontal } from "lucide-react";
 
 import { Button } from "@/components/ui/button";
 import {
@@ -89,10 +89,20 @@ export const columns: ColumnDef<Shipment>[] = [
           newStatus,
         );
         if (result.success) {
-          toast("Package updated successfully");
+          toast(
+            <p className="flex items-center justify-start gap-1 text-xs text-muted-foreground">
+              <CheckCircle2Icon className="size-4 text-green-500" />
+              Package updated successfully
+            </p>,
+          );
           setIsOpen(false);
         } else {
-          toast("Unsuccessful");
+          toast(
+            <p className="flex items-center justify-start gap-1 text-xs text-muted-foreground">
+              <CircleX className="size-4 text-red-500" />
+              Unsuccessful update
+            </p>,
+          );
         }
         router.refresh();
       };

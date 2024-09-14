@@ -11,7 +11,7 @@ import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
 import { Textarea } from "@/components/ui/textarea";
-import { Plus, TriangleAlert } from "lucide-react";
+import { CheckCircle2Icon, Plus, TriangleAlert } from "lucide-react";
 import { toast } from "sonner";
 import {
   Dialog,
@@ -30,6 +30,8 @@ import {
 } from "@/components/ui/select";
 import { Progress } from "@/components/ui/progress";
 import { submitPackage } from "@/app/_action/submit-package";
+import { useRouter } from "next/navigation";
+import Link from "next/link";
 
 const formSchema = z.object({
   sender_full_name: z.string().min(1, "Full name is required"),
@@ -60,6 +62,7 @@ export function PackageForm() {
   const [step, setStep] = useState(1);
   const [isOpen, setIsOpen] = useState(false);
   const [progress, setProgress] = useState(50);
+  const router = useRouter();
 
   const form = useForm<FormValues>({
     resolver: zodResolver(formSchema),
@@ -91,15 +94,29 @@ export function PackageForm() {
     trigger,
     clearErrors,
   } = form;
-
   const onSubmit = useCallback(async (data: FormValues) => {
     const formData = new FormData();
     Object.entries(data).forEach(([key, value]) => {
       formData.append(key, value as string | Blob);
     });
-    await submitPackage(formData);
+    const res = await submitPackage(formData);
+    if (res.success) {
+      toast(
+        <p className="flex items-center justify-start gap-1 text-xs text-muted-foreground">
+          <CheckCircle2Icon className="size-4 text-green-500" />
+          {res.success}
+        </p>,
+      );
+      toast(
+        <p className="flex items-center justify-start gap-1 text-xs text-muted-foreground">
+          <TriangleAlert className="size-4 text-orange-300" />
+          Please refresh page to see new package
+        </p>,
+      );
+    } else {
+      toast(res.error);
+    }
     setIsOpen(false);
-    toast("Package added successfully");
   }, []);
 
   const nextStep = useCallback(async () => {

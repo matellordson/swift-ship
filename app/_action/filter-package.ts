@@ -1,21 +1,24 @@
 "use server";
 
 import { db } from "@/src/db";
-import { packages } from "@/src/db/schema";
+import { packageTable } from "@/src/db/schema";
 import { eq, and, like } from "drizzle-orm";
 
 export async function filterPackages(userId: string, trackingId: string = "") {
   if (trackingId) {
     return await db
       .select()
-      .from(packages)
+      .from(packageTable)
       .where(
         and(
-          eq(packages.userId, userId),
-          like(packages.tracking_number, `%${trackingId}%`),
+          eq(packageTable.userId, userId),
+          like(packageTable.tracking_number, `%${trackingId}%`),
         ),
       );
   } else {
-    return await db.select().from(packages).where(eq(packages.userId, userId));
+    return await db
+      .select()
+      .from(packageTable)
+      .where(eq(packageTable.userId, userId));
   }
 }

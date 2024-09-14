@@ -8,7 +8,7 @@ import { Input } from "@/components/ui/input";
 import { NoPackage } from "@/components/no-package";
 import { SupportButton } from "@/components/support";
 import { filterPackages } from "../_action/filter-package";
-import { Spinner } from "@/components/ui/spinner";
+import { Loader } from "lucide-react";
 
 interface Package {
   userId: string;
@@ -90,7 +90,12 @@ export default function CustomerDashboard({
         value={trackingFilter}
         onChange={handleFilterChange}
       />
-      {isLoading && <Spinner className="mt-4" />}
+      {isLoading && (
+        <div className="mt-5 flex w-fit items-center justify-center gap-2">
+          <Loader className="h-6 animate-spin" />
+          <p>Filtering...</p>
+        </div>
+      )}
       {error && <p className="mt-4 text-red-500">{error}</p>}
       <div className="mb-14 mt-3 grid grid-cols-1 gap-3 lg:grid-cols-3">
         {packages.map((pkg: Package) => (

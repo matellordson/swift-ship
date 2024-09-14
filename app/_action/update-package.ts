@@ -1,7 +1,7 @@
 "use server";
 
 import { db } from "@/src/db";
-import { packages } from "@/src/db/schema";
+import { packageTable } from "@/src/db/schema";
 import { eq } from "drizzle-orm";
 
 export async function updateShipmentStatus(
@@ -10,9 +10,9 @@ export async function updateShipmentStatus(
 ) {
   try {
     await db
-      .update(packages)
+      .update(packageTable)
       .set({ status: newStatus })
-      .where(eq(packages.tracking_number, trackingId));
+      .where(eq(packageTable.tracking_number, trackingId));
 
     return { success: true, message: "Shipment status updated successfully" };
   } catch (error) {

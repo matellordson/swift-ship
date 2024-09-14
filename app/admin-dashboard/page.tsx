@@ -2,28 +2,38 @@ import { Shipment, columns } from "@/components/admin-table/column";
 import { DataTable } from "@/components/admin-table/data-table";
 import { CustomerChatButton } from "@/components/customer-chat";
 import { db } from "@/src/db";
-import { packages } from "@/src/db/schema";
+import { packageTable } from "@/src/db/schema";
+import { validateRequest } from "@/utils/auth";
+import { redirect } from "next/navigation";
 
 export const revalidate = 0;
 
 async function getData(): Promise<Shipment[]> {
   const data = await db
     .select({
-      id: packages.id,
-      tracking_id: packages.tracking_number,
-      sender: packages.sender_full_name,
-      receiver: packages.receiver_full_name,
-      package_type: packages.package_type,
-      status: packages.status,
-      origin: packages.sender_country,
-      destination: packages.receiver_country,
+      id: packageTable.id,
+      tracking_id: packageTable.tracking_number,
+      sender: packageTable.sender_full_name,
+      receiver: packageTable.receiver_full_name,
+      package_type: packageTable.package_type,
+      status: packageTable.status,
+      origin: packageTable.sender_country,
+      destination: packageTable.receiver_country,
     })
-    .from(packages);
+    .from(packageTable);
   return data;
 }
 
 export default async function AdminDashboard() {
   const data = await getData();
+  const user = await validateRequest();
+  if (!user) {
+    redirect("/auth/signin");
+  }
+
+  if (user.user?.role !== "admin") {
+    redirect("/dashboard");
+  }
 
   return (
     <div className="mx-auto max-w-xl px-3 lg:container">

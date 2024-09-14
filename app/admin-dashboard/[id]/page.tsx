@@ -1,7 +1,9 @@
 import { Card, CardContent } from "@/components/ui/card";
 import { db } from "@/src/db";
-import { packages } from "@/src/db/schema";
+import { packageTable } from "@/src/db/schema";
+import { validateRequest } from "@/utils/auth";
 import { eq } from "drizzle-orm";
+import { redirect } from "next/navigation";
 
 export const revalidate = 0;
 
@@ -12,9 +14,18 @@ export default async function PackageDetails({
 }) {
   const data = await db
     .select()
-    .from(packages)
-    .where(eq(packages.tracking_number, params.id))
+    .from(packageTable)
+    .where(eq(packageTable.tracking_number, params.id))
     .limit(1);
+
+  const user = await validateRequest();
+  if (!user) {
+    redirect("/auth/signin");
+  }
+
+  if (user.user?.role !== "admin") {
+    redirect("/dashboard");
+  }
 
   return (
     <div className="mx-auto mb-20 px-3 lg:container">

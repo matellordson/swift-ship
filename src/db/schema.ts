@@ -1,6 +1,26 @@
-import { date, pgTable, text } from "drizzle-orm/pg-core";
+import { pgEnum, pgTable, text, timestamp } from "drizzle-orm/pg-core";
 
-export const packages = pgTable("package", {
+export const roleEnums = pgEnum("role", ["customer", "admin"]);
+
+export const userTable = pgTable("user", {
+  id: text("id").primaryKey(),
+  username: text("username").unique().notNull(),
+  password_hash: text("password"),
+  role: roleEnums("role").notNull().default("customer"),
+});
+
+export const sessionTable = pgTable("session", {
+  id: text("id").primaryKey(),
+  userId: text("user_id")
+    .notNull()
+    .references(() => userTable.id),
+  expiresAt: timestamp("expires_at", {
+    withTimezone: true,
+    mode: "date",
+  }).notNull(),
+});
+
+export const packageTable = pgTable("package", {
   id: text("id")
     .primaryKey()
     .$defaultFn(() => crypto.randomUUID()),

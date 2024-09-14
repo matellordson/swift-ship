@@ -24,7 +24,7 @@ const SigninSchema = z.object({
   username: z.string().min(2, {
     message: "Username must be at least 2 characters.",
   }),
-  password_hash: z.string().min(6, {
+  password: z.string().min(6, {
     message: "Password must be at least 6 characters.",
   }),
 });
@@ -37,7 +37,7 @@ export default function Signin() {
     resolver: zodResolver(SigninSchema),
     defaultValues: {
       username: "",
-      password_hash: "",
+      password: "",
     },
   });
 
@@ -90,7 +90,7 @@ export default function Signin() {
               />
               <FormField
                 control={form.control}
-                name="password_hash"
+                name="password"
                 render={({ field }) => (
                   <FormItem>
                     <FormLabel>Password</FormLabel>

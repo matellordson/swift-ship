@@ -12,20 +12,14 @@ export default async function SigninAction(values: SigninSchemaTypes) {
     where: (table) => eq(table.username, values.username),
   });
 
-  if (!existingUser?.username) {
-    return {
-      error: "User not found",
-    };
-  }
-
-  if (!existingUser.password_hash) {
+  if (!existingUser?.username || !existingUser.password_hash) {
     return {
       error: "User not found",
     };
   }
 
   const isValidPassword = await bcrypt.compare(
-    values.password_hash,
+    values.password,
     existingUser.password_hash,
   );
 

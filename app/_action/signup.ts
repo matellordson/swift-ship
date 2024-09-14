@@ -11,7 +11,7 @@ import { cookies } from "next/headers";
 
 export default async function SignupAction(values: SignupSchemaTypes) {
   const saltRounds = 10;
-  const hashedPassword = await bcrypt.hash(values.password_hash, saltRounds);
+  const hashedPassword = await bcrypt.hash(values.password, saltRounds);
   const userId = generateId(15);
 
   try {

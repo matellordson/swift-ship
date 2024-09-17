@@ -6,7 +6,6 @@ import { PackageForm } from "@/components/new-package";
 import { Card } from "@/components/ui/card";
 import { Input } from "@/components/ui/input";
 import { NoPackage } from "@/components/no-package";
-import { SupportButton } from "@/components/support";
 import { filterPackages } from "../_action/filter-package";
 import { Loader } from "lucide-react";
 
@@ -157,7 +156,6 @@ export default function CustomerDashboard({
           </Card>
         ))}
       </div>
-      <SupportButton />
     </div>
   );
 }

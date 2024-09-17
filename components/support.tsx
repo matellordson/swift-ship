@@ -1,3 +1,5 @@
+"use client";
+
 import * as React from "react";
 
 import { cn } from "@/lib/utils";
@@ -23,8 +25,10 @@ import {
 } from "@/components/ui/drawer";
 import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
+import { HeadsetIcon } from "lucide-react";
+import ChatUI from "./chat-ui";
 
-export function DrawerDialogDemo() {
+export function Support() {
   const [open, setOpen] = React.useState(false);
   const isDesktop = useMediaQuery("(min-width: 768px)");
 
@@ -32,16 +36,16 @@ export function DrawerDialogDemo() {
     return (
       <Dialog open={open} onOpenChange={setOpen}>
         <DialogTrigger asChild>
-          <Button variant="outline">Edit Profile</Button>
+          <Button
+            variant={"outline"}
+            size={"icon"}
+            className="fixed bottom-4 right-4 flex h-12 w-12 items-center justify-center rounded-full bg-transparent shadow-lg backdrop-blur transition-shadow duration-300 hover:shadow-xl"
+          >
+            <HeadsetIcon className="h-6 w-6" />
+          </Button>
         </DialogTrigger>
-        <DialogContent className="sm:max-w-[425px]">
-          <DialogHeader>
-            <DialogTitle>Edit profile</DialogTitle>
-            <DialogDescription>
-              Make changes to your profile here. Click save when you're done.
-            </DialogDescription>
-          </DialogHeader>
-          <ProfileForm />
+        <DialogContent className="max-w-4xl">
+          <ChatUI />
         </DialogContent>
       </Dialog>
     );
@@ -50,7 +54,13 @@ export function DrawerDialogDemo() {
   return (
     <Drawer open={open} onOpenChange={setOpen}>
       <DrawerTrigger asChild>
-        <Button variant="outline">Edit Profile</Button>
+        <Button
+          variant={"outline"}
+          size={"icon"}
+          className="fixed bottom-4 right-4 flex h-12 w-12 items-center justify-center rounded-full bg-transparent shadow-lg backdrop-blur transition-shadow duration-300 hover:shadow-xl"
+        >
+          <HeadsetIcon className="h-6 w-6" />
+        </Button>
       </DrawerTrigger>
       <DrawerContent>
         <DrawerHeader className="text-left">

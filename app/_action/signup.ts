@@ -9,11 +9,13 @@ import { userTable } from "@/src/db/schema";
 import { lucia } from "@/utils/auth";
 import { cookies } from "next/headers";
 import { supabase } from "@/src/db/supabase";
+import { validateRequest } from "@/utils/auth";
 
 export default async function SignupAction(values: SignupSchemaTypes) {
   const saltRounds = 10;
   const hashedPassword = await bcrypt.hash(values.password, saltRounds);
   const userId = generateId(15);
+  const userRole = await validateRequest();
 
   try {
     await db
@@ -30,7 +32,11 @@ export default async function SignupAction(values: SignupSchemaTypes) {
 
     await supabase
       .from("user")
-      .insert({ id: userId, user_name: values.username });
+      .insert({
+        id: userId,
+        user_name: values.username,
+        role: userRole.user?.role,
+      });
 
     const session = await lucia.createSession(userId, {
       expiresIn: 60 * 60 * 24 * 30,

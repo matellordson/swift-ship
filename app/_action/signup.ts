@@ -8,6 +8,7 @@ import { db } from "@/src/db";
 import { userTable } from "@/src/db/schema";
 import { lucia } from "@/utils/auth";
 import { cookies } from "next/headers";
+import { supabase } from "@/src/db/supabase";
 
 export default async function SignupAction(values: SignupSchemaTypes) {
   const saltRounds = 10;
@@ -26,6 +27,10 @@ export default async function SignupAction(values: SignupSchemaTypes) {
         id: userTable.id,
         username: userTable.username,
       });
+
+    await supabase
+      .from("user")
+      .insert({ id: userId, user_name: values.username });
 
     const session = await lucia.createSession(userId, {
       expiresIn: 60 * 60 * 24 * 30,

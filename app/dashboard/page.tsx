@@ -1,6 +1,6 @@
 import { validateRequest } from "@/utils/auth";
-import AdminDashboard from "../admin-dashboard/page";
-import CustomerDashboardPage from "../customer-dashboard/page";
+import AdminDashboard from "../_admin-dashboard/page";
+import CustomerDashboardPage from "../_customer-dashboard/page";
 
 export default async function Dashboard() {
   const currentUser = await validateRequest();

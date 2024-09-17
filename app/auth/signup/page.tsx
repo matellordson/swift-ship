@@ -22,8 +22,8 @@ import SignupAction from "@/app/_action/signup";
 import { CheckCircle2Icon, CircleX } from "lucide-react";
 
 const SignupSchema = z.object({
-  username: z.string().min(2, {
-    message: "Username must be at least 2 characters.",
+  username: z.string().min(5, {
+    message: "Username must be at least 5 characters.",
   }),
   password: z.string().min(6, {
     message: "Password must be at least 6 characters.",
@@ -64,7 +64,7 @@ export default function Signin() {
   }
 
   return (
-    <div className="mx-auto max-w-sm px-5 lg:px-0">
+    <div className="mx-auto max-w-sm px-3 lg:px-0">
       <Card>
         <CardHeader className="text-center">
           <div className="mx-auto mb-3 h-16 w-16 rounded-full bg-primary-foreground"></div>

@@ -26,7 +26,6 @@ import {
 import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
 import { HeadsetIcon } from "lucide-react";
-import ChatUI from "./chat-ui";
 
 export function Support() {
   const [open, setOpen] = React.useState(false);
@@ -44,9 +43,7 @@ export function Support() {
             <HeadsetIcon className="h-6 w-6" />
           </Button>
         </DialogTrigger>
-        <DialogContent className="max-w-4xl">
-          <ChatUI />
-        </DialogContent>
+        <DialogContent className="max-w-4xl"></DialogContent>
       </Dialog>
     );
   }

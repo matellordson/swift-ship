@@ -1,3 +1,0 @@
-CREATE TABLE IF NOT EXISTS "chat" (
-	"id" text PRIMARY KEY NOT NULL
-);

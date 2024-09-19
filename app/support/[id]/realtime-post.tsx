@@ -50,8 +50,8 @@ export default function RealtimePosts({
   return (
     <div
       ref={scrollRef}
-      className="flex flex-col space-y-4 overflow-y-auto p-4"
-      style={{ maxHeight: "calc(100vh - 200px)" }} // Adjust this value as needed
+      className="flex flex-col space-y-4 overflow-y-auto px-4 pb-14 pt-4"
+      style={{ maxHeight: "calc(100vh - 130px)" }} // Adjust this value as needed
     >
       {chat.map((message) => (
         <div key={message.id}>

@@ -31,11 +31,11 @@ export default async function CustomerSupport({
             <ArrowLeft />
           </Link>
           <h1 className="text-lg font-semibold">Support Chat</h1>
-          <div className="h-7 w-7 rounded-full bg-foreground"></div>
+          <div className="h-8 w-8 rounded-full bg-foreground"></div>
         </div>
         <div className="overflow-hidden">
           <ScrollArea className="mb-20" id="chat-scroll-area">
-            <div className="">
+            <div className="h-full">
               <RealtimePosts serverPosts={data ?? []} />
             </div>
           </ScrollArea>

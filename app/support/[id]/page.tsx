@@ -1,21 +1,15 @@
-import { Button } from "@/components/ui/button";
-import {
-  Card,
-  CardContent,
-  CardFooter,
-  CardHeader,
-  CardTitle,
-} from "@/components/ui/card";
-import { Input } from "@/components/ui/input";
 import { ScrollArea } from "@/components/ui/scroll-area";
-
-import { SendIcon } from "lucide-react";
 import handleCustomerSend from "@/app/_action/customer_send";
 import { supabase } from "@/src/db/supabase";
 import RealtimePosts from "./realtime-post";
-import { FormEvent, SyntheticEvent } from "react";
+import ChatForm from "./chat-form";
 
 export const revalidate = 0;
+
+async function submitMessage(formData: FormData) {
+  "use server";
+  await handleCustomerSend(formData);
+}
 
 export default async function CustomerSupport({
   params,
@@ -28,37 +22,19 @@ export default async function CustomerSupport({
     .eq("user_id", params.id);
 
   return (
-    <Card className="mx-auto max-w-3xl">
-      <ScrollArea className="flex-grow p-4">
-        <CardContent>
-          <div className="">
-            <RealtimePosts serverPosts={data ?? []} />
-
-            {/* <div className="flex justify-start">
-                <p className="mt-4 w-fit rounded-r-xl rounded-bl-xl border bg-primary-foreground px-3 py-2 leading-none">
-                  Hello, how are you?
-                </p>
-              </div> */}
-            {/* <div className="flex justify-end">
-                <p className="mt-4 w-fit rounded-l-xl rounded-br-xl border bg-primary px-3 py-2 leading-none text-primary-foreground">
-                  Am fine, how are doing?
-                </p>
-              </div> */}
-          </div>
-        </CardContent>
-      </ScrollArea>
-      <CardFooter className="border-t">
-        <form
-          // onSubmit={(e: React.SyntheticEvent) => e.preventDefault()}
-          className="mt-3 flex items-center justify-center gap-x-2"
-        >
-          <Input name="message" placeholder="Say something..." />
-          <Button formAction={handleCustomerSend} size={"icon"}>
-            <SendIcon />
-            <span className="sr-only">Send message</span>
-          </Button>
-        </form>
-      </CardFooter>
-    </Card>
+    <div className="fixed inset-0 z-50 flex items-center justify-center bg-background p-4 lg:p-0">
+      <div className="flex h-full w-full max-w-2xl flex-col overflow-hidden rounded-lg border bg-background shadow-xl lg:h-[calc(100vh-2rem)] lg:w-[calc(100vw-2rem)]">
+        <div className="flex-grow overflow-hidden">
+          <ScrollArea className="h-full" id="chat-scroll-area">
+            <div className="py-4">
+              <RealtimePosts serverPosts={data ?? []} />
+            </div>
+          </ScrollArea>
+        </div>
+        <div className="border-t bg-background p-4">
+          <ChatForm onSubmit={submitMessage} />
+        </div>
+      </div>
+    </div>
   );
 }

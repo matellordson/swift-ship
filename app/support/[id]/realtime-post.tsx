@@ -1,9 +1,11 @@
 "use client";
 
 import { supabase } from "@/src/db/supabase";
-import { useEffect } from "react";
+import { useEffect, useState, useRef, useCallback } from "react";
 
-interface chatTypes {
+export const revalidate = 0;
+
+interface ChatMessage {
   id: string;
   user_id: string;
   customer_message: string | null;
@@ -13,27 +15,62 @@ interface chatTypes {
 export default function RealtimePosts({
   serverPosts,
 }: {
-  serverPosts: chatTypes[];
+  serverPosts: ChatMessage[];
 }) {
+  const [chat, setChats] = useState<ChatMessage[]>(serverPosts);
+  const scrollRef = useRef<HTMLDivElement>(null);
+
+  const scrollToBottom = useCallback(() => {
+    if (scrollRef.current) {
+      scrollRef.current.scrollTop = scrollRef.current.scrollHeight;
+    }
+  }, []);
+
   useEffect(() => {
     const channel = supabase
-      .channel("realtime posts")
+      .channel("realtime chat")
       .on(
         "postgres_changes",
-        {
-          event: "INSERT",
-          schema: "public",
-          table: "chat",
-        },
+        { event: "*", schema: "public", table: "chat" },
         (payload) => {
-          console.log({ payload });
+          setChats((prevChat) => [...prevChat, payload.new as ChatMessage]);
         },
       )
-      .unsubscribe();
+      .subscribe();
 
-    // return () => {
-    //   supabase.removeChannel(channel);
-    // };
-  }, [supabase]);
-  return <pre>{JSON.stringify(serverPosts, null, 2)}</pre>;
+    return () => {
+      supabase.removeChannel(channel);
+    };
+  }, []);
+
+  useEffect(() => {
+    scrollToBottom();
+  }, [chat, scrollToBottom]);
+
+  return (
+    <div
+      ref={scrollRef}
+      className="flex flex-col space-y-4 overflow-y-auto p-4"
+      style={{ maxHeight: "calc(100vh - 200px)" }} // Adjust this value as needed
+    >
+      {chat.map((message) => (
+        <div key={message.id}>
+          {message.admin_message && (
+            <div className="flex justify-start">
+              <div className="max-w-[75%] rounded-t-2xl rounded-br-2xl border bg-background px-4 py-2 text-sm shadow-sm sm:text-base">
+                {message.admin_message}
+              </div>
+            </div>
+          )}
+          {message.customer_message && (
+            <div className="flex justify-end">
+              <div className="max-w-[75%] rounded-t-2xl rounded-bl-2xl bg-primary px-4 py-2 text-sm text-primary-foreground shadow-sm sm:text-base">
+                {message.customer_message}
+              </div>
+            </div>
+          )}
+        </div>
+      ))}
+    </div>
+  );
 }

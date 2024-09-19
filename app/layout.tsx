@@ -5,7 +5,6 @@ import { Navbar } from "@/components/navbar";
 import { ThemeProvider } from "@/components/theme-provider";
 import { Toaster } from "@/components/ui/sonner";
 import { NavbarItems } from "@/components/nav-items";
-import { Support } from "@/components/support";
 
 export const metadata: Metadata = {
   title: "Create Next App",
@@ -30,7 +29,6 @@ export default function RootLayout({
             <NavbarItems />
           </Navbar>
           <div className="mt-20">{children}</div>
-          <Support />
         </ThemeProvider>
         <Toaster />
       </body>

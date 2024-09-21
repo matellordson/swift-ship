@@ -5,6 +5,8 @@ import RealtimePosts from "./realtime-post";
 import ChatForm from "./chat-form";
 import Link from "next/link";
 import { ArrowLeft } from "lucide-react";
+import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar";
+import { Badge } from "@/components/ui/badge";
 
 export const revalidate = 0;
 
@@ -47,17 +49,33 @@ export default async function CustomerSupport({
     // </div>
     <div className="flex min-h-screen flex-col">
       {/* Header */}
-      <header className="sticky top-0 z-10 flex h-[10vh] items-center justify-center bg-background/50 backdrop-blur-md">
-        <h1 className="text-2xl font-bold">Transparent Header</h1>
+      <header className="sticky top-0 z-10 flex h-[10vh] items-center justify-between bg-background/50 px-4 backdrop-blur-md">
+        <div className="flex items-center space-x-4">
+          <Avatar>
+            <AvatarImage
+              src="/placeholder.svg?height=40&width=40"
+              alt="Support Agent"
+            />
+            <AvatarFallback>SA</AvatarFallback>
+          </Avatar>
+          <div>
+            <h1 className="text-lg font-semibold">Support Chat</h1>
+            <div className="flex items-center space-x-2">
+              <span className="h-2 w-2 rounded-full bg-green-500"></span>
+              <span className="text-sm text-muted-foreground">Online</span>
+            </div>
+          </div>
+        </div>
+        <Badge variant="outline">Case #1234</Badge>
       </header>
 
       {/* Scrollable Content */}
       <main className="flex-1 overflow-auto">
         <div className="mx-auto max-w-4xl p-6">
-          <h2 className="mb-4 text-xl font-semibold">Scrollable Content</h2>
+          <h2 className="mb-4 text-xl font-semibold">Chat History</h2>
           {[...Array(50)].map((_, i) => (
             <p key={i} className="mb-4">
-              This is paragraph {i + 1}. Lorem ipsum dolor sit amet, consectetur
+              This is message {i + 1}. Lorem ipsum dolor sit amet, consectetur
               adipiscing elit. Sed do eiusmod tempor incididunt ut labore et
               dolore magna aliqua.
             </p>
@@ -67,7 +85,7 @@ export default async function CustomerSupport({
 
       {/* Footer */}
       <footer className="sticky bottom-0 z-10 flex h-[10vh] items-center justify-center bg-background/50 backdrop-blur-md">
-        <p>Transparent Footer</p>
+        <p>Chat Input Area</p>
       </footer>
 
       {/* Gradient overlays for scroll indication */}

@@ -45,7 +45,7 @@ export default async function CustomerSupport({
     //     </div>
     //   </div>
     // </div>
-    <div className="fixed left-0 right-0 top-0">
+    <div className="fixed bottom-0 left-0 right-0 top-0">
       <div className="flex h-screen flex-col">
         {/* Header */}
         <header className="flex h-[10vh] items-center justify-center bg-background/50 backdrop-blur-md">

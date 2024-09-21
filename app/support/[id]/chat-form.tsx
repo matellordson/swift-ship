@@ -63,7 +63,7 @@ export default function ChatForm({ onSubmit }: ChatFormProps) {
     <form
       ref={formRef}
       onSubmit={handleSubmit}
-      className="mt-3 flex items-center justify-center gap-3 gap-x-2"
+      className="mx-5 mt-3 flex w-full items-center justify-center gap-3 gap-x-2 lg:mx-10"
     >
       <Textarea
         ref={textareaRef}

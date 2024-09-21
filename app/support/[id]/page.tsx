@@ -47,9 +47,9 @@ export default async function CustomerSupport({
     //     </div>
     //   </div>
     // </div>
-    <div className="flex min-h-screen flex-col">
+    <div className="mx-auto flex min-h-screen max-w-3xl flex-col">
       {/* Header */}
-      <header className="sticky top-0 z-10 flex h-[10vh] items-center justify-between bg-background/50 px-4 backdrop-blur-md">
+      <header className="sticky top-0 z-10 flex h-[10vh] items-center justify-between border-b bg-background/50 px-4 backdrop-blur-md">
         <div className="flex items-center space-x-4">
           <Avatar>
             <AvatarImage
@@ -70,22 +70,15 @@ export default async function CustomerSupport({
       </header>
 
       {/* Scrollable Content */}
-      <main className="flex-1 overflow-auto">
-        <div className="mx-auto max-w-4xl p-6">
-          <h2 className="mb-4 text-xl font-semibold">Chat History</h2>
-          {[...Array(50)].map((_, i) => (
-            <p key={i} className="mb-4">
-              This is message {i + 1}. Lorem ipsum dolor sit amet, consectetur
-              adipiscing elit. Sed do eiusmod tempor incididunt ut labore et
-              dolore magna aliqua.
-            </p>
-          ))}
+      <main className="flex-1">
+        <div className="mx-auto max-w-4xl px-0">
+          <RealtimePosts serverPosts={data ?? []} />
         </div>
       </main>
 
       {/* Footer */}
-      <footer className="sticky bottom-0 z-10 flex h-[10vh] items-center justify-center bg-background/50 backdrop-blur-md">
-        <p>Chat Input Area</p>
+      <footer className="sticky bottom-0 z-10 flex h-[10vh] items-center justify-center border-t bg-background/50 px-0 backdrop-blur-md">
+        <ChatForm onSubmit={submitMessage} />
       </footer>
 
       {/* Gradient overlays for scroll indication */}

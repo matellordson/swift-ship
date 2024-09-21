@@ -45,38 +45,36 @@ export default async function CustomerSupport({
     //     </div>
     //   </div>
     // </div>
-    <div className="fixed bottom-0 left-0 right-0 top-0">
-      <div className="flex h-screen flex-col">
-        {/* Header */}
-        <header className="flex h-[10vh] items-center justify-center bg-background/50 backdrop-blur-md">
-          <h1 className="text-2xl font-bold">Transparent Header</h1>
-        </header>
+    <div className="flex h-screen flex-col">
+      {/* Header */}
+      <header className="flex h-[10vh] items-center justify-center bg-background/50 backdrop-blur-md">
+        <h1 className="text-2xl font-bold">Transparent Header</h1>
+      </header>
 
-        {/* Scrollable Content */}
-        <main className="flex-1 overflow-hidden">
-          <ScrollArea className="h-full">
-            <div className="mx-auto max-w-4xl p-6">
-              <h2 className="mb-4 text-xl font-semibold">Scrollable Content</h2>
-              {[...Array(50)].map((_, i) => (
-                <p key={i} className="mb-4">
-                  This is paragraph {i + 1}. Lorem ipsum dolor sit amet,
-                  consectetur adipiscing elit. Sed do eiusmod tempor incididunt
-                  ut labore et dolore magna aliqua.
-                </p>
-              ))}
-            </div>
-          </ScrollArea>
-        </main>
+      {/* Scrollable Content */}
+      <main className="flex-1 overflow-hidden">
+        <ScrollArea className="h-full">
+          <div className="mx-auto max-w-4xl p-6">
+            <h2 className="mb-4 text-xl font-semibold">Scrollable Content</h2>
+            {[...Array(50)].map((_, i) => (
+              <p key={i} className="mb-4">
+                This is paragraph {i + 1}. Lorem ipsum dolor sit amet,
+                consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut
+                labore et dolore magna aliqua.
+              </p>
+            ))}
+          </div>
+        </ScrollArea>
+      </main>
 
-        {/* Footer */}
-        <footer className="flex h-[10vh] items-center justify-center bg-background/50 backdrop-blur-md">
-          <p>Transparent Footer</p>
-        </footer>
+      {/* Footer */}
+      <footer className="flex h-[10vh] items-center justify-center bg-background/50 backdrop-blur-md">
+        <p>Transparent Footer</p>
+      </footer>
 
-        {/* Gradient overlays for scroll indication */}
-        <div className="pointer-events-none absolute left-0 right-0 top-[10vh] h-8 bg-gradient-to-b from-background to-transparent"></div>
-        <div className="pointer-events-none absolute bottom-[10vh] left-0 right-0 h-8 bg-gradient-to-t from-background to-transparent"></div>
-      </div>
+      {/* Gradient overlays for scroll indication */}
+      <div className="pointer-events-none absolute left-0 right-0 top-[10vh] h-8 bg-gradient-to-b from-background to-transparent"></div>
+      <div className="pointer-events-none absolute bottom-[10vh] left-0 right-0 h-8 bg-gradient-to-t from-background to-transparent"></div>
     </div>
   );
 }

@@ -68,7 +68,7 @@ export default function ChatForm({ onSubmit }: ChatFormProps) {
       <Textarea
         ref={textareaRef}
         name="message"
-        placeholder="Say something..."
+        placeholder="Send a message..."
         onChange={handleTextareaChange}
         className="max-h-[60px] min-h-[40px] resize-none"
         rows={1}

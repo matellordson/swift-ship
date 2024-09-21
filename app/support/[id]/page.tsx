@@ -47,19 +47,19 @@ export default async function CustomerSupport({
     // </div>
     <div className="fixed inset-0 z-50 mx-auto mb-2 flex h-screen items-center justify-center bg-background lg:p-0">
       <div className="flex h-full w-full max-w-2xl flex-col items-center justify-between border-0 lg:border">
-        <div className="flex w-full items-center justify-between border-b px-3 py-2">
+        <div className="flex h-[10%] w-full items-center justify-between border-b px-3 py-2">
           <Link href={"/dashboard"}>
             <ArrowLeft />
           </Link>
           <h1 className="text-lg font-semibold">Support Chat</h1>
-          <div className="h-8 w-8 rounded-full bg-foreground"></div>
+          <div className="h-10 w-10 rounded-full bg-foreground"></div>
         </div>
-        <div className="w-full overflow-y-hidden">
+        <div className="h-[80%] w-full overflow-y-hidden">
           <ScrollArea className="mb-20" id="chat-scroll-area">
             <RealtimePosts serverPosts={data ?? []} />
           </ScrollArea>
         </div>
-        <div className="w-full border-t bg-background px-3 pb-3 pt-1">
+        <div className="h-[10%] w-full border-t bg-background px-3 pb-3 pt-1">
           <ChatForm onSubmit={submitMessage} />
         </div>
       </div>

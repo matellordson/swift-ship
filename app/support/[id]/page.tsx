@@ -45,36 +45,34 @@ export default async function CustomerSupport({
     //     </div>
     //   </div>
     // </div>
-    <div className="fixed inset-0 flex h-screen flex-col overflow-hidden">
+    <div className="flex min-h-screen flex-col">
       {/* Header */}
-      <header className="z-10 flex h-[10vh] items-center justify-center bg-background/50 backdrop-blur-md">
+      <header className="sticky top-0 z-10 flex h-[10vh] items-center justify-center bg-background/50 backdrop-blur-md">
         <h1 className="text-2xl font-bold">Transparent Header</h1>
       </header>
 
       {/* Scrollable Content */}
-      <main className="flex-1 overflow-hidden">
-        <ScrollArea className="h-full">
-          <div className="mx-auto max-w-4xl p-6">
-            <h2 className="mb-4 text-xl font-semibold">Scrollable Content</h2>
-            {[...Array(50)].map((_, i) => (
-              <p key={i} className="mb-4">
-                This is paragraph {i + 1}. Lorem ipsum dolor sit amet,
-                consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut
-                labore et dolore magna aliqua.
-              </p>
-            ))}
-          </div>
-        </ScrollArea>
+      <main className="flex-1 overflow-auto">
+        <div className="mx-auto max-w-4xl p-6">
+          <h2 className="mb-4 text-xl font-semibold">Scrollable Content</h2>
+          {[...Array(50)].map((_, i) => (
+            <p key={i} className="mb-4">
+              This is paragraph {i + 1}. Lorem ipsum dolor sit amet, consectetur
+              adipiscing elit. Sed do eiusmod tempor incididunt ut labore et
+              dolore magna aliqua.
+            </p>
+          ))}
+        </div>
       </main>
 
       {/* Footer */}
-      <footer className="z-10 flex h-[10vh] items-center justify-center bg-background/50 backdrop-blur-md">
+      <footer className="sticky bottom-0 z-10 flex h-[10vh] items-center justify-center bg-background/50 backdrop-blur-md">
         <p>Transparent Footer</p>
       </footer>
 
       {/* Gradient overlays for scroll indication */}
-      <div className="pointer-events-none absolute left-0 right-0 top-[10vh] z-20 h-8 bg-gradient-to-b from-background to-transparent"></div>
-      <div className="pointer-events-none absolute bottom-[10vh] left-0 right-0 z-20 h-8 bg-gradient-to-t from-background to-transparent"></div>
+      <div className="pointer-events-none fixed left-0 right-0 top-[10vh] z-20 h-8 bg-gradient-to-b from-background to-transparent"></div>
+      <div className="pointer-events-none fixed bottom-[10vh] left-0 right-0 z-20 h-8 bg-gradient-to-t from-background to-transparent"></div>
     </div>
   );
 }

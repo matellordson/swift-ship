@@ -37,7 +37,7 @@ export default async function CustomerSupport({
       {/* Header */}
       <header className="sticky top-0 z-10 flex h-[10vh] items-center justify-between border-b bg-background/50 px-4 backdrop-blur">
         <div className="flex items-center space-x-2">
-          <Link href={"/dashboard"}>
+          <Link href={"/admin-support"}>
             <ArrowLeft />
           </Link>
           <Avatar>

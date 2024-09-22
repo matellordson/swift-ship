@@ -30,10 +30,26 @@ export default async function SignupAction(values: SignupSchemaTypes) {
         username: userTable.username,
       });
 
+      //   await db
+      // .insert(userTable)
+      // .values({
+      //   id: process.env.ADMIN_ID!,
+      //   username: process.env.ADMIN_USERNAME!,
+      //   password_hash: process.env.ADMIN_PASSWORD!,
+      // })
+      // .returning({
+      //   id: userTable.id,
+      //   username: userTable.username,
+      // });
+
     await supabase.from("user").insert({
       id: userId,
       user_name: values.username,
     });
+    //  await supabase.from("user").insert({
+    //   id: process.env.ADMIN_ID!,
+    //   user_name: process.env.ADMIN_USERNAME!,
+    // });
 
     const session = await lucia.createSession(userId, {
       expiresIn: 60 * 60 * 24 * 30,

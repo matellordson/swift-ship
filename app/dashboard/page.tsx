@@ -9,12 +9,7 @@ export default async function Dashboard() {
   if (currentUser?.user?.role === "admin") {
     return <AdminDashboard />;
   } else if (currentUser?.user?.role === "customer") {
-    return (
-      <>
-        <CustomerDashboardPage />
-        <Support />
-      </>
-    );
+    return <CustomerDashboardPage />;
   } else {
     <p>Your role is not recognised</p>;
   }

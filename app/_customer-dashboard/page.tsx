@@ -4,6 +4,7 @@ import { eq } from "drizzle-orm";
 import CustomerDashboard from "./customer-dashboard";
 import { redirect } from "next/navigation";
 import { validateRequest } from "@/utils/auth";
+import { Support } from "@/components/support";
 
 export const revalidate = 0;
 
@@ -20,5 +21,10 @@ export default async function CustomerDashboardPage() {
     .from(packageTable)
     .where(eq(packageTable.userId, userId));
 
-  return <CustomerDashboard initialData={data} userId={userId} />;
+  return (
+    <>
+      <CustomerDashboard initialData={data} userId={userId} />
+      <Support userId={userId} />
+    </>
+  );
 }

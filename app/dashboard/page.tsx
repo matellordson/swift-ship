@@ -1,5 +1,5 @@
 import { validateRequest } from "@/utils/auth";
-import AdminDashboard from "../_admin-dashboard/page";
+import AdminDashboard from "../admin-dashboard/page";
 import CustomerDashboardPage from "../_customer-dashboard/page";
 import { Support } from "@/components/support";
 

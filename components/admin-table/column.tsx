@@ -37,6 +37,7 @@ import { useRouter } from "next/navigation";
 // You can use a Zod schema here if you want.
 export type Shipment = {
   id: string;
+  user_id: string;
   tracking_id: string;
   sender: string | null;
   receiver: string | null;
@@ -151,6 +152,10 @@ export const columns: ColumnDef<Shipment>[] = [
                 <Button onClick={handleStatusUpdate}>Update Status</Button>
               </DialogContent>
             </Dialog>
+            <DropdownMenuSeparator />
+            <Link href={`/admin-support/${shipment.user_id}`}>
+              <DropdownMenuItem>Chat Customer</DropdownMenuItem>
+            </Link>
           </DropdownMenuContent>
         </DropdownMenu>
       );

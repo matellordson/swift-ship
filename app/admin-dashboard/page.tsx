@@ -1,3 +1,4 @@
+import { AdminSupport } from "@/components/admin-support";
 import { Shipment, columns } from "@/components/admin-table/column";
 import { DataTable } from "@/components/admin-table/data-table";
 import { CustomerChatButton } from "@/components/customer-chat";
@@ -12,6 +13,7 @@ async function getData(): Promise<Shipment[]> {
   const data = await db
     .select({
       id: packageTable.id,
+      user_id: packageTable.userId,
       tracking_id: packageTable.tracking_number,
       sender: packageTable.sender_full_name,
       receiver: packageTable.receiver_full_name,
@@ -37,7 +39,7 @@ export default async function AdminDashboard() {
         Admin Dashboard
       </h1>
       <DataTable columns={columns} data={data} />
-      <CustomerChatButton />
+      <AdminSupport />
     </div>
   );
 }

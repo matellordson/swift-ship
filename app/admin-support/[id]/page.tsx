@@ -1,5 +1,5 @@
 import { ScrollArea } from "@/components/ui/scroll-area";
-import handleCustomerSend from "@/app/_action/customer_send";
+import handleAdminSend from "@/app/_action/admin_send";
 import { supabase } from "@/src/db/supabase";
 import RealtimePosts from "./realtime-post";
 import ChatForm from "./chat-form";
@@ -14,7 +14,7 @@ export const revalidate = 0;
 
 async function submitMessage(formData: FormData) {
   "use server";
-  await handleCustomerSend(formData);
+  await handleAdminSend(formData);
 }
 
 export default async function CustomerSupport({

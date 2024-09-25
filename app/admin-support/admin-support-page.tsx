@@ -63,7 +63,9 @@ export default function AdminSupportPage({
                   </AvatarFallback>
                 </Avatar>
                 <div className="flex-grow">
-                  <h2 className="font-semibold">{customer.user_name}</h2>
+                  <h2 className="font-semibold capitalize">
+                    {customer.user_name}
+                  </h2>
                   <p className="text-sm text-muted-foreground">
                     Active customer
                   </p>

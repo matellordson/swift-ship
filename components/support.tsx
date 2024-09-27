@@ -33,7 +33,7 @@ export function Support({ userId }: { userId: string }) {
   }, [userId]);
 
   return (
-    <div className="fixed bottom-4 right-4 flex h-fit items-center justify-center rounded-full border bg-transparent p-3 text-primary shadow-xl backdrop-blur transition-shadow duration-300 hover:shadow-xl">
+    <div className="fixed bottom-4 right-4 flex h-fit items-center justify-center rounded-full border bg-transparent p-3 text-primary shadow backdrop-blur transition-shadow duration-300 hover:shadow-xl">
       <Link href={`support/${userId}`}>
         <HeadsetIcon className="h-6 w-6" />
         {hasNotification && (

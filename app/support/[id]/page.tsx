@@ -75,7 +75,7 @@ export default async function CustomerSupport({
     // </div>
     <div className="fixed bottom-0 left-0 right-0 top-0 mx-auto h-screen max-w-2xl lg:py-5">
       <div className="h-[100vh] lg:rounded-lg lg:border lg:shadow">
-        <header className="flex h-[10vh] items-center justify-start border-b px-3 lg:rounded lg:rounded-t-lg">
+        <div className="flex h-[10vh] items-center justify-start border-b px-3 lg:rounded lg:rounded-t-lg">
           <div className="flex items-center space-x-2">
             <Link href={"/dashboard"}>
               <ArrowLeft />
@@ -97,13 +97,13 @@ export default async function CustomerSupport({
               </div>
             </div>
           </div>
-        </header>
-        <main className="h-[80vh]">
+        </div>
+        <div className="h-[80vh]">
           <RealtimePosts serverPosts={data ?? []} />
-        </main>
-        <footer className="flex h-[10vh] items-center justify-center border-t">
+        </div>
+        <div className="flex h-[10vh] items-center justify-center border-t">
           <ChatForm onSubmit={submitMessage} />
-        </footer>
+        </div>
       </div>
     </div>
   );

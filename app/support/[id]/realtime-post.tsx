@@ -56,14 +56,14 @@ export default function RealtimePosts({
       {chat.map((message) => (
         <div key={message.id}>
           {message.admin_message && (
-            <div className="flex justify-start">
+            <div className="-mt-3 flex justify-start">
               <div className="max-w-[75%] rounded-xl border bg-primary-foreground px-3 py-2 text-sm shadow-sm sm:text-base">
                 {message.admin_message}
               </div>
             </div>
           )}
           {message.customer_message && (
-            <div className="flex justify-end">
+            <div className="-mt-3 flex justify-end">
               <div className="max-w-[75%] rounded-xl bg-primary px-3 py-2 text-sm text-primary-foreground shadow-sm sm:text-base">
                 {message.customer_message}
               </div>

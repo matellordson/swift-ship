@@ -74,8 +74,8 @@ export default async function CustomerSupport({
     //   <div className="pointer-events-none fixed bottom-[10vh] left-0 right-0 z-20 h-8 bg-gradient-to-t from-background to-transparent"></div>
     // </div>
     <div className="fixed bottom-0 left-0 right-0 top-0 mx-auto h-screen max-w-2xl lg:py-5">
-      <div className="h-full lg:rounded-lg lg:border lg:shadow">
-        <div className="flex h-[10%] items-center justify-start border-b px-3 lg:rounded lg:rounded-t-lg">
+      <div className="h-[100vh] lg:rounded-lg lg:border lg:shadow">
+        <div className="flex h-[10vh] items-center justify-start border-b px-3 lg:rounded lg:rounded-t-lg">
           <div className="flex items-center space-x-2">
             <Link href={"/dashboard"}>
               <ArrowLeft />
@@ -98,10 +98,10 @@ export default async function CustomerSupport({
             </div>
           </div>
         </div>
-        <div className="h-[80%]">
+        <div className="h-[80vh]">
           <RealtimePosts serverPosts={data ?? []} />
         </div>
-        <div className="flex h-[10%] items-center justify-center border-t">
+        <div className="flex h-[10vh] items-center justify-center border-t">
           <ChatForm onSubmit={submitMessage} />
         </div>
       </div>

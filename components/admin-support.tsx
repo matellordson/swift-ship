@@ -33,19 +33,20 @@ export function AdminSupport() {
   }, []);
 
   return (
-    <Link
-      href={`admin-support`}
-      className={buttonVariants({
-        variant: "default",
-        size: "icon",
-        className:
-          "fixed bottom-4 right-4 flex h-10 w-10 items-center justify-center rounded-2xl shadow-lg backdrop-blur transition-shadow duration-300 hover:shadow-xl",
-      })}
-    >
-      <MessageSquareText className="h-6 w-6" />
-      {hasNotification && (
-        <span className="absolute -right-1 -top-1 h-3 w-3 rounded-full bg-red-500" />
-      )}
-    </Link>
+    <div className="fixed bottom-4 right-4 flex items-center justify-center rounded-full shadow-lg backdrop-blur transition-shadow duration-300 hover:shadow-xl">
+      <Link
+        href={`admin-support`}
+        className={buttonVariants({
+          variant: "ghost",
+          size: "icon",
+          className: "border",
+        })}
+      >
+        <MessageSquareText className="h-6 w-6" />
+        {hasNotification && (
+          <span className="absolute -right-1 -top-1 h-3 w-3 rounded-full bg-red-500" />
+        )}
+      </Link>
+    </div>
   );
 }

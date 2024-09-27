@@ -4,7 +4,7 @@ import { useState } from "react";
 import { Avatar, AvatarFallback } from "@/components/ui/avatar";
 import { Input } from "@/components/ui/input";
 import { ScrollArea } from "@/components/ui/scroll-area";
-import { Search } from "lucide-react";
+import { ArrowLeft, Search } from "lucide-react";
 import Link from "next/link";
 
 type User = {
@@ -31,12 +31,12 @@ export default function AdminSupportPage({
       <div className="border-b p-4">
         <div className="mb-4 flex items-center justify-between">
           <h1 className="text-2xl font-bold">Customers</h1>
-          <Link
-            href={"/dashboard"}
-            className="text-xs text-primary hover:underline"
-          >
-            Dashboard
-          </Link>
+          <div className="flex items-center justify-center hover:underline">
+            <ArrowLeft size={15} />
+            <Link href={"/dashboard"} className="text-xs text-primary">
+              Dashboard
+            </Link>
+          </div>
         </div>
         <div className="relative">
           <Search className="absolute left-2 top-1/2 -translate-y-1/2 transform text-muted-foreground" />
@@ -55,7 +55,7 @@ export default function AdminSupportPage({
             <Link href={`/admin-support/${customer.id}`} key={customer.id}>
               <div className="flex items-center space-x-4 rounded-lg p-2 hover:bg-accent hover:text-foreground">
                 <Avatar>
-                  <AvatarFallback className="bg-gradient-to-r from-neutral-200 to-neutral-300 font-bold uppercase text-foreground dark:from-neutral-500 dark:to-neutral-700">
+                  <AvatarFallback className="bg-gradient-to-r from-neutral-200 to-neutral-300 text-xl font-semibold uppercase text-foreground shadow-sm dark:from-neutral-500 dark:to-neutral-700">
                     {customer.user_name
                       .split(" ")
                       .map((n) => n[0])

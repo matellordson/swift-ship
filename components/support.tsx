@@ -33,19 +33,13 @@ export function Support({ userId }: { userId: string }) {
   }, [userId]);
 
   return (
-    <Link
-      href={`support/${userId}`}
-      className={buttonVariants({
-        variant: "default",
-        size: "icon",
-        className:
-          "fixed bottom-4 right-4 flex h-10 w-10 items-center justify-center rounded-2xl shadow-lg backdrop-blur transition-shadow duration-300 hover:shadow-xl",
-      })}
-    >
-      <HeadsetIcon className="h-6 w-6" />
-      {hasNotification && (
-        <span className="absolute -right-1 -top-1 h-3 w-3 rounded-full bg-red-500" />
-      )}
-    </Link>
+    <div className="fixed bottom-4 right-4 flex h-fit items-center justify-center rounded-full border bg-transparent p-3 text-primary shadow-xl backdrop-blur transition-shadow duration-300 hover:shadow-xl">
+      <Link href={`support/${userId}`}>
+        <HeadsetIcon className="h-6 w-6" />
+        {hasNotification && (
+          <span className="absolute -right-[1px] -top-1 h-3 w-3 rounded-full bg-red-500" />
+        )}
+      </Link>
+    </div>
   );
 }

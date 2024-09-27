@@ -260,15 +260,15 @@ export function PackageForm() {
         </Button>
       </DialogTrigger>
       <DialogContent className="h-full max-w-xl overflow-y-auto lg:h-[600px]">
-        <DialogHeader>
+        {/* <DialogHeader>
           <DialogTitle>Package Submission - Step {step} of 3</DialogTitle>
         </DialogHeader>
         <div className="mb-4">
           <Progress value={progress} className="w-full" />
-        </div>
+        </div> */}
         <form onSubmit={handleSubmit(onSubmit)} className="space-y-8">
-          <Card>
-            <CardHeader>
+          <Card className="border-none">
+            <CardHeader className="px-0">
               <CardTitle>
                 {step === 1
                   ? "Sender"
@@ -278,7 +278,7 @@ export function PackageForm() {
                 Information
               </CardTitle>
             </CardHeader>
-            <CardContent className="space-y-4">
+            <CardContent className="space-y-4 px-0">
               {step === 1 && (
                 <>
                   {renderField("sender_full_name", "Full Name")}

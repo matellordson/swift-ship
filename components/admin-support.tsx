@@ -18,7 +18,6 @@ export function AdminSupport() {
           event: "*",
           schema: "public",
           table: "chat",
-          filter: "admin_id=c8b0c357-fb79-4907-91d8-e43033e595d2",
         },
         (payload) => {
           console.log("Admin notification received!", payload);

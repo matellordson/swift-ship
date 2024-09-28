@@ -1,4 +1,4 @@
-import { AdminSupport } from "@/components/admin-support";
+import AdminSupport from "@/components/admin-support";
 import { Shipment, columns } from "@/components/admin-table/column";
 import { DataTable } from "@/components/admin-table/data-table";
 import { db } from "@/src/db";

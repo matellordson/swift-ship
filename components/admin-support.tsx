@@ -1,12 +1,11 @@
 "use client";
 
 import { useEffect, useState } from "react";
-import { createClient } from "@supabase/supabase-js";
 import { Link, MessageSquareTextIcon } from "lucide-react";
 import { Button } from "./ui/button";
+import { supabase } from "@/src/db/supabase";
 
 // Initialize the Supabase client
-const supabase = createClient("YOUR_SUPABASE_URL", "YOUR_SUPABASE_ANON_KEY");
 
 export default function AdminSupport() {
   const [hasNotifications, setNotifications] = useState(false);

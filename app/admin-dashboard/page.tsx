@@ -1,7 +1,6 @@
-import AdminSupport from "@/components/admin-support";
+import { AdminSupport } from "@/components/admin-support";
 import { Shipment, columns } from "@/components/admin-table/column";
 import { DataTable } from "@/components/admin-table/data-table";
-import { CustomerChatButton } from "@/components/customer-chat";
 import { db } from "@/src/db";
 import { packageTable } from "@/src/db/schema";
 import { validateRequest } from "@/utils/auth";

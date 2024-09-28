@@ -30,7 +30,7 @@ export default function ChatForm({ onSubmit }: ChatFormProps) {
     <form
       ref={formRef}
       onSubmit={handleSubmit}
-      className="mx-3 flex w-full items-center justify-center gap-x-2"
+      className="mx-auto flex w-full max-w-4xl items-center justify-center gap-x-2 px-3"
     >
       <Input
         name="message"

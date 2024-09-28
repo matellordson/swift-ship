@@ -1,8 +1,8 @@
 "use client";
 
 import * as React from "react";
-import { Headset, HeadsetIcon, MessageSquareText } from "lucide-react";
-import { Button, buttonVariants } from "@/components/ui/button";
+import { MessageSquareText } from "lucide-react";
+import { Button } from "@/components/ui/button";
 import Link from "next/link";
 import { supabase } from "@/src/db/supabase";
 
@@ -18,7 +18,7 @@ export function AdminSupport() {
           event: "*",
           schema: "public",
           table: "chat",
-          filter: `admin_id=eq.${process.env.ADMIN_ID}`,
+          filter: "admin_id=c8b0c357-fb79-4907-91d8-e43033e595d2",
         },
         (payload) => {
           console.log("Admin notification received!", payload);

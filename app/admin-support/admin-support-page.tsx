@@ -24,6 +24,7 @@ type ChatPayload = {
   new: {
     user_id: string;
   };
+  eventType: "INSERT" | "UPDATE" | "DELETE";
   [key: string]: any;
 };
 
@@ -55,7 +56,11 @@ export default function AdminSupportPage({
           },
           (payload) => {
             console.log("Change received!", payload);
-            if (payload.new && payload.new.user_id) {
+            if (
+              payload.eventType === "INSERT" &&
+              payload.new &&
+              payload.new.user_id
+            ) {
               setHasNotification((prev) => ({
                 ...prev,
                 [payload.new.user_id]: true,
@@ -80,12 +85,13 @@ export default function AdminSupportPage({
       <div className="border-b p-4">
         <div className="mb-4 flex items-center justify-between">
           <h1 className="text-2xl font-bold">Customers</h1>
-          <div className="flex items-center justify-center hover:underline">
+          <Link
+            href="/dashboard"
+            className="flex items-center justify-center hover:underline"
+          >
             <ArrowLeft size={15} />
-            <Link href="/dashboard" className="text-xs text-primary">
-              Dashboard
-            </Link>
-          </div>
+            <span className="text-xs text-primary">Dashboard</span>
+          </Link>
         </div>
         <div className="relative">
           <Search className="absolute left-2 top-1/2 -translate-y-1/2 transform text-muted-foreground" />

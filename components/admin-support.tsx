@@ -1,31 +1,35 @@
 "use client";
 
-import * as React from "react";
-import { MessageSquareText } from "lucide-react";
-import { Button } from "@/components/ui/button";
-import Link from "next/link";
-import { supabase } from "@/src/db/supabase";
+import { useEffect, useState } from "react";
+import { createClient } from "@supabase/supabase-js";
+import { Link, MessageSquareTextIcon } from "lucide-react";
+import { Button } from "./ui/button";
 
-export function AdminSupport() {
-  const [hasNotification, setHasNotification] = React.useState(false);
+// Initialize the Supabase client
+const supabase = createClient("YOUR_SUPABASE_URL", "YOUR_SUPABASE_ANON_KEY");
 
-  React.useEffect(() => {
+export default function AdminSupport() {
+  const [hasNotifications, setNotifications] = useState(false);
+
+  useEffect(() => {
+    // Set up the real-time listener
     const channel = supabase
-      .channel("admin_notifications")
+      .channel("table_db_changes")
       .on(
         "postgres_changes",
         {
-          event: "*",
+          event: "INSERT",
           schema: "public",
           table: "chat",
         },
         (payload) => {
-          console.log("Admin notification received!", payload);
-          setHasNotification(true);
+          setNotifications(true);
+          alert(payload);
         },
       )
       .subscribe();
 
+    // Cleanup function to remove the listener
     return () => {
       supabase.removeChannel(channel);
     };
@@ -41,8 +45,8 @@ export function AdminSupport() {
       >
         <Link href={`admin-support`}>
           <span className="sr-only">Contact Support</span>
-          <MessageSquareText className="h-6 w-6" />
-          {hasNotification && (
+          <MessageSquareTextIcon className="h-6 w-6" />
+          {hasNotifications && (
             <span className="absolute -right-0.5 -top-0.5 h-3 w-3 rounded-full bg-destructive" />
           )}
         </Link>

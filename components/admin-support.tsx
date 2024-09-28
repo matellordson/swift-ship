@@ -1,8 +1,8 @@
 "use client";
 
 import * as React from "react";
-import { HeadsetIcon, MessageSquareText } from "lucide-react";
-import { buttonVariants } from "@/components/ui/button";
+import { Headset, HeadsetIcon, MessageSquareText } from "lucide-react";
+import { Button, buttonVariants } from "@/components/ui/button";
 import Link from "next/link";
 import { supabase } from "@/src/db/supabase";
 
@@ -30,23 +30,24 @@ export function AdminSupport() {
     return () => {
       supabase.removeChannel(channel);
     };
-  }, []);
+  });
 
   return (
-    <div className="fixed bottom-4 right-4 flex items-center justify-center rounded-full shadow-lg backdrop-blur transition-shadow duration-300 hover:shadow-xl">
-      <Link
-        href={`admin-support`}
-        className={buttonVariants({
-          variant: "ghost",
-          size: "icon",
-          className: "border",
-        })}
+    <div className="fixed bottom-4 right-4 z-50">
+      <Button
+        asChild
+        variant="outline"
+        size="icon"
+        className="h-12 w-12 rounded-full bg-background/80 backdrop-blur-sm transition-all hover:bg-background/90 hover:shadow-lg"
       >
-        <MessageSquareText className="h-6 w-6" />
-        {hasNotification && (
-          <span className="absolute -right-1 -top-1 h-3 w-3 rounded-full bg-red-500" />
-        )}
-      </Link>
+        <Link href={`admin-support`}>
+          <span className="sr-only">Contact Support</span>
+          <MessageSquareText className="h-6 w-6" />
+          {hasNotification && (
+            <span className="absolute -right-0.5 -top-0.5 h-3 w-3 rounded-full bg-destructive" />
+          )}
+        </Link>
+      </Button>
     </div>
   );
 }

@@ -252,7 +252,7 @@ export function PackageForm() {
       <DialogTrigger asChild>
         <Button
           variant={"outline"}
-          className="flex items-center justify-center gap-1 text-xs"
+          className="flex items-center justify-center gap-1 border-dashed text-xs"
           size={"sm"}
         >
           <Plus className="size-4" />

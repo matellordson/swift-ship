@@ -11,7 +11,7 @@ export function AdminSupport() {
 
   React.useEffect(() => {
     const channel = supabase
-      .channel("support_notifications")
+      .channel("admin_notifications")
       .on(
         "postgres_changes",
         {
@@ -21,7 +21,7 @@ export function AdminSupport() {
           filter: `admin_id=eq.${process.env.ADMIN_ID}`,
         },
         (payload) => {
-          console.log("Change received!", payload);
+          console.log("Admin notification received!", payload);
           setHasNotification(true);
         },
       )
@@ -30,7 +30,7 @@ export function AdminSupport() {
     return () => {
       supabase.removeChannel(channel);
     };
-  });
+  }, []);
 
   return (
     <div className="fixed bottom-4 right-4 z-50">

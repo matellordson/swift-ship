@@ -1,8 +1,8 @@
 "use client";
 
 import * as React from "react";
-import { HeadsetIcon } from "lucide-react";
-import { buttonVariants } from "@/components/ui/button";
+import { Headset, HeadsetIcon } from "lucide-react";
+import { Button, buttonVariants } from "@/components/ui/button";
 import Link from "next/link";
 import { supabase } from "@/src/db/supabase";
 
@@ -33,13 +33,21 @@ export function Support({ userId }: { userId: string }) {
   }, [userId]);
 
   return (
-    <div className="fixed bottom-4 right-4 flex h-fit items-center justify-center rounded-full border bg-transparent p-3 text-primary shadow backdrop-blur transition-shadow duration-300 hover:shadow-xl">
-      <Link href={`support/${userId}`}>
-        <HeadsetIcon className="h-6 w-6" />
-        {hasNotification && (
-          <span className="absolute -right-[1px] -top-1 h-3 w-3 rounded-full bg-red-500" />
-        )}
-      </Link>
+    <div className="fixed bottom-4 right-4 z-50">
+      <Button
+        asChild
+        variant="outline"
+        size="icon"
+        className="h-12 w-12 rounded-full bg-background/80 backdrop-blur-sm transition-all hover:bg-background/90 hover:shadow-lg"
+      >
+        <Link href={`support/${userId}`}>
+          <span className="sr-only">Contact Support</span>
+          <Headset className="h-6 w-6" />
+          {hasNotification && (
+            <span className="absolute -right-0.5 -top-0.5 h-3 w-3 rounded-full bg-destructive" />
+          )}
+        </Link>
+      </Button>
     </div>
   );
 }

@@ -13,16 +13,16 @@ import handleAdminSend from "@/app/_action/admin_send";
 
 export const revalidate = 0;
 
-async function submitMessage(formData: FormData) {
-  "use server";
-  await handleAdminSend(formData);
-}
-
 export default async function CustomerSupport({
   params,
 }: {
   params: { id: string };
 }) {
+  async function submitMessage(formData: FormData) {
+    "use server";
+    await handleAdminSend(formData, { params });
+  }
+
   const { data } = await supabase
     .from("chat")
     .select("*")
@@ -59,10 +59,6 @@ export default async function CustomerSupport({
               <h1 className="text-lg font-semibold capitalize">
                 {userProfile?.user_name}
               </h1>
-              <div className="flex items-center space-x-2">
-                <span className="h-2 w-2 rounded-full bg-green-500"></span>
-                <span className="text-sm">Online</span>
-              </div>
             </div>
           </div>
         </div>

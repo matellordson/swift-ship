@@ -24,7 +24,6 @@ export default function AdminSupport() {
         },
         (payload) => {
           setNotifications(true);
-          alert(payload);
         },
       )
       .subscribe();

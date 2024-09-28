@@ -149,9 +149,7 @@ import { Input } from "@/components/ui/input";
 import { ScrollArea } from "@/components/ui/scroll-area";
 import { ArrowLeft, Search } from "lucide-react";
 import Link from "next/link";
-import { RealtimeChannel, SupabaseClient } from "@supabase/supabase-js";
-
-// Assuming you have a type for your Supabase client
+import { RealtimeChannel } from "@supabase/supabase-js";
 import { supabase } from "@/src/db/supabase";
 
 type User = {
@@ -171,6 +169,8 @@ type ChatPayload = {
   [key: string]: any;
 };
 
+const STORAGE_KEY = "adminNotifications";
+
 export default function AdminSupportPage({
   initialData,
 }: AdminSupportPageProps) {
@@ -186,10 +186,23 @@ export default function AdminSupportPage({
 
   useEffect(() => {
     // Load notifications from localStorage
-    const storedNotifications = localStorage.getItem("adminNotifications");
-    if (storedNotifications) {
-      setHasNotification(JSON.parse(storedNotifications));
-    }
+    const loadNotifications = () => {
+      const storedNotifications = localStorage.getItem(STORAGE_KEY);
+      if (storedNotifications) {
+        setHasNotification(JSON.parse(storedNotifications));
+      }
+    };
+
+    loadNotifications();
+
+    // Set up event listener for storage changes
+    const handleStorageChange = (e: StorageEvent) => {
+      if (e.key === STORAGE_KEY) {
+        loadNotifications();
+      }
+    };
+
+    window.addEventListener("storage", handleStorageChange);
 
     let subscription: RealtimeChannel;
 
@@ -210,18 +223,7 @@ export default function AdminSupportPage({
               payload.new &&
               payload.new.user_id
             ) {
-              setHasNotification((prev) => {
-                const newNotifications = {
-                  ...prev,
-                  [payload.new.user_id]: true,
-                };
-                // Save to localStorage
-                localStorage.setItem(
-                  "adminNotifications",
-                  JSON.stringify(newNotifications),
-                );
-                return newNotifications;
-              });
+              updateNotification(payload.new.user_id, true);
             }
           },
         )
@@ -234,18 +236,20 @@ export default function AdminSupportPage({
       if (subscription) {
         supabase.removeChannel(subscription);
       }
+      window.removeEventListener("storage", handleStorageChange);
     };
   }, []);
 
-  const clearNotification = (userId: string) => {
+  const updateNotification = (userId: string, hasNotification: boolean) => {
     setHasNotification((prev) => {
-      const newNotifications = { ...prev, [userId]: false };
-      localStorage.setItem(
-        "adminNotifications",
-        JSON.stringify(newNotifications),
-      );
+      const newNotifications = { ...prev, [userId]: hasNotification };
+      localStorage.setItem(STORAGE_KEY, JSON.stringify(newNotifications));
       return newNotifications;
     });
+  };
+
+  const clearNotification = (userId: string) => {
+    updateNotification(userId, false);
   };
 
   return (

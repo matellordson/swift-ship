@@ -27,7 +27,7 @@ export function Introduction() {
               size={"lg"}
               className="w-full bg-white font-semibold text-blue-500 hover:bg-neutral-200"
             >
-              Start Shipping
+              Get Started
             </Button>
           </div>
         </div>

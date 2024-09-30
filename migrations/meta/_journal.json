@@ -15,6 +15,13 @@
       "when": 1727666086786,
       "tag": "0001_late_silvermane",
       "breakpoints": true
+    },
+    {
+      "idx": 2,
+      "version": "7",
+      "when": 1727669754735,
+      "tag": "0002_natural_moondragon",
+      "breakpoints": true
     }
   ]
 }

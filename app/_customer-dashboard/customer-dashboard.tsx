@@ -127,7 +127,7 @@ export default function CustomerDashboard({
               </div>
               <div>
                 <p className="text-sm font-semibold">Status:</p>
-                {pkg.status === "processing" ? (
+                {pkg.status === "pending" ? (
                   <div className="flex items-center justify-start gap-1 text-xs text-muted-foreground">
                     <div className="h-2 w-2 rounded-full bg-muted-foreground"></div>
                     Pending

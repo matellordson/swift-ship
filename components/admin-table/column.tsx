@@ -245,18 +245,9 @@ export const columns: ColumnDef<Shipment>[] = [
                   onSelect={(date) => setNewDate(date)}
                   className="rounded-md border"
                 />
-                <div className="flex justify-between gap-1">
-                  <Button onClick={handleDateUpdate}>
+                <div className="flex justify-between">
+                  <Button onClick={handleDateUpdate} className="w-full">
                     Update Delivery Date
-                  </Button>
-                  <Button
-                    variant="outline"
-                    onClick={() => {
-                      setNewDate(undefined);
-                      handleDateUpdate();
-                    }}
-                  >
-                    Clear Date
                   </Button>
                 </div>
               </DialogContent>

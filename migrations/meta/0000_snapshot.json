@@ -1,5 +1,5 @@
 {
-  "id": "8100c929-db4c-4fa1-a815-7f01de6482b7",
+  "id": "260ab50b-73d5-44e0-9bca-36f0f55ae573",
   "prevId": "00000000-0000-0000-0000-000000000000",
   "version": "7",
   "dialect": "postgresql",
@@ -126,7 +126,7 @@
           "name": "status",
           "type": "text",
           "primaryKey": false,
-          "notNull": false,
+          "notNull": true,
           "default": "'pending'"
         },
         "delivery_date": {
@@ -134,7 +134,7 @@
           "type": "text",
           "primaryKey": false,
           "notNull": false,
-          "default": "'date TBD'"
+          "default": "'TBD'"
         }
       },
       "indexes": {},

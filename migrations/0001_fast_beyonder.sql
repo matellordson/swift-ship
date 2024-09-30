@@ -1,1 +1,0 @@
-ALTER TABLE "package" ALTER COLUMN "delivery_date" SET DEFAULT 'TBD';

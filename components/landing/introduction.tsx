@@ -12,7 +12,7 @@ export function Introduction() {
           width={0}
           height={0}
           priority
-          className="h-full object-cover opacity-20 mix-blend-overlay dark:opacity-20 lg:rounded-lg"
+          className="h-full object-cover opacity-40 mix-blend-overlay dark:opacity-20 lg:rounded-lg"
         />
         <div className="absolute px-7 lg:px-0">
           <p className="max-w-5xl scroll-m-20 text-center text-4xl font-extrabold capitalize tracking-tight text-primary-foreground dark:text-foreground lg:text-5xl">

@@ -1,7 +1,12 @@
 "use client";
 
 import { ColumnDef } from "@tanstack/react-table";
-import { CheckCircle2Icon, CircleX, MoreHorizontal } from "lucide-react";
+import {
+  ArrowUpDown,
+  CheckCircle2Icon,
+  CircleX,
+  MoreHorizontal,
+} from "lucide-react";
 import { Button } from "@/components/ui/button";
 import {
   DropdownMenu,
@@ -221,7 +226,7 @@ export const columns: ColumnDef<Shipment>[] = [
                     <SelectValue placeholder="Select new status" />
                   </SelectTrigger>
                   <SelectContent>
-                    <SelectItem value="processing">Processing</SelectItem>
+                    <SelectItem value="pending">Pending</SelectItem>
                     <SelectItem value="in transit">In Transit</SelectItem>
                     <SelectItem value="delivered">Delivered</SelectItem>
                   </SelectContent>

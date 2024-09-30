@@ -12,7 +12,7 @@ export function Introduction() {
           width={0}
           height={0}
           priority
-          className="h-full object-cover opacity-40 mix-blend-overlay dark:opacity-20 lg:rounded-lg"
+          className="h-full object-cover opacity-30 mix-blend-overlay dark:opacity-20 lg:rounded-lg"
         />
         <div className="absolute px-7 lg:px-0">
           <p className="max-w-5xl scroll-m-20 text-center text-4xl font-extrabold capitalize tracking-tight text-primary-foreground dark:text-foreground lg:text-5xl">
@@ -23,7 +23,7 @@ export function Introduction() {
             By prioritizing sustainability and integrating all freight modes.
           </p>
           <div className="relative mx-auto mt-5 flex w-full items-center justify-center gap-3 lg:w-fit">
-            <Button className="w-full bg-white text-primary hover:bg-neutral-200 dark:text-primary-foreground">
+            <Button className="w-full bg-white font-semibold text-primary hover:bg-neutral-200 dark:text-primary-foreground">
               Start Shipping
             </Button>
           </div>

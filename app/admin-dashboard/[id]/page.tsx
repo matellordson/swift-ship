@@ -158,10 +158,6 @@ export default async function PackageDetails({
                 {data[0].description || "N/A"}
               </p>
             </div>
-            <div className="sm flex items-center justify-start gap-3">
-              <p className="scroll-m-20 font-semibold tracking-tight">City:</p>
-              <p className="text-muted-foreground">{data[0].sender_city}</p>
-            </div>
           </CardContent>
         </Card>
       </div>

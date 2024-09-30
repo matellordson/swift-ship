@@ -20,6 +20,7 @@ async function getData(): Promise<Shipment[]> {
       status: packageTable.status,
       origin: packageTable.sender_country,
       destination: packageTable.receiver_country,
+      delivery_date: packageTable.delivery_date,
     })
     .from(packageTable);
   return data;

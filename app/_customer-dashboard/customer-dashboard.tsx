@@ -27,6 +27,7 @@ interface Package {
   weight: string | null;
   dimension: string | null;
   status: string | null;
+  delivery_date: string | null;
 }
 
 interface CustomerDashboardProps {
@@ -108,7 +109,9 @@ export default function CustomerDashboard({
               </div>
               <div>
                 <p className="text-sm font-semibold">Estimated Delivery:</p>
-                <p className="text-sm text-muted-foreground">N/A</p>
+                <p className="text-sm text-muted-foreground">
+                  {pkg.delivery_date || "TBD"}
+                </p>
               </div>
               <div>
                 <p className="text-sm font-semibold">Origin:</p>
@@ -139,11 +142,13 @@ export default function CustomerDashboard({
                     <div className="h-2 w-2 rounded-full bg-green-300"></div>
                     Delivered
                   </div>
-                ) : (
+                ) : pkg.status === "pending" ? (
                   <div className="flex items-center justify-start gap-1 text-xs text-muted-foreground">
-                    <div className="h-2 w-2 rounded-full bg-gray-300"></div>
-                    {pkg.status || "Unknown"}
+                    <div className="h-2 w-2 rounded-full bg-muted-foreground"></div>
+                    Pending
                   </div>
+                ) : (
+                  ""
                 )}
               </div>
               <div>

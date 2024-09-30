@@ -24,7 +24,8 @@ CREATE TABLE IF NOT EXISTS "package" (
 	"weight" text,
 	"description" text,
 	"tracking_number" text NOT NULL,
-	"status" text DEFAULT 'processing'
+	"status" text DEFAULT 'pending',
+	"delivery_date" text DEFAULT 'date TBD'
 );
 --> statement-breakpoint
 CREATE TABLE IF NOT EXISTS "session" (

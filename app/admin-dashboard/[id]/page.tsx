@@ -3,6 +3,8 @@ import { db } from "@/src/db";
 import { packageTable } from "@/src/db/schema";
 import { validateRequest } from "@/utils/auth";
 import { eq } from "drizzle-orm";
+import { ArrowLeft, Rows3 } from "lucide-react";
+import Link from "next/link";
 import { redirect } from "next/navigation";
 
 export const revalidate = 0;
@@ -25,9 +27,17 @@ export default async function PackageDetails({
 
   return (
     <div className="mx-auto mb-20 px-3 lg:container">
-      <h1 className="scroll-m-20 text-xl font-semibold tracking-tight">
-        Package Details
-      </h1>
+      <div className="flex items-center justify-between">
+        <h1 className="scroll-m-20 text-xl font-semibold tracking-tight">
+          Package Details
+        </h1>
+        <Link
+          href={"/dashboard"}
+          className="flex items-center justify-center hover:underline"
+        >
+          <Rows3 />
+        </Link>
+      </div>
       <div className="mt-5 grid gap-5 lg:grid-cols-2">
         <Card className="p-5">
           <p className="scroll-m-20 text-xl font-semibold tracking-tight">
@@ -130,19 +140,23 @@ export default async function PackageDetails({
               <p className="scroll-m-20 font-semibold tracking-tight">
                 Dimension:
               </p>
-              <p className="text-muted-foreground">{data[0].dimension}</p>
+              <p className="text-muted-foreground">
+                {data[0].dimension || "N/A"}
+              </p>
             </div>
             <div className="sm flex items-center justify-start gap-3">
               <p className="scroll-m-20 font-semibold tracking-tight">
                 Weight:
               </p>
-              <p className="text-muted-foreground">{data[0].weight}</p>
+              <p className="text-muted-foreground">{data[0].weight || "N/A"}</p>
             </div>
             <div className="sm flex items-center justify-start gap-3">
               <p className="scroll-m-20 font-semibold tracking-tight">
                 Description:
               </p>
-              <p className="text-muted-foreground">{data[0].description}</p>
+              <p className="text-muted-foreground">
+                {data[0].description || "N/A"}
+              </p>
             </div>
             <div className="sm flex items-center justify-start gap-3">
               <p className="scroll-m-20 font-semibold tracking-tight">City:</p>

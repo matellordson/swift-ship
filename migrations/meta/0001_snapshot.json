@@ -1,6 +1,6 @@
 {
-  "id": "8100c929-db4c-4fa1-a815-7f01de6482b7",
-  "prevId": "00000000-0000-0000-0000-000000000000",
+  "id": "adc5cd89-3380-409a-bc0f-51011c324548",
+  "prevId": "8100c929-db4c-4fa1-a815-7f01de6482b7",
   "version": "7",
   "dialect": "postgresql",
   "tables": {
@@ -134,7 +134,7 @@
           "type": "text",
           "primaryKey": false,
           "notNull": false,
-          "default": "'date TBD'"
+          "default": "'TBD'"
         }
       },
       "indexes": {},

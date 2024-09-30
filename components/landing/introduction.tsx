@@ -23,7 +23,10 @@ export function Introduction() {
             By prioritizing sustainability and integrating all freight modes.
           </p>
           <div className="relative mx-auto mt-5 flex w-full items-center justify-center gap-3 lg:w-fit">
-            <Button className="w-full bg-white font-semibold text-primary hover:bg-neutral-200 dark:text-primary">
+            <Button
+              size={"lg"}
+              className="w-full bg-white font-semibold text-primary hover:bg-neutral-200 dark:text-primary"
+            >
               Start Shipping
             </Button>
           </div>

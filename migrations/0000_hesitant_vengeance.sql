@@ -4,6 +4,12 @@ EXCEPTION
  WHEN duplicate_object THEN null;
 END $$;
 --> statement-breakpoint
+DO $$ BEGIN
+ CREATE TYPE "public"."status" AS ENUM('pending', 'processing', 'in transit', 'delivered');
+EXCEPTION
+ WHEN duplicate_object THEN null;
+END $$;
+--> statement-breakpoint
 CREATE TABLE IF NOT EXISTS "package" (
 	"id" text PRIMARY KEY NOT NULL,
 	"userId" text NOT NULL,
@@ -24,7 +30,7 @@ CREATE TABLE IF NOT EXISTS "package" (
 	"weight" text,
 	"description" text,
 	"tracking_number" text NOT NULL,
-	"status" text DEFAULT 'pending' NOT NULL,
+	"status" "status" DEFAULT 'pending' NOT NULL,
 	"delivery_date" text DEFAULT 'TBD'
 );
 --> statement-breakpoint

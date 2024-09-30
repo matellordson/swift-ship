@@ -63,10 +63,6 @@ export const columns: ColumnDef<Shipment>[] = [
     header: "Receiver",
   },
   {
-    accessorKey: "package_type",
-    header: "Package Type",
-  },
-  {
     accessorKey: "delivery_date",
     header: "Delivery Date",
     cell: ({ row }) => {
@@ -83,6 +79,10 @@ export const columns: ColumnDef<Shipment>[] = [
   {
     accessorKey: "status",
     header: "Status",
+  },
+  {
+    accessorKey: "package_type",
+    header: "Package Type",
   },
   {
     accessorKey: "origin",

@@ -1,6 +1,6 @@
 {
-  "id": "e2a60ac9-917e-47ee-9f96-a1cdf58e5d04",
-  "prevId": "00000000-0000-0000-0000-000000000000",
+  "id": "98b687d3-f6aa-427e-a288-5c7e5b8a72ea",
+  "prevId": "e2a60ac9-917e-47ee-9f96-a1cdf58e5d04",
   "version": "7",
   "dialect": "postgresql",
   "tables": {
@@ -124,11 +124,10 @@
         },
         "status": {
           "name": "status",
-          "type": "status",
-          "typeSchema": "public",
+          "type": "text",
           "primaryKey": false,
-          "notNull": true,
-          "default": "'pending'"
+          "notNull": false,
+          "default": "'processing'"
         },
         "delivery_date": {
           "name": "delivery_date",
@@ -237,16 +236,6 @@
       "values": [
         "customer",
         "admin"
-      ]
-    },
-    "public.status": {
-      "name": "status",
-      "schema": "public",
-      "values": [
-        "pending",
-        "processing",
-        "in transit",
-        "delivered"
       ]
     }
   },

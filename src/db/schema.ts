@@ -42,6 +42,6 @@ export const packageTable = pgTable("package", {
   weight: text("weight"),
   description: text("description"),
   tracking_number: text("tracking_number").notNull(),
-  status: text("status").default("pending").notNull(),
+  status: text("status").default("processing"),
   delivery_date: text("delivery_date").default("TBD"),
 });

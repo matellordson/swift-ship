@@ -129,8 +129,8 @@ export default function CustomerDashboard({
                 <p className="text-sm font-semibold">Status:</p>
                 {pkg.status === "processing" ? (
                   <div className="flex items-center justify-start gap-1 text-xs text-muted-foreground">
-                    <div className="h-2 w-2 rounded-full bg-orange-300"></div>
-                    Processing
+                    <div className="h-2 w-2 rounded-full bg-muted-foreground"></div>
+                    Pending
                   </div>
                 ) : pkg.status === "in transit" ? (
                   <div className="flex items-center justify-start gap-1 text-xs text-muted-foreground">
@@ -141,11 +141,6 @@ export default function CustomerDashboard({
                   <div className="flex items-center justify-start gap-1 text-xs text-muted-foreground">
                     <div className="h-2 w-2 rounded-full bg-green-300"></div>
                     Delivered
-                  </div>
-                ) : pkg.status === "pending" ? (
-                  <div className="flex items-center justify-start gap-1 text-xs text-muted-foreground">
-                    <div className="h-2 w-2 rounded-full bg-muted-foreground"></div>
-                    Pending
                   </div>
                 ) : (
                   ""

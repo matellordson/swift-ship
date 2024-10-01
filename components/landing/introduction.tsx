@@ -19,7 +19,7 @@ export function Introduction() {
             Experience unmatched speed and efficiency.
           </p>
           <p className="mx-auto max-w-xl text-center text-[1rem] leading-6 text-neutral-50 dark:text-neutral-100 lg:text-[1.2rem] [&:not(:first-child)]:mt-3">
-            We excels in reliability, treating each shipment as a promise kept.
+            We excel in reliability, treating each shipment as a promise kept.
             By prioritizing sustainability and integrating all freight modes.
           </p>
           <div className="relative mx-auto mt-5 flex w-full items-center justify-center gap-3 lg:w-fit">

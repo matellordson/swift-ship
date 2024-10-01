@@ -1,6 +1,9 @@
 import { redirect } from "next/navigation";
 import { validateRequest } from "@/utils/auth";
 import { Introduction } from "@/components/landing/introduction";
+import Freight from "@/components/landing/freight";
+import { Shops } from "@/components/landing/shops";
+import { Products } from "@/components/landing/products";
 
 export default async function Home() {
   // const user = await validateRequest();
@@ -8,8 +11,10 @@ export default async function Home() {
   //   redirect("/auth/signin");
   // }
   return (
-    <div>
+    <div className="mx-auto max-w-[200rem]">
       <Introduction />
+      <Freight />
+      <Products />
     </div>
   );
 }

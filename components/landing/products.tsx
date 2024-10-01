@@ -1,4 +1,10 @@
+import clothing from "@/app/public/products/clothing.jpg";
+import toys from "@/app/public/products/toys.jpg";
+import furniture from "@/app/public/products/furniture.jpg";
+import skin from "@/app/public/products/skin.jpg";
+import groceries from "@/app/public/products/groceries.jpg";
 import { Shops } from "./shops";
+import Image from "next/image";
 
 export function Products() {
   return (
@@ -17,7 +23,45 @@ export function Products() {
               we make shipping a breeze.
             </p>
           </div>
-          <div className="h-[310px] w-full bg-red-500"></div>
+          <div className="w-full">
+            <div className="grid grid-flow-col grid-cols-3 grid-rows-2 gap-1 px-3 pb-7 lg:gap-3 lg:px-0">
+              <div>
+                <Image
+                  src={clothing}
+                  alt="clothing"
+                  className="h-40 rounded object-cover shadow-sm lg:h-64 lg:rounded-xl"
+                />
+              </div>
+              <div className="col-start-3">
+                <Image
+                  src={toys}
+                  alt="electronics"
+                  className="h-40 rounded object-cover shadow-sm lg:h-64 lg:rounded-xl"
+                />
+              </div>
+              <div>
+                <Image
+                  src={groceries}
+                  alt="furniture"
+                  className="h-40 rounded object-cover shadow-sm lg:h-64 lg:rounded-xl"
+                />
+              </div>
+              <div>
+                <Image
+                  src={skin}
+                  alt="skin"
+                  className="h-40 rounded object-cover shadow lg:h-64 lg:rounded-xl"
+                />
+              </div>
+              <div className="col-span-2 col-start-2 row-start-1 h-40 rounded-xl shadow-sm">
+                <Image
+                  src={furniture}
+                  alt="grocery"
+                  className="h-40 rounded object-cover shadow-sm lg:h-64 lg:rounded-xl"
+                />
+              </div>
+            </div>
+          </div>
         </div>
       </div>
     </div>

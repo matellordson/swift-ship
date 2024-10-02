@@ -1,11 +1,14 @@
+"use client";
+
 import container from "@/app/public/container.jpg";
-import amazon from "@/app/public/shops/amazon.svg";
-import ebay from "@/app/public/shops/ebay.svg";
-import alibaba from "@/app/public/shops/alibaba.svg";
-import apple from "@/app/public/shops/apple.svg";
-import nike from "@/app/public/shops/nike.svg";
-import shopify from "@/app/public/shops/shopify.svg";
-import adidas from "@/app/public/shops/adidas.svg";
+import {
+  Carousel,
+  CarouselContent,
+  CarouselItem,
+  CarouselNext,
+  CarouselPrevious,
+} from "@/components/ui/carousel";
+import { type CarouselApi } from "@/components/ui/carousel";
 import Image from "next/image";
 import { Button } from "./ui/button";
 import {
@@ -19,6 +22,9 @@ import {
   UserCircle2Icon,
   UsersRound,
 } from "lucide-react";
+import { Card, CardContent } from "./ui/card";
+import React from "react";
+import { useMediaQuery } from "@/hooks/use-media-query";
 
 export default function HomePage() {
   return (
@@ -26,6 +32,7 @@ export default function HomePage() {
       <Banner />
       <Freight />
       <Record />
+      <Products />
     </div>
   );
 }
@@ -117,7 +124,7 @@ function Record() {
       <div className="flex flex-wrap items-center justify-center gap-3 px-3 py-5">
         <div className="w-full rounded-lg border p-5 lg:w-52">
           <div className="flex flex-col items-center justify-center">
-            <UsersRound className="size-12 rounded-full bg-muted p-2" />
+            <UsersRound className="size-12 rounded-full bg-muted p-2 text-slate-700 dark:text-secondary-foreground" />
             <div className="flex flex-col items-center justify-center">
               <p className="pt-3 text-xl font-bold text-slate-700 dark:text-secondary-foreground">
                 100%
@@ -131,7 +138,7 @@ function Record() {
 
         <div className="w-full rounded-lg border p-5 lg:w-52">
           <div className="flex flex-col items-center justify-center">
-            <TimerResetIcon className="size-12 rounded-full bg-muted p-2" />
+            <TimerResetIcon className="size-12 rounded-full bg-muted p-2 text-slate-700 dark:text-secondary-foreground" />
             <div className="flex flex-col items-center justify-center">
               <p className="pt-3 text-xl font-bold text-slate-700 dark:text-secondary-foreground">
                 24/7
@@ -143,7 +150,7 @@ function Record() {
 
         <div className="w-full rounded-lg border p-5 lg:w-52">
           <div className="flex flex-col items-center justify-center">
-            <Building2 className="size-12 rounded-full bg-muted p-2" />
+            <Building2 className="size-12 rounded-full bg-muted p-2 text-slate-700 dark:text-secondary-foreground" />
             <div className="flex flex-col items-center justify-center">
               <p className="pt-3 text-xl font-bold text-slate-700 dark:text-secondary-foreground">
                 80+
@@ -157,7 +164,7 @@ function Record() {
 
         <div className="w-full rounded-lg border p-5 lg:w-52">
           <div className="flex flex-col items-center justify-center">
-            <Package className="size-12 rounded-full bg-muted p-2" />
+            <Package className="size-12 rounded-full bg-muted p-2 text-slate-700 dark:text-secondary-foreground" />
             <div className="flex flex-col items-center justify-center">
               <p className="pt-3 text-xl font-bold text-slate-700 dark:text-secondary-foreground">
                 12045
@@ -171,7 +178,7 @@ function Record() {
 
         <div className="w-full rounded-lg border p-5 lg:w-52">
           <div className="flex flex-col items-center justify-center">
-            <Handshake className="size-12 rounded-full bg-muted p-2" />
+            <Handshake className="size-12 rounded-full bg-muted p-2 text-slate-700 dark:text-secondary-foreground" />
             <div className="flex flex-col items-center justify-center">
               <p className="pt-3 text-xl font-bold text-slate-700 dark:text-secondary-foreground">
                 5200
@@ -180,6 +187,97 @@ function Record() {
             </div>
           </div>
         </div>
+      </div>
+    </div>
+  );
+}
+
+function Products() {
+  const [api, setApi] = React.useState<CarouselApi>();
+  const [current, setCurrent] = React.useState(0);
+  const [count, setCount] = React.useState(0);
+  const isDesktop = useMediaQuery("(min-width: 768px)");
+
+  const slides = [
+    {
+      image: "/placeholder.svg",
+      text: "Beautiful landscape with mountains and a lake",
+    },
+    {
+      image: "/placeholder.svg",
+      text: "Cityscape at night with bright lights",
+    },
+    {
+      image: "/placeholder.svg",
+      text: "Serene beach with crystal clear water",
+    },
+    {
+      image: "/placeholder.svg",
+      text: "Dense forest with tall trees",
+    },
+    {
+      image: "/placeholder.svg",
+      text: "Snowy peaks under a clear blue sky",
+    },
+  ];
+
+  React.useEffect(() => {
+    if (!api) {
+      return;
+    }
+
+    setCount(api.scrollSnapList().length);
+    setCurrent(api.selectedScrollSnap() + 1);
+
+    api.on("select", () => {
+      setCurrent(api.selectedScrollSnap() + 1);
+    });
+  }, [api]);
+
+  return (
+    <div className="border-b border-l border-r px-3 py-5">
+      <p className="scroll-m-20 pt-5 text-center text-xs font-semibold uppercase tracking-tight text-muted-foreground lg:text-sm">
+        we ship anything
+      </p>
+      <p className="mx-auto max-w-xl scroll-m-20 px-4 pb-5 text-center text-xl font-medium tracking-tight lg:px-0 lg:text-2xl lg:font-semibold">
+        Whatever you need shipped, we handle it all—big or small, anywhere you
+        are!
+      </p>
+      <Carousel setApi={setApi} className="mx-auto w-full max-w-4xl">
+        <CarouselContent>
+          {slides.map((slide, index) => (
+            <CarouselItem key={index} className="md:basis-1/2 lg:basis-1/2">
+              <div className="p-1">
+                <Card className="w-full">
+                  <CardContent className="flex h-80 flex-col p-0">
+                    <div className="relative h-3/4 w-full">
+                      <Image
+                        src={slide.image}
+                        alt={`Slide ${index + 1}`}
+                        layout="fill"
+                        objectFit="cover"
+                      />
+                    </div>
+                    <div className="flex h-1/4 items-center justify-center p-4 text-center">
+                      <p>{slide.text}</p>
+                    </div>
+                  </CardContent>
+                </Card>
+              </div>
+            </CarouselItem>
+          ))}
+        </CarouselContent>
+        {isDesktop ? (
+          <>
+            <CarouselPrevious />
+            <CarouselNext />
+          </>
+        ) : (
+          ""
+        )}
+      </Carousel>
+      <div className="py-2 text-center text-sm text-muted-foreground">
+        Slide {current} of {count}
       </div>
     </div>
   );

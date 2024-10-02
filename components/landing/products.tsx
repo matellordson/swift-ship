@@ -29,35 +29,35 @@ export function Products() {
                 <Image
                   src={clothing}
                   alt="clothing"
-                  className="h-40 rounded object-cover shadow-sm lg:h-64 lg:rounded-xl"
+                  className="h-40 rounded object-cover shadow-sm dark:opacity-90 lg:h-64 lg:rounded-xl"
                 />
               </div>
               <div className="col-start-3">
                 <Image
                   src={toys}
                   alt="electronics"
-                  className="h-40 rounded object-cover shadow-sm lg:h-64 lg:rounded-xl"
+                  className="h-40 rounded object-cover shadow-sm dark:opacity-90 lg:h-64 lg:rounded-xl"
                 />
               </div>
               <div>
                 <Image
                   src={groceries}
                   alt="furniture"
-                  className="h-40 rounded object-cover shadow-sm lg:h-64 lg:rounded-xl"
+                  className="h-40 rounded object-cover shadow-sm dark:opacity-90 lg:h-64 lg:rounded-xl"
                 />
               </div>
               <div>
                 <Image
                   src={skin}
                   alt="skin"
-                  className="h-40 rounded object-cover shadow lg:h-64 lg:rounded-xl"
+                  className="h-40 rounded object-cover shadow dark:opacity-90 lg:h-64 lg:rounded-xl"
                 />
               </div>
-              <div className="col-span-2 col-start-2 row-start-1 h-40 rounded-xl shadow-sm">
+              <div className="col-span-2 col-start-2 row-start-1 h-40 rounded-xl shadow-sm dark:opacity-80">
                 <Image
                   src={furniture}
                   alt="grocery"
-                  className="h-40 rounded object-cover shadow-sm lg:h-64 lg:rounded-xl"
+                  className="h-40 rounded object-cover shadow-sm dark:opacity-100 lg:h-64 lg:rounded-xl"
                 />
               </div>
             </div>

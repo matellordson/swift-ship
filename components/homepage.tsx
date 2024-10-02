@@ -1,6 +1,7 @@
 import container from "@/app/public/container.jpg";
 import Image from "next/image";
 import { Button } from "./ui/button";
+import delivery from "@/app/public/delivery.jpg";
 
 export default function HomePage() {
   return (
@@ -46,20 +47,14 @@ function Banner() {
 
 function Freight() {
   return (
-    <div className="grid grid-cols-1 gap-3 border p-5 lg:grid-cols-2">
-      <div className="rounded-xl border bg-gradient-to-b from-muted p-4 text-lg shadow-lg">
+    <div className="grid grid-cols-1 border p-5 lg:grid-cols-2">
+      <div className="rounded-xl border bg-gradient-to-b from-slate-100 to-gray-100 p-4 text-lg shadow-lg dark:from-muted">
         <p className="scroll-m-20 text-xl font-semibold tracking-tight lg:pr-5 lg:text-2xl">
-          Ensuring timely delivery whether by Land, Air, or Sea.
-        </p>
-        <p className="text-[1.10rem] leading-6 text-muted-foreground lg:pr-5 [&:not(:first-child)]:mt-2">
-          At Swift Ship, timely delivery is our priority. Whether by land, air,
-          or sea, we use advanced logistics and trusted partnerships to ensure
-          your orders arrive on schedule. Your satisfaction is our commitment!.
-        </p>
-      </div>
-      <div className="rounded-xl border bg-gradient-to-b from-muted p-4 text-lg shadow-lg">
-        <p className="scroll-m-20 text-xl font-semibold tracking-tight lg:pr-5 lg:text-2xl">
-          Ensuring timely delivery whether by Land, Air, or Sea.
+          We ensure timely delivery whether by{" "}
+          <span className="text-slate-600 dark:text-slate-300">
+            {" "}
+            Land, Air, or Sea.
+          </span>
         </p>
         <p className="text-[1.10rem] leading-6 text-muted-foreground lg:pr-5 [&:not(:first-child)]:mt-2">
           At Swift Ship, timely delivery is our priority. Whether by land, air,

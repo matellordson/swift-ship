@@ -32,7 +32,7 @@ export function Introduction() {
             <Button
               size={"lg"}
               variant={"outline"}
-              className="w-full border-none bg-blue-600 font-semibold shadow-lg hover:bg-blue-500 lg:shadow-blue-700"
+              className="w-full border-none bg-blue-600 font-semibold text-blue-50 shadow-lg hover:bg-blue-500 lg:shadow-blue-700"
             >
               About us
             </Button>

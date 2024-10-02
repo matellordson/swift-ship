@@ -1,5 +1,5 @@
 import Image from "next/image";
-import cargo from "@/app/public/cargo.jpg";
+import truck from "@/app/public/truck.jpg";
 
 export default function Freight() {
   return (
@@ -17,9 +17,9 @@ export default function Freight() {
       </div>
       <div className="h-fit rounded-lg px-3 lg:rounded-none lg:px-0">
         <Image
-          src={cargo}
+          src={truck}
           alt="truck"
-          className="h-[200px] w-[1800px] rounded-lg object-cover dark:opacity-90 lg:h-[310px]"
+          className="h-[330px] w-[1800px] rounded-lg object-cover dark:opacity-70 lg:h-[310px]"
         />
       </div>
     </div>

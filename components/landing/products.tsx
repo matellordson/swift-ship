@@ -36,21 +36,21 @@ export function Products() {
                 <Image
                   src={toys}
                   alt="electronics"
-                  className="h-40 rounded object-cover shadow-sm dark:opacity-90 lg:h-64 lg:rounded-xl"
+                  className="hidden h-40 rounded object-cover shadow-sm dark:opacity-90 lg:flex lg:h-64 lg:rounded-xl"
                 />
               </div>
               <div>
                 <Image
                   src={groceries}
                   alt="furniture"
-                  className="h-40 rounded object-cover shadow-sm dark:opacity-90 lg:h-64 lg:rounded-xl"
+                  className="hidden h-40 rounded object-cover shadow-sm dark:opacity-90 lg:flex lg:h-64 lg:rounded-xl"
                 />
               </div>
               <div>
                 <Image
                   src={skin}
                   alt="skin"
-                  className="h-40 rounded object-cover shadow dark:opacity-90 lg:h-64 lg:rounded-xl"
+                  className="hidden h-40 rounded object-cover shadow dark:opacity-90 lg:flex lg:h-64 lg:rounded-xl"
                 />
               </div>
               <div className="col-span-2 col-start-2 row-start-1 h-40 rounded-xl shadow-sm dark:opacity-80">

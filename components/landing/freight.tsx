@@ -1,15 +1,16 @@
 import Image from "next/image";
 import truck from "@/app/public/truck.jpg";
+import { Button } from "../ui/button";
 
 export default function Freight() {
   return (
     <div className="items-start justify-between lg:m-5 lg:flex">
       <div className="pt-4 lg:pt-10">
-        <p className="scroll-m-20 px-3 pb-1 text-2xl font-semibold tracking-tight first:mt-0 lg:px-10 lg:pr-24 lg:text-4xl lg:marker:pl-20">
+        <p className="scroll-m-20 px-3 pb-1 text-2xl font-semibold tracking-tight first:mt-0 lg:px-10 lg:pl-5 lg:text-4xl">
           Redefined logistics, ensuring timely delivery whether by Land, Air, or
           Sea.
         </p>
-        <p className="mb-3 px-3 leading-6 text-muted-foreground lg:mt-2 lg:px-10 lg:text-lg [&:not(:first-child)]:mt-1">
+        <p className="mb-3 px-3 leading-6 text-muted-foreground lg:mt-2 lg:px-5 lg:text-lg [&:not(:first-child)]:mt-1">
           At Swift Ship, timely delivery is our priority. Whether by land, air,
           or sea, we use advanced logistics and trusted partnerships to ensure
           your orders arrive on schedule. Your satisfaction is our commitment!.

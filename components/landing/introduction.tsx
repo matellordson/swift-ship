@@ -29,6 +29,13 @@ export function Introduction() {
             >
               Get Started
             </Button>
+            <Button
+              size={"lg"}
+              variant={"outline"}
+              className="w-full border-none bg-blue-600 font-semibold shadow-lg hover:bg-blue-500 lg:shadow-blue-700"
+            >
+              About us
+            </Button>
           </div>
         </div>
       </div>

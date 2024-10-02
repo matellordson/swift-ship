@@ -4,15 +4,16 @@ import { Button } from "./ui/button";
 
 export default function HomePage() {
   return (
-    <div className="px-3">
+    <div className="mx-auto max-w-6xl px-3">
       <Banner />
+      <Freight />
     </div>
   );
 }
 
 function Banner() {
   return (
-    <div className="mx-auto max-w-6xl rounded-t-xl border">
+    <div className="rounded-t-xl border">
       <div className="flex flex-col items-center justify-start rounded-t-xl">
         <div className="h-[500px] w-full rounded-t dark:bg-gradient-to-tr lg:from-primary">
           <Image
@@ -39,6 +40,33 @@ function Banner() {
           </div>
         </div>
       </div>
+    </div>
+  );
+}
+
+function Freight() {
+  return (
+    <div className="grid grid-cols-1 gap-3 border p-5 lg:grid-cols-2">
+      <div className="rounded-xl border bg-gradient-to-b from-muted p-4 text-lg shadow-lg">
+        <p className="scroll-m-20 text-xl font-semibold tracking-tight lg:pr-5 lg:text-2xl">
+          Ensuring timely delivery whether by Land, Air, or Sea.
+        </p>
+        <p className="text-[1.10rem] leading-6 text-muted-foreground lg:pr-5 [&:not(:first-child)]:mt-2">
+          At Swift Ship, timely delivery is our priority. Whether by land, air,
+          or sea, we use advanced logistics and trusted partnerships to ensure
+          your orders arrive on schedule. Your satisfaction is our commitment!.
+        </p>
+      </div>
+      <div className="rounded-xl border bg-gradient-to-b from-muted p-4 text-lg shadow-lg">
+        <p className="scroll-m-20 text-xl font-semibold tracking-tight lg:pr-5 lg:text-2xl">
+          Ensuring timely delivery whether by Land, Air, or Sea.
+        </p>
+        <p className="text-[1.10rem] leading-6 text-muted-foreground lg:pr-5 [&:not(:first-child)]:mt-2">
+          At Swift Ship, timely delivery is our priority. Whether by land, air,
+          or sea, we use advanced logistics and trusted partnerships to ensure
+          your orders arrive on schedule. Your satisfaction is our commitment!.
+        </p>
+      </div>{" "}
     </div>
   );
 }

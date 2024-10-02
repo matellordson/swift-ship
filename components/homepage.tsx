@@ -48,7 +48,7 @@ function Banner() {
 function Freight() {
   return (
     <div className="grid grid-cols-1 border p-5 lg:grid-cols-2">
-      <div className="rounded-xl border bg-gradient-to-b from-slate-100 to-gray-100 p-4 text-lg shadow-lg dark:from-muted">
+      <div className="rounded-xl border bg-gradient-to-b from-slate-100 to-gray-200 p-4 text-lg dark:from-muted">
         <p className="scroll-m-20 text-xl font-semibold tracking-tight lg:pr-5 lg:text-2xl">
           We ensure timely delivery whether by{" "}
           <span className="text-slate-600 dark:text-slate-300">

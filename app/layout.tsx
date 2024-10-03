@@ -24,7 +24,7 @@ export default function RootLayout({
           enableSystem
           disableTransitionOnChange
         >
-          <div className="mt-20">{children}</div>
+          <div className="">{children}</div>
         </ThemeProvider>
         <Toaster />
       </body>

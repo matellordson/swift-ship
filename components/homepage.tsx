@@ -9,30 +9,52 @@ import {
   CarouselPrevious,
 } from "@/components/ui/carousel";
 import { type CarouselApi } from "@/components/ui/carousel";
-import Image from "next/image";
+import Image, { StaticImageData } from "next/image";
 import { Button } from "./ui/button";
 import {
   Building2,
+  CarFront,
+  CircleDollarSign,
   Handshake,
+  Headphones,
   Package,
   PlaneTakeoff,
   Ship,
   TimerResetIcon,
   Truck,
+  User2,
   UserCircle2Icon,
   UsersRound,
 } from "lucide-react";
 import { Card, CardContent } from "./ui/card";
 import React from "react";
 import { useMediaQuery } from "@/hooks/use-media-query";
+import clothing from "@/app/public/products/clothing.jpg";
+import machinery from "@/app/public/products/machinery.jpg";
+import furniture from "@/app/public/products/furniture.jpg";
+import grocery from "@/app/public/products/grocery.jpg";
+import appliance from "@/app/public/products/houseappliance.jpg";
+import truck from "@/app/public/truck.jpg";
 
 export default function HomePage() {
   return (
-    <div className="mx-auto max-w-6xl px-3">
-      <Banner />
-      <Freight />
-      <Record />
-      <Products />
+    <>
+      {/* <Nav /> */}
+      <div className="mx-auto max-w-6xl px-3">
+        <Banner />
+        <Freight />
+        <Record />
+        <Products />
+        <Benefits />
+      </div>
+    </>
+  );
+}
+
+function Nav() {
+  return (
+    <div className="mx-auto my-3 mb-5 w-full max-w-7xl p-3 px-3">
+      <div className="h-10 w-32 bg-muted-foreground"></div>
     </div>
   );
 }
@@ -47,7 +69,7 @@ function Banner() {
             alt="container"
             priority
             placeholder="blur"
-            className="h-[500px] w-full max-w-6xl rounded-t-xl object-cover opacity-90 dark:opacity-100 dark:mix-blend-overlay lg:relative"
+            className="h-[500px] w-full max-w-6xl rounded-t-xl object-cover opacity-90 transition dark:opacity-100 dark:mix-blend-overlay lg:relative"
           />
         </div>
         <div className="absolute flex flex-col items-center justify-center px-6 lg:px-0">
@@ -117,7 +139,7 @@ function Record() {
       <p className="scroll-m-20 pt-5 text-center text-xs font-semibold uppercase tracking-tight text-muted-foreground lg:text-sm">
         our numbers
       </p>
-      <p className="mx-auto max-w-xl scroll-m-20 px-4 text-center text-xl font-medium tracking-tight lg:px-0 lg:text-2xl lg:font-semibold">
+      <p className="mx-auto max-w-xl scroll-m-20 px-4 pt-2 text-center text-xl font-medium tracking-tight lg:px-0 lg:text-2xl lg:font-semibold">
         The numbers are on our side, ensuring every package is handled with
         precision!
       </p>
@@ -181,7 +203,7 @@ function Record() {
             <Handshake className="size-12 rounded-full bg-muted p-2 text-slate-700 dark:text-secondary-foreground" />
             <div className="flex flex-col items-center justify-center">
               <p className="pt-3 text-xl font-bold text-slate-700 dark:text-secondary-foreground">
-                5200
+                3200
               </p>
               <p className="text-sm text-muted-foreground">Employees</p>
             </div>
@@ -198,26 +220,38 @@ function Products() {
   const [count, setCount] = React.useState(0);
   const isDesktop = useMediaQuery("(min-width: 768px)");
 
-  const slides = [
+  type Slide = {
+    image: StaticImageData;
+    heading: string;
+    text: string;
+  };
+
+  const slides: Slide[] = [
     {
-      image: "/placeholder.svg",
-      text: "Beautiful landscape with mountains and a lake",
+      image: furniture,
+      heading: "Furniture",
+      text: "We ship furniture with care, ensuring safe, timely delivery and secure handling from start to finish.",
     },
     {
-      image: "/placeholder.svg",
-      text: "Cityscape at night with bright lights",
+      image: machinery,
+      heading: "Machinery",
+      text: "We transport machinery with precision, ensuring safe handling, secure packaging, and on-time delivery to any location.",
     },
     {
-      image: "/placeholder.svg",
-      text: "Serene beach with crystal clear water",
+      image: clothing,
+      heading: "Clothing",
+      text: "We deliver clothing worldwide, ensuring it arrives in perfect condition, on schedule, and ready to wear.",
+    },
+
+    {
+      image: grocery,
+      heading: "Grocery",
+      text: "We handle grocery deliveries with care, ensuring fresh products reach you quickly, safely, and on time.",
     },
     {
-      image: "/placeholder.svg",
-      text: "Dense forest with tall trees",
-    },
-    {
-      image: "/placeholder.svg",
-      text: "Snowy peaks under a clear blue sky",
+      image: appliance,
+      heading: "Household appliances",
+      text: "We deliver home appliances with precision, ensuring safe transport, timely arrival, and secure installation when needed.",
     },
   ];
 
@@ -239,7 +273,7 @@ function Products() {
       <p className="scroll-m-20 pt-5 text-center text-xs font-semibold uppercase tracking-tight text-muted-foreground lg:text-sm">
         we ship anything
       </p>
-      <p className="mx-auto max-w-xl scroll-m-20 px-4 pb-5 text-center text-xl font-medium tracking-tight lg:px-0 lg:text-2xl lg:font-semibold">
+      <p className="mx-auto max-w-xl scroll-m-20 px-4 pb-5 pt-2 text-center text-xl font-medium tracking-tight lg:px-0 lg:text-2xl lg:font-semibold">
         Whatever you need shipped, we handle it all—big or small, anywhere you
         are!
       </p>
@@ -249,17 +283,23 @@ function Products() {
             <CarouselItem key={index} className="md:basis-1/2 lg:basis-1/2">
               <div className="p-1">
                 <Card className="w-full">
-                  <CardContent className="flex h-80 flex-col p-0">
-                    <div className="relative h-3/4 w-full">
+                  <CardContent className="flex h-96 flex-col p-0">
+                    <div className="relative h-2/3 w-full overflow-hidden">
                       <Image
                         src={slide.image}
-                        alt={`Slide ${index + 1}`}
+                        alt={slide.heading}
                         layout="fill"
                         objectFit="cover"
+                        className="rounded-t-lg opacity-90 transition dark:opacity-80"
                       />
                     </div>
-                    <div className="flex h-1/4 items-center justify-center p-4 text-center">
-                      <p>{slide.text}</p>
+                    <div className="flex h-32 flex-col justify-start px-3 py-3">
+                      <h3 className="scroll-m-20 text-lg font-semibold tracking-tight lg:text-xl">
+                        {slide.heading}
+                      </h3>
+                      <p className="text-sm leading-6 text-muted-foreground lg:text-[17px] [&:not(:first-child)]:mt-1">
+                        {slide.text}
+                      </p>
                     </div>
                   </CardContent>
                 </Card>
@@ -278,6 +318,58 @@ function Products() {
       </Carousel>
       <div className="py-2 text-center text-sm text-muted-foreground">
         Slide {current} of {count}
+      </div>
+    </div>
+  );
+}
+
+function Benefits() {
+  return (
+    <div className="border-b border-l border-r px-3 py-5">
+      <p className="scroll-m-20 pt-5 text-center text-xs font-semibold uppercase tracking-tight text-muted-foreground lg:text-sm">
+        our benefits
+      </p>
+      <p className="mx-auto max-w-xl scroll-m-20 px-4 pb-5 pt-2 text-center text-xl font-medium tracking-tight lg:px-0 lg:text-2xl lg:font-semibold">
+        Effortless shipping solutions for seamless deliveries
+      </p>
+      <div className="h-fit w-full items-center justify-center px-2 lg:flex">
+        <div className="flex h-fit w-full flex-col items-start justify-center gap-y-3 lg:h-fit lg:w-[40%] lg:pl-24">
+          <div className="flex items-center justify-center gap-x-3">
+            <div className="h-fit w-fit rounded-full bg-muted p-2">
+              <CarFront className="text-slate-700 dark:text-secondary-foreground" />
+            </div>
+            <p className="scroll-m-20 text-xl font-normal tracking-tight text-muted-foreground lg:text-lg">
+              Reliable and timely delivery
+            </p>
+          </div>
+
+          <div className="flex items-center justify-center gap-x-3">
+            <div className="h-fit w-fit rounded-full bg-muted p-2">
+              <CircleDollarSign className="text-slate-700 dark:text-secondary-foreground" />
+            </div>
+            <p className="scroll-m-20 text-lg font-normal tracking-tight text-muted-foreground lg:text-xl">
+              Cost-effective solutions
+            </p>
+          </div>
+
+          <div className="flex items-center justify-center gap-x-3">
+            <div className="h-fit w-fit rounded-full bg-muted p-2">
+              <User2 className="text-slate-700 dark:text-secondary-foreground" />
+            </div>
+            <p className="scroll-m-20 text-lg font-normal tracking-tight text-muted-foreground lg:text-xl">
+              Eco-friendly initiatives
+            </p>
+          </div>
+
+          <div className="flex items-center justify-center gap-x-3">
+            <div className="h-fit w-fit rounded-full bg-muted p-2">
+              <Headphones className="text-slate-700 dark:text-secondary-foreground" />
+            </div>
+            <p className="scroll-m-20 text-lg font-normal tracking-tight text-muted-foreground lg:text-xl">
+              Dedicated customer support
+            </p>
+          </div>
+        </div>
       </div>
     </div>
   );

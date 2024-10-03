@@ -17,6 +17,7 @@ import {
   CircleDollarSign,
   Handshake,
   Headphones,
+  Mail,
   Package,
   PlaneTakeoff,
   Ship,
@@ -26,7 +27,7 @@ import {
   UserCircle2Icon,
   UsersRound,
 } from "lucide-react";
-import { Card, CardContent } from "./ui/card";
+import { Card, CardContent, CardFooter } from "./ui/card";
 import React from "react";
 import { useMediaQuery } from "@/hooks/use-media-query";
 import clothing from "@/app/public/products/clothing.jpg";
@@ -35,11 +36,14 @@ import furniture from "@/app/public/products/furniture.jpg";
 import grocery from "@/app/public/products/grocery.jpg";
 import appliance from "@/app/public/products/houseappliance.jpg";
 import deliveryman from "@/app/public/deliveryman.jpg";
+import { Phone, MapPin } from "lucide-react";
+import { Input } from "@/components/ui/input";
+import Link from "next/link";
 
 export default function HomePage() {
   return (
     <>
-      {/* <Nav /> */}
+      <Nav />
       <div className="mx-auto max-w-6xl px-3">
         <Banner />
         <Freight />
@@ -48,6 +52,7 @@ export default function HomePage() {
         <Benefits />
         <Testimony />
       </div>
+      <Footer />
     </>
   );
 }
@@ -55,7 +60,7 @@ export default function HomePage() {
 function Nav() {
   return (
     <div className="mx-auto my-3 mb-5 w-full max-w-7xl p-3 px-3">
-      <div className="h-10 w-32 bg-muted-foreground"></div>
+      {/* <div className="h-10 w-32 bg-muted-foreground"></div> */}
     </div>
   );
 }
@@ -103,8 +108,8 @@ function Freight() {
             className="text-slate-700 dark:text-secondary-foreground"
           />
           <p className="text-[1.10rem] leading-6 text-muted-foreground lg:pr-5 [&:not(:first-child)]:mt-2">
-            Swift Ship excels in road freight, ensuring timely deliveries with
-            reliable logistics and excellent customer service.
+            We excels in road freight, ensuring timely deliveries with reliable
+            logistics and excellent customer service.
           </p>
         </div>
 
@@ -291,7 +296,7 @@ function Products() {
                         alt={slide.heading}
                         layout="fill"
                         objectFit="cover"
-                        className="rounded-t-lg opacity-90 transition dark:opacity-80"
+                        className="rounded-t-lg opacity-80 transition dark:opacity-70"
                       />
                     </div>
                     <div className="flex h-32 flex-col justify-start px-3 py-3">
@@ -328,7 +333,7 @@ function Benefits() {
   return (
     <div className="border-b border-l border-r px-3 py-5">
       <p className="scroll-m-20 pt-5 text-center text-xs font-semibold uppercase tracking-tight text-muted-foreground lg:text-sm">
-        our benefits
+        why choose us
       </p>
       <p className="mx-auto max-w-xl scroll-m-20 px-4 pb-5 pt-2 text-center text-xl font-medium tracking-tight lg:px-0 lg:text-2xl lg:font-semibold">
         Effortless shipping solutions for seamless deliveries
@@ -375,7 +380,7 @@ function Benefits() {
           <Image
             src={deliveryman}
             alt="truck"
-            className="h-96 rounded object-cover opacity-90 dark:opacity-80"
+            className="h-96 rounded object-cover opacity-80 dark:opacity-70"
           />
         </div>
       </div>
@@ -384,14 +389,139 @@ function Benefits() {
 }
 
 function Testimony() {
+  const testimonials = [
+    {
+      name: "Sarah Johnson",
+      testimony:
+        "I'm amazed at how quickly my packages arrive. This shipping company has never let me down with their express delivery service!",
+    },
+    {
+      name: "Michael Chen",
+      testimony:
+        "Their package tracking system is top-notch. I always know exactly where my shipment is and when it will arrive.",
+    },
+    {
+      name: "Emily Rodriguez",
+      testimony:
+        "I had a delicate item to ship internationally, and their careful handling ensured it arrived in perfect condition. Impressive service!",
+    },
+    {
+      name: "David Patel",
+      testimony:
+        "The customer support team went above and beyond when I had an issue with customs. They handled everything promptly and professionally.",
+    },
+    {
+      name: "Olivia Thompson",
+      testimony:
+        "As a small business owner, reliable shipping is crucial. This company's consistency and competitive rates have been a game-changer for my online store.",
+    },
+    {
+      name: "Robert Tanaka",
+      testimony:
+        "I appreciate their eco-friendly packaging options. It's great to work with a shipping company that cares about environmental impact.",
+    },
+  ];
+
   return (
-    <div className="border-b border-l border-r px-3 py-5">
+    <div className="mb-14 rounded-b-lg border-b border-l border-r px-3 py-3">
       <p className="scroll-m-20 pt-5 text-center text-xs font-semibold uppercase tracking-tight text-muted-foreground lg:text-sm">
         testimonials
       </p>
       <p className="mx-auto max-w-xl scroll-m-20 px-4 pb-5 pt-2 text-center text-xl font-medium tracking-tight lg:px-0 lg:text-2xl lg:font-semibold">
         Customer experiences that inspire trust
       </p>
+      <div className="grid grid-cols-1 gap-6 md:grid-cols-2 lg:grid-cols-3">
+        {testimonials.map((testimonial, index) => (
+          <Card key={index} className="flex flex-col justify-between">
+            <CardContent className="pt-6">
+              <p className="italic text-muted-foreground">
+                &ldquo;{testimonial.testimony}&rdquo;
+              </p>
+            </CardContent>
+            <CardFooter className="text-right">
+              <p className="font-semibold">- {testimonial.name}</p>
+            </CardFooter>
+          </Card>
+        ))}
+      </div>
     </div>
+  );
+}
+
+function Footer() {
+  return (
+    <footer className="bg-gray-100 text-gray-800 dark:bg-gray-900 dark:text-gray-200">
+      <div className="mx-auto max-w-6xl px-4 py-10 md:py-16">
+        <div className="grid grid-cols-1 gap-8 md:grid-cols-4">
+          {/* Logo and About Us */}
+          <div className="space-y-4">
+            <div className="flex items-center space-x-2">
+              <div className="flex h-10 w-10 items-center justify-center rounded-full bg-primary text-primary-foreground">
+                <span className="text-xl font-bold">SS</span>
+              </div>
+              <span className="text-xl font-bold">Swift Ship</span>
+            </div>
+            <p className="text-sm text-gray-600 dark:text-gray-400">
+              Swift Ship offers fast, reliable shipping with eco-friendly
+              practices and 24/7 support. Your packages arrive on time, every
+              time.
+            </p>
+          </div>
+
+          {/* We Offer */}
+          <div>
+            <h3 className="mb-4 text-lg font-semibold">We Offer</h3>
+            <ul className="space-y-2 text-sm text-gray-600 dark:text-gray-400">
+              <li>Road freight</li>
+              <li>Air freight</li>
+              <li>Ocean freight</li>
+              <li>Warehousing and Storage</li>
+            </ul>
+          </div>
+
+          {/* Contact Info */}
+          <div>
+            <h3 className="mb-4 text-lg font-semibold">Contact Info</h3>
+            <ul className="space-y-2 text-sm text-gray-600 dark:text-gray-400">
+              <li className="flex items-center space-x-2">
+                <Mail size={16} />
+                <span>support@swiftship.com</span>
+              </li>
+              <li className="flex items-center space-x-2">
+                <MapPin size={16} />
+                <span>123 Logo Street, Design City, 90210</span>
+              </li>
+            </ul>
+          </div>
+
+          {/* Newsletter Signup */}
+          <div>
+            <h3 className="mb-4 text-lg font-semibold">Stay Updated</h3>
+            <p className="mb-4 text-sm text-gray-600 dark:text-gray-400">
+              Subscribe to our newsletter for the latest news and exclusive
+              offers.
+            </p>
+            <form className="space-y-2">
+              <Input
+                type="email"
+                placeholder="Enter your email"
+                className="bg-white dark:bg-gray-800"
+              />
+              <Button
+                type="submit"
+                className="w-full bg-primary text-primary-foreground hover:bg-primary/90"
+              >
+                Subscribe
+              </Button>
+            </form>
+          </div>
+        </div>
+
+        {/* Copyright */}
+        <div className="mt-8 border-t border-gray-200 pt-8 text-center text-sm text-gray-600 dark:border-gray-800 dark:text-gray-400">
+          © {new Date().getFullYear()} SwiftShip. All rights reserved.
+        </div>
+      </div>
+    </footer>
   );
 }

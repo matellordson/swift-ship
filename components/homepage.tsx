@@ -34,7 +34,7 @@ import machinery from "@/app/public/products/machinery.jpg";
 import furniture from "@/app/public/products/furniture.jpg";
 import grocery from "@/app/public/products/grocery.jpg";
 import appliance from "@/app/public/products/houseappliance.jpg";
-import truck from "@/app/public/truck.jpg";
+import deliveryman from "@/app/public/deliveryman.jpg";
 
 export default function HomePage() {
   return (
@@ -46,6 +46,7 @@ export default function HomePage() {
         <Record />
         <Products />
         <Benefits />
+        <Testimony />
       </div>
     </>
   );
@@ -332,8 +333,8 @@ function Benefits() {
       <p className="mx-auto max-w-xl scroll-m-20 px-4 pb-5 pt-2 text-center text-xl font-medium tracking-tight lg:px-0 lg:text-2xl lg:font-semibold">
         Effortless shipping solutions for seamless deliveries
       </p>
-      <div className="h-fit w-full items-center justify-center px-2 lg:flex">
-        <div className="flex h-fit w-full flex-col items-start justify-center gap-y-3 lg:h-fit lg:w-[40%] lg:pl-24">
+      <div className="w-full items-center justify-center px-2 lg:flex">
+        <div className="flex h-fit w-full flex-col items-start justify-center gap-y-3 lg:h-80 lg:w-[40%] lg:gap-y-10 lg:pl-24">
           <div className="flex items-center justify-center gap-x-3">
             <div className="h-fit w-fit rounded-full bg-muted p-2">
               <CarFront className="text-slate-700 dark:text-secondary-foreground" />
@@ -370,7 +371,27 @@ function Benefits() {
             </p>
           </div>
         </div>
+        <div className="mt- hidden w-full lg:mt-0 lg:flex lg:w-[60%]">
+          <Image
+            src={deliveryman}
+            alt="truck"
+            className="h-96 rounded object-cover opacity-90 dark:opacity-80"
+          />
+        </div>
       </div>
+    </div>
+  );
+}
+
+function Testimony() {
+  return (
+    <div className="border-b border-l border-r px-3 py-5">
+      <p className="scroll-m-20 pt-5 text-center text-xs font-semibold uppercase tracking-tight text-muted-foreground lg:text-sm">
+        testimonials
+      </p>
+      <p className="mx-auto max-w-xl scroll-m-20 px-4 pb-5 pt-2 text-center text-xl font-medium tracking-tight lg:px-0 lg:text-2xl lg:font-semibold">
+        Customer experiences that inspire trust
+      </p>
     </div>
   );
 }

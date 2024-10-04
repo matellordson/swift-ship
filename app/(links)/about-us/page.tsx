@@ -33,12 +33,12 @@ export default function AboutUs() {
         </div>
       </nav>
       <main className="container mx-auto flex-grow px-4 py-8">
-        <section className="mb-16 text-center">
+        <section className="mb-12 text-center">
           <Badge className="mb-4">About Us</Badge>
-          <h1 className="mb-4 text-4xl font-bold text-gray-900 dark:text-gray-100">
+          <h1 className="mb-4 text-3xl font-bold text-gray-900 dark:text-gray-100 lg:text-4xl">
             Experience unmatched speed and efficiency.
           </h1>
-          <p className="mx-auto max-w-2xl text-lg text-gray-600 dark:text-gray-300">
+          <p className="mx-auto max-w-2xl text-[16px] text-muted-foreground lg:text-[18px]">
             At Swift Ship, we deliver your packages quickly and reliably, using
             advanced technology and a dedicated team to ensure on-time,
             hassle-free shipping that keeps your business moving forward.
@@ -46,18 +46,20 @@ export default function AboutUs() {
         </section>
 
         <section className="mb-16">
-          <h2 className="mb-5 text-center text-2xl font-bold text-gray-900 dark:text-gray-100">
-            Our Core Values
-          </h2>
+          <p className="mb-5 scroll-m-20 pt-5 text-center text-xs font-semibold uppercase tracking-tight text-muted-foreground lg:text-sm">
+            our core values
+          </p>
           <div className="grid gap-6 md:grid-cols-3">
             <Card>
               <CardHeader>
-                <CardTitle className="flex items-center space-x-2">
-                  <span>Speed & Efficiency</span>
+                <CardTitle className="mb-[-10px] flex items-center space-x-2">
+                  <span className="scroll-m-20 text-xl font-semibold tracking-tight">
+                    Speed & Efficiency
+                  </span>
                 </CardTitle>
               </CardHeader>
               <CardContent>
-                <p className="text-gray-600 dark:text-gray-300">
+                <p className="text-muted-foreground">
                   We're dedicated to fast, reliable delivery, with every step
                   focused on getting your packages to you quickly.
                 </p>
@@ -65,12 +67,14 @@ export default function AboutUs() {
             </Card>
             <Card>
               <CardHeader>
-                <CardTitle className="flex items-center space-x-2">
-                  <span>Customer First</span>
+                <CardTitle className="mb-[-10px] flex items-center space-x-2">
+                  <span className="scroll-m-20 text-xl font-semibold tracking-tight">
+                    Customer First
+                  </span>
                 </CardTitle>
               </CardHeader>
               <CardContent>
-                <p className="text-gray-600 dark:text-gray-300">
+                <p className="text-muted-foreground">
                   We prioritize our customers, offering clear communication,
                   personalized solutions, and exceptional support to exceed
                   expectations.
@@ -79,12 +83,14 @@ export default function AboutUs() {
             </Card>
             <Card>
               <CardHeader>
-                <CardTitle className="flex items-center space-x-2">
-                  <span>Integrity & Reliability</span>
+                <CardTitle className="mb-[-10px] flex items-center space-x-2">
+                  <span className="scroll-m-20 text-xl font-semibold tracking-tight">
+                    Integrity & Reliability
+                  </span>
                 </CardTitle>
               </CardHeader>
               <CardContent>
-                <p className="text-gray-600 dark:text-gray-300">
+                <p className="text-muted-foreground">
                   We build trust through transparency, ensuring every delivery
                   is honest, consistent, and seamless.
                 </p>
@@ -94,9 +100,9 @@ export default function AboutUs() {
         </section>
 
         <section className="mb-16">
-          <h2 className="mb-3 text-center text-2xl font-bold text-gray-900 dark:text-gray-100">
-            Our Journey
-          </h2>
+          <p className="mb-5 scroll-m-20 pt-5 text-center text-xs font-semibold uppercase tracking-tight text-muted-foreground lg:text-sm">
+            our journey
+          </p>
           <Accordion type="single" collapsible className="w-full">
             <AccordionItem value="founding">
               <AccordionTrigger>The Founding (2010)</AccordionTrigger>

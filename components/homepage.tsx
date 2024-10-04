@@ -39,7 +39,6 @@ import deliveryman from "@/app/public/deliveryman.jpg";
 import { MapPin } from "lucide-react";
 import { Input } from "@/components/ui/input";
 import Link from "next/link";
-import { ModeToggle } from "./navbar";
 import { Menu, X } from "lucide-react";
 
 export default function HomePage() {
@@ -623,7 +622,6 @@ function Footer() {
                 </div>
                 <span className="text-xl font-bold">Swift Ship</span>
               </div>
-              <ModeToggle />
             </div>
             <p className="text-sm text-gray-600 dark:text-gray-400">
               Swift Ship offers fast, reliable shipping with eco-friendly

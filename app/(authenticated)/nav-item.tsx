@@ -16,13 +16,14 @@ import {
 } from "@/components/ui/dropdown-menu";
 import { useTheme } from "next-themes";
 import { Laptop, Moon, Sun } from "lucide-react";
+import Signout from "../_action/signout";
 
 export function Nav({ user }: { user: string }) {
   const { setTheme } = useTheme();
 
   return (
     <nav className="mb-5 border-b bg-background">
-      <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+      <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-0">
         <div className="flex h-16 items-center justify-between">
           <div className="flex items-center">
             <div className="flex-shrink-0">
@@ -90,7 +91,17 @@ export function Nav({ user }: { user: string }) {
                   </DropdownMenuSubContent>
                 </DropdownMenuSub>
                 <DropdownMenuSeparator />
-                <DropdownMenuItem>Log out</DropdownMenuItem>
+                <DropdownMenuItem className="py-0">
+                  <form action={Signout}>
+                    <Button
+                      variant={"ghost"}
+                      size={"sm"}
+                      className="my-0 w-full py-0"
+                    >
+                      Log out
+                    </Button>
+                  </form>
+                </DropdownMenuItem>
               </DropdownMenuContent>
             </DropdownMenu>
           </div>

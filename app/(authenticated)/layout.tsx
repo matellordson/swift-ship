@@ -3,6 +3,7 @@ import { Nav } from "./nav-item";
 import { validateRequest } from "@/utils/auth";
 import { userTable } from "@/src/db/schema";
 import { eq } from "drizzle-orm";
+import { redirect } from "next/navigation";
 
 export default async function AuthenticatedLayout({
   children,
@@ -12,7 +13,7 @@ export default async function AuthenticatedLayout({
   const { user } = await validateRequest();
 
   if (!user) {
-    throw new Error("User not authenticated");
+    redirect("/");
   }
 
   const currentUserResult = await db

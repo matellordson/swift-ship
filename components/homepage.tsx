@@ -244,9 +244,15 @@ function Banner() {
             >
               Get Started
             </Link>
-            <Button className="shadow dark:bg-secondary" variant={"outline"}>
+            <Link
+              href={"/about-us"}
+              className={buttonVariants({
+                className: "shadow dark:bg-secondary",
+                variant: "outline",
+              })}
+            >
               About Us
-            </Button>
+            </Link>
           </div>
         </div>
       </div>

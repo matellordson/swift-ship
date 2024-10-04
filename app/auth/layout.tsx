@@ -13,7 +13,7 @@ export default function AuthLayout({
   );
 }
 
-function Nav() {
+export function Nav() {
   return (
     <nav className="mb-10 border-b bg-background">
       <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">

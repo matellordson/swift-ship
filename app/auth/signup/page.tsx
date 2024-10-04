@@ -26,6 +26,7 @@ import {
 import Link from "next/link";
 import SignupAction from "@/app/_action/signup";
 import { CheckCircle2Icon, CircleX } from "lucide-react";
+import { Checkbox } from "@/components/ui/checkbox";
 
 const SignupSchema = z.object({
   username: z.string().min(5, {
@@ -33,6 +34,9 @@ const SignupSchema = z.object({
   }),
   password: z.string().min(6, {
     message: "Password must be at least 6 characters.",
+  }),
+  agreeTerms: z.boolean().refine((val) => val === true, {
+    message: "You must agree to the terms and conditions.",
   }),
 });
 
@@ -45,10 +49,21 @@ export default function Signin() {
     defaultValues: {
       username: "",
       password: "",
+      agreeTerms: false,
     },
   });
 
   async function onSubmit(data: z.infer<typeof SignupSchema>) {
+    if (!data.agreeTerms) {
+      toast(
+        <p className="flex items-center justify-start gap-1 text-xs text-muted-foreground">
+          <CircleX className="size-4 text-red-500" />
+          You must agree to the terms and conditions.
+        </p>,
+      );
+      return;
+    }
+
     const res = await SignupAction(data);
 
     if (res.error) {
@@ -113,11 +128,37 @@ export default function Signin() {
                   </FormItem>
                 )}
               />
+              <FormField
+                control={form.control}
+                name="agreeTerms"
+                render={({ field }) => (
+                  <FormItem className="flex flex-row items-start space-x-3 space-y-0">
+                    <FormControl>
+                      <Checkbox
+                        checked={field.value}
+                        onCheckedChange={field.onChange}
+                      />
+                    </FormControl>
+                    <div className="space-y-1 leading-none">
+                      <FormLabel>
+                        I agree to the{" "}
+                        <Link
+                          href="/terms"
+                          className="text-primary hover:underline"
+                        >
+                          terms and conditions
+                        </Link>
+                      </FormLabel>
+                      <FormMessage />
+                    </div>
+                  </FormItem>
+                )}
+              />
               <Button
                 type="submit"
                 className="w-full font-semibold tracking-wide"
               >
-                Creact account
+                Create account
               </Button>
             </form>
           </Form>

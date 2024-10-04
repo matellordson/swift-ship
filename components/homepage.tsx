@@ -113,11 +113,23 @@ function Nav() {
               </div>
             </div>
           </div>
-          <div className="hidden md:block">
-            <Button variant="outline" className="mr-2">
+          <div className="hidden space-x-2 md:block">
+            <Link
+              href={"#"}
+              className={buttonVariants({
+                variant: "outline",
+              })}
+            >
               Contact
-            </Button>
-            <Button>Login</Button>
+            </Link>
+            <Link
+              href={"auth/signin"}
+              className={buttonVariants({
+                variant: "default",
+              })}
+            >
+              Login
+            </Link>
           </div>
           <div className="-mr-2 flex md:hidden">
             <button
@@ -173,11 +185,25 @@ function Nav() {
             </Link>
           </div>
           <div className="border-t border-muted pb-3 pt-4">
-            <div className="flex items-center px-5">
-              <Button variant="outline" className="mr-2 w-full">
+            <div className="flex items-center gap-2 px-5">
+              <Link
+                href={"#"}
+                className={buttonVariants({
+                  variant: "outline",
+                  className: "w-full",
+                })}
+              >
                 Contact
-              </Button>
-              <Button className="w-full">Login</Button>
+              </Link>
+              <Link
+                href={"auth/signin"}
+                className={buttonVariants({
+                  variant: "default",
+                  className: "w-full",
+                })}
+              >
+                Login
+              </Link>
             </div>
           </div>
         </div>

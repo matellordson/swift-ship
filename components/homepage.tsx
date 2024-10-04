@@ -123,7 +123,7 @@ function Nav() {
             <button
               onClick={() => setIsMenuOpen(!isMenuOpen)}
               type="button"
-              className="inline-flex items-center justify-center rounded-md p-2 text-gray-400 hover:bg-gray-100 hover:text-gray-500 focus:outline-none focus:ring-2 focus:ring-inset focus:ring-indigo-500"
+              className="inline-flex items-center justify-center rounded-md p-2 text-gray-400 hover:bg-gray-100 hover:text-gray-500 focus:outline-none focus:ring-2 focus:ring-inset focus:ring-primary"
               aria-controls="mobile-menu"
               aria-expanded="false"
             >
@@ -172,7 +172,7 @@ function Nav() {
               Pricing
             </Link>
           </div>
-          <div className="border-t border-gray-200 pb-3 pt-4">
+          <div className="border-t border-muted pb-3 pt-4">
             <div className="flex items-center px-5">
               <Button variant="outline" className="mr-2 w-full">
                 Contact

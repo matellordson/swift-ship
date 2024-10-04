@@ -40,6 +40,7 @@ export default function ChatForm({ onSubmit }: ChatFormProps) {
         onChange={(e) => setMessage(e.target.value)}
       />
       <Button
+        onClick={async () => await fetch("/api/emails", { method: "POST" })}
         type="submit"
         size="sm"
         className="h-[50px] w-[50px] rounded-full bg-primary text-primary-foreground active:opacity-80"

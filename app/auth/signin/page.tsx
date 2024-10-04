@@ -16,7 +16,13 @@ import {
 } from "@/components/ui/form";
 import { Input } from "@/components/ui/input";
 import SigninAction from "@/app/_action/signin";
-import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
+import {
+  Card,
+  CardContent,
+  CardDescription,
+  CardHeader,
+  CardTitle,
+} from "@/components/ui/card";
 import Link from "next/link";
 import { CheckCircle2Icon, CircleX } from "lucide-react";
 
@@ -65,9 +71,11 @@ export default function Signin() {
   return (
     <div className="mx-auto max-w-sm px-3 lg:px-0">
       <Card>
-        <CardHeader className="text-center">
-          <div className="mx-auto mb-3 h-16 w-16 rounded-full bg-primary-foreground"></div>
-          <CardTitle>Welcome Back</CardTitle>
+        <CardHeader className="">
+          <CardTitle>Login</CardTitle>
+          <CardDescription>
+            Enter your email below to login to your account.
+          </CardDescription>
         </CardHeader>
         <CardContent>
           <Form {...form}>

@@ -16,7 +16,13 @@ import {
   FormMessage,
 } from "@/components/ui/form";
 import { Input } from "@/components/ui/input";
-import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
+import {
+  Card,
+  CardContent,
+  CardDescription,
+  CardHeader,
+  CardTitle,
+} from "@/components/ui/card";
 import Link from "next/link";
 import SignupAction from "@/app/_action/signup";
 import { CheckCircle2Icon, CircleX } from "lucide-react";
@@ -66,9 +72,11 @@ export default function Signin() {
   return (
     <div className="mx-auto max-w-sm px-3 lg:px-0">
       <Card>
-        <CardHeader className="text-center">
-          <div className="mx-auto mb-3 h-16 w-16 rounded-full bg-primary-foreground"></div>
-          <CardTitle>Create an account</CardTitle>
+        <CardHeader className="">
+          <CardTitle>Sign Up</CardTitle>
+          <CardDescription>
+            Enter your information to create an account
+          </CardDescription>
         </CardHeader>
         <CardContent>
           <Form {...form}>
@@ -99,7 +107,7 @@ export default function Signin() {
                   <FormItem>
                     <FormLabel>Password</FormLabel>
                     <FormControl>
-                      <Input type="password" {...field} />
+                      <Input className="" type="password" {...field} />
                     </FormControl>
                     <FormMessage />
                   </FormItem>

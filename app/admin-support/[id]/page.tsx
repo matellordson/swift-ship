@@ -44,11 +44,11 @@ export default async function CustomerSupport({
       <div className="fixed bottom-0 left-0 right-0 top-0">
         <div className="flex h-[10%] items-center justify-start border-b px-3 lg:rounded lg:rounded-t-lg">
           <div className="flex items-center space-x-2">
-            <Link href={"/admin-support"}>
+            <Link href={"/dashboard"}>
               <ArrowLeft />
             </Link>
             <Avatar>
-              <AvatarFallback className="bg-gradient-to-r from-neutral-200 to-neutral-300 text-xl font-semibold uppercase text-foreground shadow-sm dark:from-neutral-500 dark:to-neutral-700">
+              <AvatarFallback className="bg-gradient-to-r from-blue-300 to-blue-500 text-xl font-semibold uppercase text-blue-200 shadow-sm dark:from-blue-300 dark:to-blue-500 dark:text-blue-100">
                 {userProfile?.user_name
                   .split(" ")
                   .map((n) => n[0])

@@ -10,7 +10,7 @@ import {
 } from "@/components/ui/carousel";
 import { type CarouselApi } from "@/components/ui/carousel";
 import Image, { StaticImageData } from "next/image";
-import { Button } from "./ui/button";
+import { Button, buttonVariants } from "./ui/button";
 import {
   Building2,
   CarFront,
@@ -28,7 +28,7 @@ import {
   UsersRound,
 } from "lucide-react";
 import { Card, CardContent, CardFooter } from "./ui/card";
-import React from "react";
+import React, { useState } from "react";
 import { useMediaQuery } from "@/hooks/use-media-query";
 import clothing from "@/app/public/products/clothing.jpg";
 import machinery from "@/app/public/products/machinery.jpg";
@@ -36,9 +36,11 @@ import furniture from "@/app/public/products/furniture.jpg";
 import grocery from "@/app/public/products/grocery.jpg";
 import appliance from "@/app/public/products/houseappliance.jpg";
 import deliveryman from "@/app/public/deliveryman.jpg";
-import { Phone, MapPin } from "lucide-react";
+import { MapPin } from "lucide-react";
 import { Input } from "@/components/ui/input";
 import Link from "next/link";
+import { ModeToggle } from "./navbar";
+import { Menu, X } from "lucide-react";
 
 export default function HomePage() {
   return (
@@ -58,10 +60,129 @@ export default function HomePage() {
 }
 
 function Nav() {
+  const [isMenuOpen, setIsMenuOpen] = useState(false);
   return (
-    <div className="mx-auto my-3 mb-5 w-full max-w-7xl p-3 px-3">
-      {/* <div className="h-10 w-32 bg-muted-foreground"></div> */}
-    </div>
+    <nav className="mb-5 border-b bg-background">
+      <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+        <div className="flex h-16 items-center justify-between">
+          <div className="flex items-center">
+            <div className="flex-shrink-0">
+              <Link href="/" className="flex items-center">
+                <svg
+                  className="h-8 w-8 text-black dark:text-white"
+                  viewBox="0 0 76 65"
+                  fill="currentColor"
+                >
+                  <path d="M37.5274 0L75.0548 65H0L37.5274 0Z" />
+                </svg>
+                <span className="ml-2 text-xl font-bold">Vercel</span>
+              </Link>
+            </div>
+            <div className="hidden md:block">
+              <div className="ml-10 flex items-baseline space-x-4">
+                <Link
+                  href="#"
+                  className="rounded-md px-3 py-2 text-sm font-medium text-gray-600 hover:text-gray-900 dark:text-gray-300 dark:hover:text-white"
+                >
+                  Features
+                </Link>
+                <Link
+                  href="#"
+                  className="rounded-md px-3 py-2 text-sm font-medium text-gray-600 hover:text-gray-900 dark:text-gray-300 dark:hover:text-white"
+                >
+                  Templates
+                </Link>
+                <Link
+                  href="#"
+                  className="rounded-md px-3 py-2 text-sm font-medium text-gray-600 hover:text-gray-900 dark:text-gray-300 dark:hover:text-white"
+                >
+                  Integrations
+                </Link>
+                <Link
+                  href="#"
+                  className="rounded-md px-3 py-2 text-sm font-medium text-gray-600 hover:text-gray-900 dark:text-gray-300 dark:hover:text-white"
+                >
+                  Customers
+                </Link>
+                <Link
+                  href="#"
+                  className="rounded-md px-3 py-2 text-sm font-medium text-gray-600 hover:text-gray-900 dark:text-gray-300 dark:hover:text-white"
+                >
+                  Pricing
+                </Link>
+              </div>
+            </div>
+          </div>
+          <div className="hidden md:block">
+            <Button variant="outline" className="mr-2">
+              Contact
+            </Button>
+            <Button>Login</Button>
+          </div>
+          <div className="-mr-2 flex md:hidden">
+            <button
+              onClick={() => setIsMenuOpen(!isMenuOpen)}
+              type="button"
+              className="inline-flex items-center justify-center rounded-md p-2 text-gray-400 hover:bg-gray-100 hover:text-gray-500 focus:outline-none focus:ring-2 focus:ring-inset focus:ring-indigo-500"
+              aria-controls="mobile-menu"
+              aria-expanded="false"
+            >
+              <span className="sr-only">Open main menu</span>
+              {isMenuOpen ? (
+                <X className="block h-6 w-6" aria-hidden="true" />
+              ) : (
+                <Menu className="block h-6 w-6" aria-hidden="true" />
+              )}
+            </button>
+          </div>
+        </div>
+      </div>
+
+      {isMenuOpen && (
+        <div className="md:hidden" id="mobile-menu">
+          <div className="space-y-1 px-2 pb-3 pt-2 sm:px-3">
+            <Link
+              href="#"
+              className="block rounded-md px-3 py-2 text-base font-medium text-gray-600 hover:text-gray-900 dark:text-gray-300 dark:hover:text-white"
+            >
+              Features
+            </Link>
+            <Link
+              href="#"
+              className="block rounded-md px-3 py-2 text-base font-medium text-gray-600 hover:text-gray-900 dark:text-gray-300 dark:hover:text-white"
+            >
+              Templates
+            </Link>
+            <Link
+              href="#"
+              className="block rounded-md px-3 py-2 text-base font-medium text-gray-600 hover:text-gray-900 dark:text-gray-300 dark:hover:text-white"
+            >
+              Integrations
+            </Link>
+            <Link
+              href="#"
+              className="block rounded-md px-3 py-2 text-base font-medium text-gray-600 hover:text-gray-900 dark:text-gray-300 dark:hover:text-white"
+            >
+              Customers
+            </Link>
+            <Link
+              href="#"
+              className="block rounded-md px-3 py-2 text-base font-medium text-gray-600 hover:text-gray-900 dark:text-gray-300 dark:hover:text-white"
+            >
+              Pricing
+            </Link>
+          </div>
+          <div className="border-t border-gray-200 pb-3 pt-4">
+            <div className="flex items-center px-5">
+              <Button variant="outline" className="mr-2 w-full">
+                Contact
+              </Button>
+              <Button className="w-full">Login</Button>
+            </div>
+          </div>
+        </div>
+      )}
+    </nav>
   );
 }
 
@@ -73,8 +194,11 @@ function Banner() {
           <Image
             src={container}
             alt="container"
-            priority
+            priority={true}
             placeholder="blur"
+            height={500}
+            width={500}
+            objectFit=""
             className="h-[500px] w-full max-w-6xl rounded-t-xl object-cover opacity-90 transition dark:opacity-100 dark:mix-blend-overlay lg:relative"
           />
         </div>
@@ -87,7 +211,14 @@ function Banner() {
             By prioritizing sustainability and integrating all freight modes.
           </p>
           <div className="mt-3 flex w-full items-center justify-center space-x-5 lg:mt-5">
-            <Button className="shadow dark:bg-slate-100">Get Started</Button>
+            <Link
+              href={"/auth/signup"}
+              className={buttonVariants({
+                className: "shadow dark:bg-slate-100",
+              })}
+            >
+              Get Started
+            </Link>
             <Button className="shadow dark:bg-secondary" variant={"outline"}>
               About Us
             </Button>
@@ -295,6 +426,7 @@ function Products() {
                         src={slide.image}
                         alt={slide.heading}
                         layout="fill"
+                        priority={true}
                         objectFit="cover"
                         className="rounded-t-lg opacity-80 transition dark:opacity-70"
                       />
@@ -380,6 +512,9 @@ function Benefits() {
           <Image
             src={deliveryman}
             alt="truck"
+            height={384}
+            width={700}
+            priority={true}
             className="h-96 rounded object-cover opacity-80 dark:opacity-70"
           />
         </div>
@@ -423,7 +558,7 @@ function Testimony() {
   ];
 
   return (
-    <div className="mb-14 rounded-b-lg border-b border-l border-r px-3 py-3">
+    <div className="mb-8 rounded-b-lg border-b border-l border-r px-3 py-3">
       <p className="scroll-m-20 pt-5 text-center text-xs font-semibold uppercase tracking-tight text-muted-foreground lg:text-sm">
         testimonials
       </p>
@@ -453,13 +588,16 @@ function Footer() {
     <footer className="bg-gray-100 text-gray-800 dark:bg-gray-900 dark:text-gray-200">
       <div className="mx-auto max-w-6xl px-4 py-10 md:py-16">
         <div className="grid grid-cols-1 gap-8 md:grid-cols-4">
-          {/* Logo and About Us */}
+          {/* Logo, About Us, and Theme Toggle */}
           <div className="space-y-4">
-            <div className="flex items-center space-x-2">
-              <div className="flex h-10 w-10 items-center justify-center rounded-full bg-primary text-primary-foreground">
-                <span className="text-xl font-bold">SS</span>
+            <div className="flex items-center justify-between">
+              <div className="flex items-center space-x-2">
+                <div className="flex h-10 w-10 items-center justify-center rounded-full bg-primary text-primary-foreground">
+                  <span className="text-xl font-bold">SS</span>
+                </div>
+                <span className="text-xl font-bold">Swift Ship</span>
               </div>
-              <span className="text-xl font-bold">Swift Ship</span>
+              <ModeToggle />
             </div>
             <p className="text-sm text-gray-600 dark:text-gray-400">
               Swift Ship offers fast, reliable shipping with eco-friendly
@@ -488,8 +626,10 @@ function Footer() {
                 <span>support@swiftship.com</span>
               </li>
               <li className="flex items-center space-x-2">
-                <MapPin size={16} />
-                <span>123 Logo Street, Design City, 90210</span>
+                <MapPin className="h-5 w-5 lg:h-7 lg:w-7" />
+                <span>
+                  Swift Ship 5622 Briarwood Dr, 208 Lakewood, OH 44107
+                </span>
               </li>
             </ul>
           </div>

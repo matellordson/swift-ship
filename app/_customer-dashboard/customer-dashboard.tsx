@@ -77,10 +77,10 @@ export default function CustomerDashboard({
   }
 
   return (
-    <div className="container mx-auto p-4">
+    <div className="container mx-auto px-4">
       <div className="flex w-full items-center justify-between">
         <h1 className="scroll-m-20 text-xl font-semibold tracking-tight">
-          Your Shipping Packages
+          Your Packages
         </h1>
         <PackageForm />
       </div>

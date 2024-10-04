@@ -10,7 +10,7 @@ import { PackageForm } from "./new-package";
 
 export function NoPackage() {
   return (
-    <div className="container mx-auto mt-32 max-w-lg px-5 lg:px-0">
+    <div className="container mx-auto max-w-lg px-5 lg:px-0">
       <Card>
         <CardHeader className="flex items-center justify-center">
           <PackageOpenIcon size={150} />

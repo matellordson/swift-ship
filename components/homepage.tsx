@@ -24,7 +24,6 @@ import {
   TimerResetIcon,
   Truck,
   User2,
-  UserCircle2Icon,
   UsersRound,
 } from "lucide-react";
 import { Card, CardContent, CardFooter } from "./ui/card";
@@ -98,28 +97,28 @@ function Nav() {
                   Integrations
                 </Link>
                 <Link
-                  href="#"
+                  href="/contact-us"
                   className="rounded-md px-3 py-2 text-sm font-medium text-gray-600 hover:text-gray-900 dark:text-gray-300 dark:hover:text-white"
                 >
-                  Customers
+                  Contact us
                 </Link>
                 <Link
-                  href="#"
+                  href="/terms-and-conditions"
                   className="rounded-md px-3 py-2 text-sm font-medium text-gray-600 hover:text-gray-900 dark:text-gray-300 dark:hover:text-white"
                 >
-                  Pricing
+                  Terms and Conditions
                 </Link>
               </div>
             </div>
           </div>
           <div className="hidden space-x-2 md:block">
             <Link
-              href={"#"}
+              href={"/auth/signup"}
               className={buttonVariants({
                 variant: "outline",
               })}
             >
-              Contact
+              Signup
             </Link>
             <Link
               href={"auth/signin"}
@@ -171,28 +170,28 @@ function Nav() {
               Integrations
             </Link>
             <Link
-              href="#"
+              href="/contact-us"
               className="block rounded-md px-3 py-2 text-base font-medium text-gray-600 hover:text-gray-900 dark:text-gray-300 dark:hover:text-white"
             >
-              Customers
+              Contact us
             </Link>
             <Link
-              href="#"
+              href="/terms-and-conditions"
               className="block rounded-md px-3 py-2 text-base font-medium text-gray-600 hover:text-gray-900 dark:text-gray-300 dark:hover:text-white"
             >
-              Pricing
+              Terms and Conditions
             </Link>
           </div>
           <div className="border-t border-muted pb-3 pt-4">
             <div className="flex items-center gap-2 px-5">
               <Link
-                href={"#"}
+                href={"/auth/signup"}
                 className={buttonVariants({
                   variant: "outline",
                   className: "w-full",
                 })}
               >
-                Contact
+                Signup
               </Link>
               <Link
                 href={"auth/signin"}

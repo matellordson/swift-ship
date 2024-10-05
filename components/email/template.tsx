@@ -42,9 +42,9 @@ export default function Email({ user }: { user: string }) {
             </Text>
             <Link
               href={`https://swift-ship-three.vercel.app/admin-support/${user}`}
-              className="flex items-center gap-x-1"
+              className=""
             >
-              view message <ArrowRight size={15} className="p-0" />
+              view message
             </Link>
           </Container>
         </Body>

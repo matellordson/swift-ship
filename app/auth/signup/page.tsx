@@ -143,7 +143,7 @@ export default function Signin() {
                       <FormLabel>
                         I agree to the{" "}
                         <Link
-                          href="/terms"
+                          href="/terms-and-conditions"
                           className="text-primary hover:underline"
                         >
                           terms and conditions

@@ -33,7 +33,7 @@ export default function AboutUs() {
         </div>
       </nav>
       <main className="container mx-auto flex-grow px-4 py-8">
-        <section className="mb-12 text-center">
+        <section className="text-center">
           <Badge className="mb-4">About Us</Badge>
           <h1 className="mb-4 text-3xl font-bold text-gray-900 dark:text-gray-100 lg:text-4xl">
             Experience unmatched speed and efficiency.
@@ -164,7 +164,10 @@ export default function AboutUs() {
           © {new Date().getFullYear()} SwiftShip. All rights reserved.
         </p>
         <nav className="flex gap-4 sm:ml-auto sm:gap-6">
-          <Link className="text-xs underline-offset-4 hover:underline" href="#">
+          <Link
+            className="text-xs underline-offset-4 hover:underline"
+            href="/terms-and-condiitons"
+          >
             Terms and Conditions
           </Link>
         </nav>

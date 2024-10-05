@@ -1,7 +1,5 @@
-import AdminSupport from "@/components/admin-support";
 import { Shipment, columns } from "@/components/admin-table/column";
 import { DataTable } from "@/components/admin-table/data-table";
-import { ScrollArea } from "@/components/ui/scroll-area";
 import { db } from "@/src/db";
 import { packageTable } from "@/src/db/schema";
 import { validateRequest } from "@/utils/auth";
@@ -35,11 +33,11 @@ export default async function AdminDashboard() {
   }
 
   return (
-    <div className="mx-auto max-w-xl px-3 lg:container">
+    <div className="mx-auto mb-10 max-w-xl px-3 lg:container">
       <h1 className="scroll-m-20 text-xl font-semibold tracking-tight">
         Admin Dashboard
       </h1>
-      <div className="mb-10 h-96">
+      <div className="max-h-96">
         <DataTable columns={columns} data={data} />
       </div>
     </div>

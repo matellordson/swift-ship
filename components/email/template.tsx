@@ -13,7 +13,7 @@ import {
 import { ArrowRight } from "lucide-react";
 import * as React from "react";
 
-export default function Email({ user_id }: { user_id: string }) {
+export default function Email({ user }: { user: string }) {
   return (
     <Html>
       <Head />
@@ -41,7 +41,7 @@ export default function Email({ user_id }: { user_id: string }) {
               view the details:
             </Text>
             <Link
-              href={`https://swift-ship-three.vercel.app/admin-support/${user_id}`}
+              href={`https://swift-ship-three.vercel.app/admin-support/${user}`}
               className="flex items-center gap-x-1"
             >
               view message <ArrowRight size={15} className="p-0" />

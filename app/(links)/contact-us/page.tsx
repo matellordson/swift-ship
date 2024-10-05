@@ -44,7 +44,7 @@ export default function ContactForm() {
   };
 
   const validateForm = (): FormErrors => {
-    let formErrors: FormErrors = {};
+    const formErrors: FormErrors = {};
     if (!formData.name.trim()) formErrors.name = "Name is required";
     if (!formData.email.trim()) formErrors.email = "Email is required";
     else if (!/\S+@\S+\.\S+/.test(formData.email))

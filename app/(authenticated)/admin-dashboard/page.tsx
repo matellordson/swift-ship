@@ -33,7 +33,7 @@ export default async function AdminDashboard() {
   }
 
   return (
-    <div className="mx-auto mb-10 max-w-xl px-3 lg:container">
+    <div className="mx-auto max-w-xl px-3 lg:container">
       <h1 className="scroll-m-20 text-xl font-semibold tracking-tight">
         Admin Dashboard
       </h1>

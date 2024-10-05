@@ -17,7 +17,7 @@ export default function Email({ user }: { user: string }) {
   return (
     <Html>
       <Head />
-      <Preview>New message</Preview>
+      <Preview>Action Required</Preview>
       <Tailwind>
         <Body className="mx-auto my-auto bg-white px-2 font-sans">
           <Container className="mx-auto my-[40px] max-w-[465px] rounded border border-solid border-[#eaeaea] p-[20px]">

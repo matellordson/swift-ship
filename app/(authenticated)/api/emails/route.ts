@@ -9,7 +9,7 @@ export async function POST(request: Request) {
     const { data, error } = await resend.emails.send({
       from: "Swift Ship <onboarding@resend.dev>",
       to: ["snr.mn.lordson@gmail.com"],
-      subject: "New Message",
+      subject: "New message",
       react: Email({ user }),
     });
 

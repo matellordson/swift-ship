@@ -48,7 +48,7 @@ export default async function CustomerSupport({
               <ArrowLeft />
             </Link>
             <Avatar>
-              <AvatarFallback className="capitalize">
+              <AvatarFallback className="uppercase">
                 {userProfile?.user_name
                   .split(" ")
                   .map((n) => n[0])

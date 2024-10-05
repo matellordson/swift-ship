@@ -51,7 +51,7 @@ export function Nav({ user }: { user: string }) {
                       src="/placeholder.svg?height=32&width=32"
                       alt="@user"
                     />
-                    <AvatarFallback className="capitalize">
+                    <AvatarFallback className="uppercase">
                       {user
                         .split(" ")
                         .map((n) => n[0])

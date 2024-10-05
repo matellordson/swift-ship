@@ -74,7 +74,7 @@ export default function Signin() {
         <CardHeader className="">
           <CardTitle>Login</CardTitle>
           <CardDescription>
-            Enter your email below to login to your account.
+            Enter your username below to login to your account.
           </CardDescription>
         </CardHeader>
         <CardContent>

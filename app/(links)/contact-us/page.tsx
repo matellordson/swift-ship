@@ -100,7 +100,7 @@ export default function ContactForm() {
           </div>
         </div>
       </nav>
-      <div className="mx-auto mt-10 max-w-md rounded-lg bg-background p-6 shadow-md">
+      <div className="mx-auto mb-10 mt-10 max-w-md rounded-lg bg-background p-6 shadow-md">
         <h1 className="text-2xl font-bold text-foreground">Contact Us</h1>
         <p className="mb-6 text-muted-foreground">
           Got a question or feedback? Fill out the form below, and we'll get
@@ -191,6 +191,19 @@ export default function ContactForm() {
           </div>
         )}
       </div>
+      <footer className="flex w-full shrink-0 flex-col items-center gap-2 border-t px-4 py-6 sm:flex-row md:px-6">
+        <p className="text-xs text-gray-500 dark:text-gray-400">
+          © {new Date().getFullYear()} SwiftShip. All rights reserved.
+        </p>
+        <nav className="flex gap-4 sm:ml-auto sm:gap-6">
+          <Link
+            className="text-xs underline-offset-4 hover:underline"
+            href="/terms-and-conditions"
+          >
+            Terms and Conditions
+          </Link>
+        </nav>
+      </footer>
     </div>
   );
 }

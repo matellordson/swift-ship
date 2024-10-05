@@ -166,7 +166,7 @@ export default function AboutUs() {
         <nav className="flex gap-4 sm:ml-auto sm:gap-6">
           <Link
             className="text-xs underline-offset-4 hover:underline"
-            href="/terms-and-condiitons"
+            href="/terms-and-conditions"
           >
             Terms and Conditions
           </Link>

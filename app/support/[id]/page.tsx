@@ -29,7 +29,7 @@ export default async function CustomerSupport({
 
   const { user } = await validateRequest();
   if (!user) {
-    redirect("/auth/signup");
+    redirect("/auth/signin");
   }
 
   return (
@@ -62,7 +62,7 @@ export default async function CustomerSupport({
           <RealtimePosts serverPosts={data ?? []} />
         </div>
         <div className="flex h-[10%] items-center justify-center border-t">
-          <ChatForm onSubmit={submitMessage} />
+          <ChatForm onSubmit={submitMessage} user={user.id} />
         </div>
       </div>
     </div>

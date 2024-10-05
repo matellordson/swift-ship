@@ -7,9 +7,10 @@ import { SendHorizontal } from "lucide-react";
 
 interface ChatFormProps {
   onSubmit: (formData: FormData) => Promise<void>;
+  user: string;
 }
 
-export default function ChatForm({ onSubmit }: ChatFormProps) {
+export default function ChatForm({ onSubmit, user }: ChatFormProps) {
   const [message, setMessage] = useState("");
   const formRef = useRef<HTMLFormElement>(null);
 
@@ -40,7 +41,12 @@ export default function ChatForm({ onSubmit }: ChatFormProps) {
         onChange={(e) => setMessage(e.target.value)}
       />
       <Button
-        onClick={async () => await fetch("/api/emails", { method: "POST" })}
+        onClick={async () =>
+          await fetch("/api/emails", {
+            method: "POST",
+            body: JSON.stringify({ user: user }),
+          })
+        }
         type="submit"
         size="sm"
         className="h-[50px] w-[50px] rounded-full bg-primary text-primary-foreground active:opacity-80"

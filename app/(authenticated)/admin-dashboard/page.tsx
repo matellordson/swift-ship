@@ -39,7 +39,7 @@ export default async function AdminDashboard() {
       <h1 className="scroll-m-20 text-xl font-semibold tracking-tight">
         Admin Dashboard
       </h1>
-      <div className="h-96">
+      <div className="mb-10 h-96">
         <DataTable columns={columns} data={data} />
       </div>
     </div>

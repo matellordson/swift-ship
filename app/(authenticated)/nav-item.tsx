@@ -64,7 +64,7 @@ export function Nav({ user }: { user: string }) {
                 <DropdownMenuLabel className="font-normal">
                   <div className="flex flex-col space-y-1">
                     <p className="text-sm font-medium leading-none">User</p>
-                    <p className="truncate text-xs leading-none text-muted-foreground">
+                    <p className="truncate text-xs capitalize leading-none text-muted-foreground">
                       {user}
                     </p>
                   </div>

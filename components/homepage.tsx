@@ -19,6 +19,7 @@ import {
   Headphones,
   Mail,
   Package,
+  Phone,
   PlaneTakeoff,
   Ship,
   TimerResetIcon,
@@ -641,6 +642,10 @@ function Footer() {
               <li className="flex items-center space-x-2">
                 <Mail size={16} />
                 <span>support@swiftship.com</span>
+              </li>
+              <li className="flex items-center space-x-2">
+                <Phone size={16} />
+                <span>+(469) 340 2607</span>
               </li>
               <li className="flex items-center space-x-2">
                 <MapPin className="h-5 w-5 lg:h-7 lg:w-7" />

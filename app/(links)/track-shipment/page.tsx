@@ -86,7 +86,7 @@ export default function ShipmentTracker() {
 
   return (
     <div className="flex min-h-screen flex-col">
-      <nav className="sticky top-0 z-10 border-b bg-background">
+      <nav className="top-0 z-10 border-b bg-background">
         <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
           <div className="flex h-16 items-center justify-between">
             <div className="flex items-center">

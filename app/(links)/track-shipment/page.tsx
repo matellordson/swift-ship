@@ -107,8 +107,8 @@ export default function ShipmentTracker() {
         </div>
       </nav>
 
-      <main className="flex-grow px-4 py-8 sm:px-6 lg:px-8">
-        <Card className="mx-auto w-full max-w-3xl">
+      <main className="flex-grow py-8 lg:px-8">
+        <Card className="mx-auto w-full max-w-3xl border-none">
           <CardHeader className="pb-4">
             <CardTitle className="text-center text-2xl font-bold">
               Track Your Shipment

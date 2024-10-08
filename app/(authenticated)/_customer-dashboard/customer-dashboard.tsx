@@ -102,7 +102,7 @@ export default function CustomerDashboard({
           <Card className="p-4" key={pkg.id}>
             <div className="mb-4 grid grid-cols-2 gap-4">
               <div>
-                <p className="text-sm font-semibold">Package ID:</p>
+                <p className="text-sm font-semibold">Tracking ID:</p>
                 <p className="text-sm text-muted-foreground">
                   {pkg.tracking_number}
                 </p>

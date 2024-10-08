@@ -91,6 +91,12 @@ function Nav() {
                   Contact us
                 </Link>
                 <Link
+                  href="/track-shipment"
+                  className="rounded-md px-3 py-2 text-sm font-medium text-gray-600 hover:text-gray-900 dark:text-gray-300 dark:hover:text-white"
+                >
+                  Track shipment
+                </Link>
+                <Link
                   href="/terms-and-conditions"
                   className="rounded-md px-3 py-2 text-sm font-medium text-gray-600 hover:text-gray-900 dark:text-gray-300 dark:hover:text-white"
                 >
@@ -140,17 +146,22 @@ function Nav() {
         <div className="md:hidden" id="mobile-menu">
           <div className="space-y-1 px-2 pb-3 pt-2 sm:px-3">
             <Link
+              href="/about-us"
+              className="block rounded-md px-3 py-2 text-base font-medium text-gray-600 hover:text-gray-900 dark:text-gray-300 dark:hover:text-white"
+            >
+              About us
+            </Link>
+            <Link
               href="/contact-us"
               className="block rounded-md px-3 py-2 text-base font-medium text-gray-600 hover:text-gray-900 dark:text-gray-300 dark:hover:text-white"
             >
               Contact us
             </Link>
-
             <Link
-              href="/about-us"
+              href="/track-shipment"
               className="block rounded-md px-3 py-2 text-base font-medium text-gray-600 hover:text-gray-900 dark:text-gray-300 dark:hover:text-white"
             >
-              About us
+              Track shipment
             </Link>
             <Link
               href="/terms-and-conditions"

@@ -304,13 +304,12 @@ import {
 } from "@/components/ui/select";
 import { updateShipmentStatus } from "@/app/_action/update-package";
 import { updateDeliveryDate } from "@/app/_action/upade-delivery-date";
-import { deletePackage } from "@/app/_action/delete-package"; // Add this import
+import { deletePackage } from "@/app/_action/delete-package";
 import { useState } from "react";
 import { toast } from "sonner";
 import { useRouter } from "next/navigation";
 import { Calendar } from "@/components/ui/calendar";
 
-// Import date-fns for better date handling
 import { format, parseISO, isValid } from "date-fns";
 
 export type Shipment = {
@@ -327,7 +326,48 @@ export type Shipment = {
 };
 
 export const columns: ColumnDef<Shipment>[] = [
-  // ... (previous columns remain unchanged)
+  {
+    accessorKey: "tracking_id",
+    header: "Tracking Id",
+  },
+  {
+    accessorKey: "sender",
+    header: "Sender",
+  },
+  {
+    accessorKey: "receiver",
+    header: "Receiver",
+  },
+  {
+    accessorKey: "delivery_date",
+    header: "Delivery Date",
+    cell: ({ row }) => {
+      const shipment = row.original;
+      if (shipment.delivery_date) {
+        const date = parseISO(shipment.delivery_date);
+        if (isValid(date)) {
+          return format(date, "yyyy-MM-dd");
+        }
+      }
+      return "TBD";
+    },
+  },
+  {
+    accessorKey: "status",
+    header: "Status",
+  },
+  {
+    accessorKey: "package_type",
+    header: "Package Type",
+  },
+  {
+    accessorKey: "origin",
+    header: "Origin",
+  },
+  {
+    accessorKey: "destination",
+    header: "Destination",
+  },
   {
     id: "actions",
     cell: ({ row }) => {
@@ -346,11 +386,79 @@ export const columns: ColumnDef<Shipment>[] = [
       const router = useRouter();
 
       const handleStatusUpdate = async () => {
-        // ... (unchanged)
+        const result = await updateShipmentStatus(
+          shipment.tracking_id,
+          newStatus,
+        );
+        if (result.success) {
+          toast(
+            <p className="flex items-center justify-start gap-1 text-xs text-muted-foreground">
+              <CheckCircle2Icon className="size-4 text-green-500" />
+              Package status updated successfully
+            </p>,
+          );
+          setIsStatusOpen(false);
+        } else {
+          toast(
+            <p className="flex items-center justify-start gap-1 text-xs text-muted-foreground">
+              <CircleX className="size-4 text-red-500" />
+              Unsuccessful status update
+            </p>,
+          );
+        }
+        router.refresh();
       };
 
       const handleDateUpdate = async () => {
-        // ... (unchanged)
+        if (newDate && isValid(newDate)) {
+          const dateString = format(newDate, "yyyy-MM-dd");
+          const result = await updateDeliveryDate(
+            shipment.tracking_id,
+            dateString,
+          );
+          if (result.success) {
+            toast(
+              <p className="flex items-center justify-start gap-1 text-xs text-muted-foreground">
+                <CheckCircle2Icon className="size-4 text-green-500" />
+                Delivery date updated successfully
+              </p>,
+            );
+            setIsDateOpen(false);
+          } else {
+            toast(
+              <p className="flex items-center justify-start gap-1 text-xs text-muted-foreground">
+                <CircleX className="size-4 text-red-500" />
+                Unsuccessful date update
+              </p>,
+            );
+          }
+        } else if (newDate === undefined) {
+          const result = await updateDeliveryDate(shipment.tracking_id, "");
+          if (result.success) {
+            toast(
+              <p className="flex items-center justify-start gap-1 text-xs text-muted-foreground">
+                <CheckCircle2Icon className="size-4 text-green-500" />
+                Delivery date cleared successfully
+              </p>,
+            );
+            setIsDateOpen(false);
+          } else {
+            toast(
+              <p className="flex items-center justify-start gap-1 text-xs text-muted-foreground">
+                <CircleX className="size-4 text-red-500" />
+                Unsuccessful date clear
+              </p>,
+            );
+          }
+        } else {
+          toast(
+            <p className="flex items-center justify-start gap-1 text-xs text-muted-foreground">
+              <CircleX className="size-4 text-red-500" />
+              Invalid date selected
+            </p>,
+          );
+        }
+        router.refresh();
       };
 
       const handleDelete = async () => {

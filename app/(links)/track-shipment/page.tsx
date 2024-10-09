@@ -45,7 +45,7 @@ type PackageInfo = {
   delivery_date: string | null;
 };
 
-export default function ShipmentTracker() {
+export default function TrackShipment() {
   const [trackingNumber, setTrackingNumber] = useState("");
   const [packageInfo, setPackageInfo] = useState<PackageInfo | null>(null);
   const [error, setError] = useState("");

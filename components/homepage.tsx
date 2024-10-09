@@ -650,7 +650,7 @@ function Footer() {
               <li className="flex items-center space-x-2">
                 <MapPin className="h-5 w-5 lg:h-7 lg:w-7" />
                 <span>
-                  Swift Ship 5622 Briarwood Dr, 208 Lakewood, OH 44107
+                  65 Goldfields Road, Djuan, Queensland, 4352, Australia
                 </span>
               </li>
             </ul>

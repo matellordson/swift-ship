@@ -1,13 +1,8 @@
 import Script from "next/script";
 
-export default function RootLayout({
-  children,
-}: Readonly<{
-  children: React.ReactNode;
-}>) {
+export default function ChatScript() {
   return (
-    <div>
-      {children}
+    <>
       <Script id="livechat" strategy="afterInteractive">
         {`
             window.__lc = window.__lc || {};
@@ -30,6 +25,6 @@ export default function RootLayout({
           LiveChat
         </a>
       </noscript>
-    </div>
+    </>
   );
 }

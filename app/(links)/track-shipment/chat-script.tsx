@@ -37,15 +37,17 @@ export default function ChatScript() {
     `}
     </Script>
     <noscript>
-    <a href="https://www.livechat.com/chat-with/18679071/" rel="nofollow">Chat with us</a>
-      , powered by{" "}
-      <a
-        href="https://www.livechat.com/?welcome"
-        rel="noopener nofollow"
-        target="_blank"
-      >
-        LiveChat
-      </a>
+         <a href="https://www.livechat.com/chat-with/18679071/" rel="nofollow">
+           Chat with us
+         </a>
+         , powered by{" "}
+        <a
+           href="https://www.livechat.com/?welcome"
+          rel="noopener nofollow"
+          target="_blank"
+         >
+           Swift Ship
+        </a>
     </noscript>
   </>
   );

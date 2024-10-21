@@ -641,7 +641,7 @@ function Footer() {
             <ul className="space-y-2 text-sm text-gray-600 dark:text-gray-400">
               <li className="flex items-center space-x-2">
                 <Mail size={16} />
-                <span>support@swiftship.com</span>
+                <span>swiftshiplogistics00@gmail.com</span>
               </li>
               <li className="flex items-center space-x-2">
                 <Phone size={16} />

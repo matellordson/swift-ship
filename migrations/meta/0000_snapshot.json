@@ -1,5 +1,5 @@
 {
-  "id": "e2a60ac9-917e-47ee-9f96-a1cdf58e5d04",
+  "id": "71cde8f2-866e-4da0-8500-0caa59fead01",
   "prevId": "00000000-0000-0000-0000-000000000000",
   "version": "7",
   "dialect": "postgresql",
@@ -124,10 +124,9 @@
         },
         "status": {
           "name": "status",
-          "type": "status",
-          "typeSchema": "public",
+          "type": "text",
           "primaryKey": false,
-          "notNull": true,
+          "notNull": false,
           "default": "'pending'"
         },
         "delivery_date": {
@@ -136,10 +135,30 @@
           "primaryKey": false,
           "notNull": false,
           "default": "'TBD'"
+        },
+        "stage_id": {
+          "name": "stage_id",
+          "type": "text",
+          "primaryKey": false,
+          "notNull": false
         }
       },
       "indexes": {},
-      "foreignKeys": {},
+      "foreignKeys": {
+        "package_stage_id_package_stage_stage_id_fk": {
+          "name": "package_stage_id_package_stage_stage_id_fk",
+          "tableFrom": "package",
+          "tableTo": "package_stage",
+          "columnsFrom": [
+            "stage_id"
+          ],
+          "columnsTo": [
+            "stage_id"
+          ],
+          "onDelete": "no action",
+          "onUpdate": "no action"
+        }
+      },
       "compositePrimaryKeys": {},
       "uniqueConstraints": {}
     },
@@ -182,6 +201,40 @@
           "onUpdate": "no action"
         }
       },
+      "compositePrimaryKeys": {},
+      "uniqueConstraints": {}
+    },
+    "public.package_stage": {
+      "name": "package_stage",
+      "schema": "",
+      "columns": {
+        "stage_id": {
+          "name": "stage_id",
+          "type": "text",
+          "primaryKey": true,
+          "notNull": true
+        },
+        "stage_title": {
+          "name": "stage_title",
+          "type": "text",
+          "primaryKey": false,
+          "notNull": false
+        },
+        "stage_location": {
+          "name": "stage_location",
+          "type": "text",
+          "primaryKey": false,
+          "notNull": false
+        },
+        "stage_date": {
+          "name": "stage_date",
+          "type": "text",
+          "primaryKey": false,
+          "notNull": false
+        }
+      },
+      "indexes": {},
+      "foreignKeys": {},
       "compositePrimaryKeys": {},
       "uniqueConstraints": {}
     },
@@ -237,16 +290,6 @@
       "values": [
         "customer",
         "admin"
-      ]
-    },
-    "public.status": {
-      "name": "status",
-      "schema": "public",
-      "values": [
-        "pending",
-        "processing",
-        "in transit",
-        "delivered"
       ]
     }
   },

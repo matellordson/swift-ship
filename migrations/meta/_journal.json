@@ -5,22 +5,8 @@
     {
       "idx": 0,
       "version": "7",
-      "when": 1727665415026,
-      "tag": "0000_hesitant_vengeance",
-      "breakpoints": true
-    },
-    {
-      "idx": 1,
-      "version": "7",
-      "when": 1727666086786,
-      "tag": "0001_late_silvermane",
-      "breakpoints": true
-    },
-    {
-      "idx": 2,
-      "version": "7",
-      "when": 1727669754735,
-      "tag": "0002_natural_moondragon",
+      "when": 1730165081328,
+      "tag": "0000_hard_franklin_richards",
       "breakpoints": true
     }
   ]

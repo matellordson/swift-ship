@@ -92,7 +92,7 @@ export function Nav({ user }: { user: string }) {
                 </DropdownMenuSub>
                 <DropdownMenuSeparator />
                 <DropdownMenuItem className="py-0">
-                  <form action={Signout}>
+                  {/* <form action={Signout}>
                     <Button
                       variant={"ghost"}
                       size={"sm"}
@@ -100,7 +100,7 @@ export function Nav({ user }: { user: string }) {
                     >
                       Log out
                     </Button>
-                  </form>
+                  </form> */}
                 </DropdownMenuItem>
               </DropdownMenuContent>
             </DropdownMenu>

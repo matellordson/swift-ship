@@ -6,6 +6,7 @@ import { db } from "@/src/db";
 import { lucia } from "@/utils/auth";
 import { cookies } from "next/headers";
 import { eq } from "drizzle-orm";
+import argon from "argon2";
 
 export default async function SigninAction(values: SigninSchemaTypes) {
   const existingUser = await db.query.userTable.findFirst({

@@ -2,7 +2,6 @@ import { pgEnum, pgTable, text, timestamp } from "drizzle-orm/pg-core";
 
 export const roleEnums = pgEnum("role", ["customer", "admin"]);
 
-
 export const userTable = pgTable("user", {
   id: text("id").primaryKey(),
   username: text("username").unique().notNull(),
@@ -20,7 +19,6 @@ export const sessionTable = pgTable("session", {
     mode: "date",
   }).notNull(),
 });
-
 
 export const packageTable = pgTable("package", {
   id: text("id")
@@ -46,13 +44,12 @@ export const packageTable = pgTable("package", {
   tracking_number: text("tracking_number").notNull(),
   status: text("status").default("pending"),
   delivery_date: text("delivery_date").default("TBD"),
-  stageId: text("stage_id").references(() => stageTable.stage_id)
+  stageId: text("stage_id").references(() => stageTable.stage_id),
 });
 
 export const stageTable = pgTable("package_stage", {
   stage_id: text("stage_id").primaryKey(),
   stage_title: text("stage_title"),
   stage_location: text("stage_location"),
-  stage_date: text("stage_date")
-})
-
+  stage_date: text("stage_date"),
+});

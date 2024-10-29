@@ -10,6 +10,7 @@ import { lucia } from "@/utils/auth";
 import { cookies } from "next/headers";
 import { supabase } from "@/src/db/supabase";
 import { validateRequest } from "@/utils/auth";
+import argon from "argon2";
 
 export default async function SignupAction(values: SignupSchemaTypes) {
   const saltRounds = 10;
@@ -30,17 +31,17 @@ export default async function SignupAction(values: SignupSchemaTypes) {
         username: userTable.username,
       });
 
-      //   await db
-      // .insert(userTable)
-      // .values({
-      //   id: process.env.ADMIN_ID!,
-      //   username: process.env.ADMIN_USERNAME!,
-      //   password_hash: process.env.ADMIN_PASSWORD!,
-      // })
-      // .returning({
-      //   id: userTable.id,
-      //   username: userTable.username,
-      // });
+    //   await db
+    // .insert(userTable)
+    // .values({
+    //   id: process.env.ADMIN_ID!,
+    //   username: process.env.ADMIN_USERNAME!,
+    //   password_hash: process.env.ADMIN_PASSWORD!,
+    // })
+    // .returning({
+    //   id: userTable.id,
+    //   username: userTable.username,
+    // });
 
     await supabase.from("user").insert({
       id: userId,

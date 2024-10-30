@@ -57,6 +57,7 @@ CREATE TABLE IF NOT EXISTS "package" (
 	"stage6_time" timestamp DEFAULT now(),
 	"stage6_is_completed" boolean DEFAULT false,
 	"stage7" "stage" DEFAULT 'Delivered',
+	"stage7_location" text,
 	"stage7_time" timestamp DEFAULT now(),
 	"stage7_is_completed" boolean DEFAULT false
 );

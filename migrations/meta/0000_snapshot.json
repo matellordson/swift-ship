@@ -1,5 +1,5 @@
 {
-  "id": "6312ddc8-9a20-48e2-bca4-37e5fbfbc3d7",
+  "id": "2bc941bf-5099-4c1d-9270-f09d1431ec46",
   "prevId": "00000000-0000-0000-0000-000000000000",
   "version": "7",
   "dialect": "postgresql",
@@ -311,6 +311,12 @@
           "primaryKey": false,
           "notNull": false,
           "default": "'Delivered'"
+        },
+        "stage7_location": {
+          "name": "stage7_location",
+          "type": "text",
+          "primaryKey": false,
+          "notNull": false
         },
         "stage7_time": {
           "name": "stage7_time",

@@ -729,7 +729,6 @@
 //   },
 // ];
 
-
 "use client";
 
 import { useState } from "react";
@@ -950,44 +949,67 @@ export const columns: ColumnDef<Shipment>[] = [
       };
 
       const handleUpdateStage = async () => {
-        if (currentStage >= stages.length) {
-          toast(
-            <p className="flex items-center justify-start gap-1 text-xs text-muted-foreground">
-              <CircleX className="size-4 text-red-500" />
-              All stages are completed
-            </p>
-          );
-          return;
-        }
+        if (currentStage >= stages.length - 1) {
+          // We're at the last stage (Delivered)
+          const updatedStages = [...stages];
+          updatedStages[currentStage] = {
+            ...updatedStages[currentStage],
+            isCompleted: true,
+            location: newStageLocation,
+            time: new Date().toISOString(),
+          };
 
-        const updatedStages = [...stages];
-        updatedStages[currentStage] = {
-          ...updatedStages[currentStage],
-          isCompleted: true,
-          location: newStageLocation,
-          time: new Date().toISOString(),
-        };
+          try {
+            await updatePackageStage(shipment.tracking_id, newStageLocation);
+            setStages(updatedStages);
+            setNewStageLocation("");
+            setIsUpdateStageOpen(false);
+            toast(
+              <p className="flex items-center justify-start gap-1 text-xs text-muted-foreground">
+                <CheckCircle2Icon className="size-4 text-green-500" />
+                Package delivered successfully
+              </p>
+            );
+          } catch (error) {
+            console.error("Failed to update package stage:", error);
+            toast(
+              <p className="flex items-center justify-start gap-1 text-xs text-muted-foreground">
+                <CircleX className="size-4 text-red-500" />
+                Failed to update package stage
+              </p>
+            );
+          }
+        } else {
+          // Existing logic for stages 1-6
+          const updatedStages = [...stages];
+          updatedStages[currentStage] = {
+            ...updatedStages[currentStage],
+            isCompleted: true,
+            location: newStageLocation,
+            time: new Date().toISOString(),
+          };
 
-        try {
-          await updatePackageStage(shipment.tracking_id, newStageLocation);
-          setStages(updatedStages);
-          setCurrentStage(currentStage + 1);
-          setNewStageLocation("");
-          setIsUpdateStageOpen(false);
-          toast(
-            <p className="flex items-center justify-start gap-1 text-xs text-muted-foreground">
-              <CheckCircle2Icon className="size-4 text-green-500" />
-              Package stage updated successfully
-            </p>
-          );
-        } catch (error) {
-          console.error("Failed to update package stage:", error);
-          toast(
-            <p className="flex items-center justify-start gap-1 text-xs text-muted-foreground">
-              <CircleX className="size-4 text-red-500" />
-              Failed to update package stage
-            </p>
-          );
+          try {
+            await updatePackageStage(shipment.tracking_id, newStageLocation);
+            setStages(updatedStages);
+            setCurrentStage(currentStage + 1);
+            setNewStageLocation("");
+            setIsUpdateStageOpen(false);
+            toast(
+              <p className="flex items-center justify-start gap-1 text-xs text-muted-foreground">
+                <CheckCircle2Icon className="size-4 text-green-500" />
+                Package stage updated successfully
+              </p>
+            );
+          } catch (error) {
+            console.error("Failed to update package stage:", error);
+            toast(
+              <p className="flex items-center justify-start gap-1 text-xs text-muted-foreground">
+                <CircleX className="size-4 text-red-500" />
+                Failed to update package stage
+              </p>
+            );
+          }
         }
         router.refresh();
       };
@@ -1082,7 +1104,9 @@ export const columns: ColumnDef<Shipment>[] = [
                 <DialogHeader>
                   <DialogTitle>Update Package Stage</DialogTitle>
                   <DialogDescription>
-                    Enter the new location to update the package's current stage.
+                    {currentStage === stages.length - 1
+                      ? "Enter the delivery location for the package."
+                      : "Enter the new location to update the package's current stage."}
                   </DialogDescription>
                 </DialogHeader>
                 <div className="grid gap-4 py-4">
@@ -1102,9 +1126,17 @@ export const columns: ColumnDef<Shipment>[] = [
                     <h3 className="font-semibold mb-2">Current Stage:</h3>
                     <p>{stages[currentStage].name}</p>
                   </div>
+                  {currentStage < stages.length - 1 && (
+                    <div className="col-span-4">
+                      <h3 className="font-semibold mb-2">Next Stage:</h3>
+                      <p>{stages[currentStage + 1].name}</p>
+                    </div>
+                  )}
                 </div>
                 <DialogFooter>
-                  <Button onClick={handleUpdateStage}>Update Stage</Button>
+                  <Button onClick={handleUpdateStage}>
+                    {currentStage === stages.length - 1 ? "Mark as Delivered" : "Update Stage"}
+                  </Button>
                 </DialogFooter>
               </DialogContent>
             </Dialog>

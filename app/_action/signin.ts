@@ -7,9 +7,6 @@ import { lucia } from "@/utils/auth";
 import { cookies } from "next/headers";
 import { eq } from "drizzle-orm";
 
-export const dynamic = "force-dynamic";
-export const fetchCache = "default-no-store";
-
 export default async function SigninAction(values: SigninSchemaTypes) {
   const existingUser = await db.query.userTable.findFirst({
     where: (table) => eq(table.username, values.username),

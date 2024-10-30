@@ -32,7 +32,6 @@ CREATE TABLE IF NOT EXISTS "package" (
 	"tracking_number" text NOT NULL,
 	"status" text DEFAULT 'pending',
 	"delivery_date" text DEFAULT 'TBD',
-	"stage_id" text,
 	"stage1" "stage" DEFAULT 'Shipping label created, SSL awaiting item' NOT NULL,
 	"stage1_location" text,
 	"stage1_time" timestamp DEFAULT now(),

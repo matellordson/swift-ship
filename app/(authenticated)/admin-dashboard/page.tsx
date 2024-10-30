@@ -43,7 +43,11 @@ async function getData(): Promise<Shipment[]> {
       stage6: packageTable.stage6,
       stage6Location: packageTable.stage6Location,
       stage6Time: packageTable.stage6Time,
-      stage6IsCompleted: packageTable.stage6IsCompleted
+      stage6IsCompleted: packageTable.stage6IsCompleted,
+      stage7: packageTable.stage7,
+      stage7Location: packageTable.stage7Location,
+      stage7Time: packageTable.stage7Time,
+      stage7IsCompleted: packageTable.stage7IsCompleted
     })
     .from(packageTable);
   return data;

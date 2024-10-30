@@ -59,7 +59,6 @@ export const packageTable = pgTable("package", {
   tracking_number: text("tracking_number").notNull(),
   status: text("status").default("pending"),
   delivery_date: text("delivery_date").default("TBD"),
-  stageId: text("stage_id"),
   stage1: stageEnums("stage1")
     .notNull()
     .default("Shipping label created, SSL awaiting item"),

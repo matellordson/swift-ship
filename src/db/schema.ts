@@ -95,7 +95,7 @@ export const packageTable = pgTable("package", {
   stage6Time: timestamp("stage6_time").defaultNow(),
   stage6IsCompleted: boolean("stage6_is_completed").default(false),
   stage7: stageEnums("stage7").default("Delivered"),
-  stage7Location: text("stage6_location"),
+  stage7Location: text("stage7_location"),
   stage7Time: timestamp("stage7_time").defaultNow(),
   stage7IsCompleted: boolean("stage7_is_completed").default(false),
 });

@@ -858,6 +858,7 @@ export const columns: ColumnDef<Shipment>[] = [
       useEffect(() => {
         const stages = ['stage1', 'stage2', 'stage3', 'stage4', 'stage5', 'stage6'];
         // const currentStage = stages.find(stage => !shipment[`${stage}IsCompleted`]);
+        const currentStage = "Dummy Stage"
         setCurrentStage(currentStage || 'stage6');
       }, [shipment]);
 

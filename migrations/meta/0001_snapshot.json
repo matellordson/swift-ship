@@ -1,6 +1,6 @@
 {
-  "id": "65229881-45e8-4c3d-95ed-9a92bdd5a497",
-  "prevId": "00000000-0000-0000-0000-000000000000",
+  "id": "c9ec7519-34a7-4ee4-8e3e-2ad03a395925",
+  "prevId": "65229881-45e8-4c3d-95ed-9a92bdd5a497",
   "version": "7",
   "dialect": "postgresql",
   "tables": {
@@ -135,6 +135,12 @@
           "primaryKey": false,
           "notNull": false,
           "default": "'TBD'"
+        },
+        "stage_id": {
+          "name": "stage_id",
+          "type": "text",
+          "primaryKey": false,
+          "notNull": false
         },
         "title": {
           "name": "title",

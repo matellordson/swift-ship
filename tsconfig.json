@@ -28,6 +28,6 @@
     "**/*.tsx",
     ".next/types/**/*.ts",
     "components/chat-engine.tsx"
-  ],
+, "app/(links)/track-shipment/page.tsx"  ],
   "exclude": ["node_modules"]
 }

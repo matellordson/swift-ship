@@ -1,6 +1,21 @@
-import { pgEnum, pgTable, text, timestamp } from "drizzle-orm/pg-core";
+import {
+  boolean,
+  pgEnum,
+  pgTable,
+  serial,
+  text,
+  timestamp,
+} from "drizzle-orm/pg-core";
 
 export const roleEnums = pgEnum("role", ["customer", "admin"]);
+export const stageEnums = pgEnum("stage", [
+  "Shipping label created, SSL awaiting item",
+  "Accepted by SSL regional destination facility ",
+  "Arrived at SSL regional destination facility",
+  "Departed SSL regional destination facility",
+  "In transit",
+  "Delivered",
+]);
 
 export const userTable = pgTable("user", {
   id: text("id").primaryKey(),
@@ -44,12 +59,10 @@ export const packageTable = pgTable("package", {
   tracking_number: text("tracking_number").notNull(),
   status: text("status").default("pending"),
   delivery_date: text("delivery_date").default("TBD"),
-  stageId: text("stage_id").references(() => stageTable.stage_id),
-});
-
-export const stageTable = pgTable("package_stage", {
-  stage_id: text("stage_id").primaryKey(),
-  stage_title: text("stage_title"),
-  stage_location: text("stage_location"),
-  stage_date: text("stage_date"),
+  stageId: text("stage_id"),
+  stageTitle: stageEnums("title")
+    .notNull()
+    .default("Shipping label created, SSL awaiting item"),
+  stageLocation: timestamp("location").defaultNow().notNull(),
+  StageIsCompleted: boolean("is_completed").notNull().default(false),
 });

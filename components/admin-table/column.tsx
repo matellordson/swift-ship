@@ -783,12 +783,12 @@ export type Shipment = {
   origin: string | null;
   destination: string | null;
   delivery_date: string | null;
-  stage1IsCompleted: boolean;
-  stage2IsCompleted: boolean;
-  stage3IsCompleted: boolean;
-  stage4IsCompleted: boolean;
-  stage5IsCompleted: boolean;
-  stage6IsCompleted: boolean;
+  stage1IsCompleted: boolean | null;
+  stage2IsCompleted: boolean | null;
+  stage3IsCompleted: boolean | null;
+  stage4IsCompleted: boolean | null;
+  stage5IsCompleted: boolean | null;
+  stage6IsCompleted: boolean | null;
 
 };
 

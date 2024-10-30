@@ -1,5 +1,5 @@
 {
-  "id": "722a6047-4320-40a3-8356-58830a729286",
+  "id": "5b479742-a42c-4503-82aa-3bc91694cd02",
   "prevId": "00000000-0000-0000-0000-000000000000",
   "version": "7",
   "dialect": "postgresql",
@@ -154,20 +154,20 @@
           "name": "stage1_location",
           "type": "text",
           "primaryKey": false,
-          "notNull": true
+          "notNull": false
         },
         "stage1_time": {
           "name": "stage1_time",
           "type": "timestamp",
           "primaryKey": false,
-          "notNull": true,
+          "notNull": false,
           "default": "now()"
         },
         "stage1_is_completed": {
           "name": "stage1_is_completed",
           "type": "boolean",
           "primaryKey": false,
-          "notNull": true,
+          "notNull": false,
           "default": false
         },
         "stage2": {
@@ -182,20 +182,20 @@
           "name": "stage2_location",
           "type": "text",
           "primaryKey": false,
-          "notNull": true
+          "notNull": false
         },
         "stage2_time": {
           "name": "stage2_time",
           "type": "timestamp",
           "primaryKey": false,
-          "notNull": true,
+          "notNull": false,
           "default": "now()"
         },
         "stage2_is_completed": {
           "name": "stage2_is_completed",
           "type": "boolean",
           "primaryKey": false,
-          "notNull": true,
+          "notNull": false,
           "default": false
         },
         "stage3": {
@@ -203,27 +203,27 @@
           "type": "stage",
           "typeSchema": "public",
           "primaryKey": false,
-          "notNull": true,
+          "notNull": false,
           "default": "'Arrived at SSL regional destination facility'"
         },
         "stage3_location": {
           "name": "stage3_location",
           "type": "text",
           "primaryKey": false,
-          "notNull": true
+          "notNull": false
         },
         "stage3_time": {
           "name": "stage3_time",
           "type": "timestamp",
           "primaryKey": false,
-          "notNull": true,
+          "notNull": false,
           "default": "now()"
         },
         "stage3_is_completed": {
           "name": "stage3_is_completed",
           "type": "boolean",
           "primaryKey": false,
-          "notNull": true,
+          "notNull": false,
           "default": false
         },
         "stage4": {
@@ -231,27 +231,27 @@
           "type": "stage",
           "typeSchema": "public",
           "primaryKey": false,
-          "notNull": true,
+          "notNull": false,
           "default": "'Departed SSL regional destination facility'"
         },
         "stage4_location": {
           "name": "stage4_location",
           "type": "text",
           "primaryKey": false,
-          "notNull": true
+          "notNull": false
         },
         "stage4_time": {
           "name": "stage4_time",
           "type": "timestamp",
           "primaryKey": false,
-          "notNull": true,
+          "notNull": false,
           "default": "now()"
         },
         "stage4_is_completed": {
           "name": "stage4_is_completed",
           "type": "boolean",
           "primaryKey": false,
-          "notNull": true,
+          "notNull": false,
           "default": false
         },
         "stage5": {
@@ -259,27 +259,27 @@
           "type": "stage",
           "typeSchema": "public",
           "primaryKey": false,
-          "notNull": true,
+          "notNull": false,
           "default": "'In transit'"
         },
         "stage5_location": {
           "name": "stage5_location",
           "type": "text",
           "primaryKey": false,
-          "notNull": true
+          "notNull": false
         },
         "stage5_time": {
           "name": "stage5_time",
           "type": "timestamp",
           "primaryKey": false,
-          "notNull": true,
+          "notNull": false,
           "default": "now()"
         },
         "stage5_is_completed": {
           "name": "stage5_is_completed",
           "type": "boolean",
           "primaryKey": false,
-          "notNull": true,
+          "notNull": false,
           "default": false
         },
         "stage6": {
@@ -287,27 +287,27 @@
           "type": "stage",
           "typeSchema": "public",
           "primaryKey": false,
-          "notNull": true,
+          "notNull": false,
           "default": "'Delivered'"
         },
         "stage6_location": {
           "name": "stage6_location",
           "type": "text",
           "primaryKey": false,
-          "notNull": true
+          "notNull": false
         },
         "stage6_time": {
           "name": "stage6_time",
           "type": "timestamp",
           "primaryKey": false,
-          "notNull": true,
+          "notNull": false,
           "default": "now()"
         },
         "stage6_is_completed": {
           "name": "stage6_is_completed",
           "type": "boolean",
           "primaryKey": false,
-          "notNull": true,
+          "notNull": false,
           "default": false
         }
       },

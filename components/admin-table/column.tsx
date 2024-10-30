@@ -851,7 +851,7 @@ export const columns: ColumnDef<Shipment>[] = [
         { name: "Arrived at SSL regional destination facility", isCompleted: false, location: "", time: "" },
         { name: "Departed SSL regional destination facility", isCompleted: false, location: "", time: "" },
         { name: "In transit", isCompleted: false, location: "", time: "" },
-        { name: "Arrived at SSL regional destination facility", isCompleted: false, location: "", time: "" },
+        { name: "Arrived at SSL regional destination facilities", isCompleted: false, location: "", time: "" },
         { name: "Delivered", isCompleted: false, location: "", time: "" },
       ]);
       const [currentStage, setCurrentStage] = useState(0);

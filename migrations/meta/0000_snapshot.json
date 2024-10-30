@@ -1,5 +1,5 @@
 {
-  "id": "84e999c1-f73a-4a3b-ba49-5a90b8d1d34f",
+  "id": "6312ddc8-9a20-48e2-bca4-37e5fbfbc3d7",
   "prevId": "00000000-0000-0000-0000-000000000000",
   "version": "7",
   "dialect": "postgresql",
@@ -282,7 +282,7 @@
           "typeSchema": "public",
           "primaryKey": false,
           "notNull": false,
-          "default": "'Delivered'"
+          "default": "'Arrived at SSL regional destination facility'"
         },
         "stage6_location": {
           "name": "stage6_location",
@@ -299,6 +299,28 @@
         },
         "stage6_is_completed": {
           "name": "stage6_is_completed",
+          "type": "boolean",
+          "primaryKey": false,
+          "notNull": false,
+          "default": false
+        },
+        "stage7": {
+          "name": "stage7",
+          "type": "stage",
+          "typeSchema": "public",
+          "primaryKey": false,
+          "notNull": false,
+          "default": "'Delivered'"
+        },
+        "stage7_time": {
+          "name": "stage7_time",
+          "type": "timestamp",
+          "primaryKey": false,
+          "notNull": false,
+          "default": "now()"
+        },
+        "stage7_is_completed": {
+          "name": "stage7_is_completed",
           "type": "boolean",
           "primaryKey": false,
           "notNull": false,
@@ -415,6 +437,7 @@
         "Arrived at SSL regional destination facility",
         "Departed SSL regional destination facility",
         "In transit",
+        "Arrived at SSL regional destination facilities",
         "Delivered"
       ]
     }

@@ -249,8 +249,8 @@ export function PackageForm() {
   );
 
   return (
-    <div className="flex justify-center items-center gap-2">
-    <Link href={"/track-shipment"} className="text-primary text-sm font-semibold">Track package</Link>
+    <div className="flex justify-center items-center gap-3">
+    <Link href={"/track-shipment"} className="text-primary text-sm font-semibold py-2 lg:hidden">Track package</Link>
     <Dialog open={isOpen} onOpenChange={setIsOpen}>
       <DialogTrigger asChild>
         <Button

@@ -250,6 +250,7 @@ export function PackageForm() {
 
   return (
     <div className="flex justify-center items-center gap-2">
+    <Link href={"/track-shipment"} className="text-primary text-sm font-semibold">Track package</Link>
     <Dialog open={isOpen} onOpenChange={setIsOpen}>
       <DialogTrigger asChild>
         <Button
@@ -376,7 +377,6 @@ export function PackageForm() {
         </form>
       </DialogContent>
     </Dialog>
-    <Link href={"/track-shipment"} className="text-primary text-sm">Track package</Link>
     </div>
   );
 }

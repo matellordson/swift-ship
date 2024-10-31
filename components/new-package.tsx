@@ -31,6 +31,7 @@ import {
 import { Progress } from "@/components/ui/progress";
 import { submitPackage } from "@/app/_action/submit-package";
 import { useRouter } from "next/navigation";
+import Link from "next/link";
 
 const formSchema = z.object({
   sender_full_name: z.string().min(1, "Full name is required"),
@@ -248,6 +249,7 @@ export function PackageForm() {
   );
 
   return (
+    <div className="">
     <Dialog open={isOpen} onOpenChange={setIsOpen}>
       <DialogTrigger asChild>
         <Button
@@ -374,5 +376,7 @@ export function PackageForm() {
         </form>
       </DialogContent>
     </Dialog>
+    <Link href={"/track-shipment"} className="text-primary text-sm">Track package</Link>
+    </div>
   );
 }

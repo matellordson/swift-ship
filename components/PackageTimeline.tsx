@@ -126,7 +126,7 @@ export default function PackageTimeline() {
 
   return (
     <div className="container mx-auto p-4 max-w-2xl">
-      <h1 className="text-2xl font-bold mb-4">Package Timeline</h1>
+      <h1 className="text-2xl font-bold mb-4">Track Package</h1>
       
       <Form {...form}>
         <form onSubmit={form.handleSubmit(onSubmit)} className="space-y-4 mb-8">
@@ -152,7 +152,7 @@ export default function PackageTimeline() {
 
       {packageData && (
         <div className="space-y-4">
-          <h2 className="text-xl font-semibold">Tracking Number: {packageData.tracking_number}</h2>
+          <h2 className="text-xl font-semibold">Package Timeline</h2>
           <div className="space-y-4">
             {stageNames.map((name, index) => (
               <div key={index} className="flex items-start space-x-4 ">

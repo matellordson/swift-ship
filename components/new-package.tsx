@@ -249,7 +249,7 @@ export function PackageForm() {
   );
 
   return (
-    <div className="">
+    <div className="flex justify-center items-center gap-2">
     <Dialog open={isOpen} onOpenChange={setIsOpen}>
       <DialogTrigger asChild>
         <Button

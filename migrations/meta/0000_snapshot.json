@@ -1,5 +1,5 @@
 {
-  "id": "2bc941bf-5099-4c1d-9270-f09d1431ec46",
+  "id": "e43937bb-6e49-4bb4-ac27-3c297037d102",
   "prevId": "00000000-0000-0000-0000-000000000000",
   "version": "7",
   "dialect": "postgresql",
@@ -142,7 +142,7 @@
           "typeSchema": "public",
           "primaryKey": false,
           "notNull": true,
-          "default": "'Shipping label created, SSL awaiting item'"
+          "default": "'Shipping label created, SSS awaiting item'"
         },
         "stage1_location": {
           "name": "stage1_location",
@@ -170,7 +170,7 @@
           "typeSchema": "public",
           "primaryKey": false,
           "notNull": true,
-          "default": "'Accepted by SSL regional destination facility '"
+          "default": "'Accepted by SSS regional destination facility '"
         },
         "stage2_location": {
           "name": "stage2_location",
@@ -198,7 +198,7 @@
           "typeSchema": "public",
           "primaryKey": false,
           "notNull": false,
-          "default": "'Arrived at SSL regional destination facility'"
+          "default": "'Arrived at SSS regional destination facility'"
         },
         "stage3_location": {
           "name": "stage3_location",
@@ -226,7 +226,7 @@
           "typeSchema": "public",
           "primaryKey": false,
           "notNull": false,
-          "default": "'Departed SSL regional destination facility'"
+          "default": "'Departed SSS regional destination facility'"
         },
         "stage4_location": {
           "name": "stage4_location",
@@ -282,7 +282,7 @@
           "typeSchema": "public",
           "primaryKey": false,
           "notNull": false,
-          "default": "'Arrived at SSL regional destination facility'"
+          "default": "'Arrived at SSS regional destination facility'"
         },
         "stage6_location": {
           "name": "stage6_location",
@@ -438,12 +438,12 @@
       "name": "stage",
       "schema": "public",
       "values": [
-        "Shipping label created, SSL awaiting item",
-        "Accepted by SSL regional destination facility ",
-        "Arrived at SSL regional destination facility",
-        "Departed SSL regional destination facility",
+        "Shipping label created, SSS awaiting item",
+        "Accepted by SSS regional destination facility ",
+        "Arrived at SSS regional destination facility",
+        "Departed SSS regional destination facility",
         "In transit",
-        "Arrived at SSL regional destination facilities",
+        "Arrived at SSS regional destination facilities",
         "Delivered"
       ]
     }

@@ -5,7 +5,7 @@ EXCEPTION
 END $$;
 --> statement-breakpoint
 DO $$ BEGIN
- CREATE TYPE "public"."stage" AS ENUM('Shipping label created, SSL awaiting item', 'Accepted by SSL regional destination facility ', 'Arrived at SSL regional destination facility', 'Departed SSL regional destination facility', 'In transit', 'Arrived at SSL regional destination facilities', 'Delivered');
+ CREATE TYPE "public"."stage" AS ENUM('Shipping label created, SSS awaiting item', 'Accepted by SSS regional destination facility ', 'Arrived at SSS regional destination facility', 'Departed SSS regional destination facility', 'In transit', 'Arrived at SSS regional destination facilities', 'Delivered');
 EXCEPTION
  WHEN duplicate_object THEN null;
 END $$;
@@ -32,19 +32,19 @@ CREATE TABLE IF NOT EXISTS "package" (
 	"tracking_number" text NOT NULL,
 	"status" text DEFAULT 'pending',
 	"delivery_date" text DEFAULT 'TBD',
-	"stage1" "stage" DEFAULT 'Shipping label created, SSL awaiting item' NOT NULL,
+	"stage1" "stage" DEFAULT 'Shipping label created, SSS awaiting item' NOT NULL,
 	"stage1_location" text,
 	"stage1_time" timestamp DEFAULT now(),
 	"stage1_is_completed" boolean DEFAULT false,
-	"stage2" "stage" DEFAULT 'Accepted by SSL regional destination facility ' NOT NULL,
+	"stage2" "stage" DEFAULT 'Accepted by SSS regional destination facility ' NOT NULL,
 	"stage2_location" text,
 	"stage2_time" timestamp DEFAULT now(),
 	"stage2_is_completed" boolean DEFAULT false,
-	"stage3" "stage" DEFAULT 'Arrived at SSL regional destination facility',
+	"stage3" "stage" DEFAULT 'Arrived at SSS regional destination facility',
 	"stage3_location" text,
 	"stage3_time" timestamp DEFAULT now(),
 	"stage3_is_completed" boolean DEFAULT false,
-	"stage4" "stage" DEFAULT 'Departed SSL regional destination facility',
+	"stage4" "stage" DEFAULT 'Departed SSS regional destination facility',
 	"stage4_location" text,
 	"stage4_time" timestamp DEFAULT now(),
 	"stage4_is_completed" boolean DEFAULT false,
@@ -52,7 +52,7 @@ CREATE TABLE IF NOT EXISTS "package" (
 	"stage5_location" text,
 	"stage5_time" timestamp DEFAULT now(),
 	"stage5_is_completed" boolean DEFAULT false,
-	"stage6" "stage" DEFAULT 'Arrived at SSL regional destination facility',
+	"stage6" "stage" DEFAULT 'Arrived at SSS regional destination facility',
 	"stage6_location" text,
 	"stage6_time" timestamp DEFAULT now(),
 	"stage6_is_completed" boolean DEFAULT false,

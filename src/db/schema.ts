@@ -9,12 +9,12 @@ import {
 
 export const roleEnums = pgEnum("role", ["customer", "admin"]);
 export const stageEnums = pgEnum("stage", [
-  "Shipping label created, SSL awaiting item",
-  "Accepted by SSL regional destination facility ",
-  "Arrived at SSL regional destination facility",
-  "Departed SSL regional destination facility",
+  "Shipping label created, SSS awaiting item",
+  "Accepted by SSS regional destination facility ",
+  "Arrived at SSS regional destination facility",
+  "Departed SSS regional destination facility",
   "In transit",
-  "Arrived at SSL regional destination facilities",
+  "Arrived at SSS regional destination facilities",
   "Delivered",
 ]);
 
@@ -62,24 +62,24 @@ export const packageTable = pgTable("package", {
   delivery_date: text("delivery_date").default("TBD"),
   stage1: stageEnums("stage1")
     .notNull()
-    .default("Shipping label created, SSL awaiting item"),
+    .default("Shipping label created, SSS awaiting item"),
   stage1Location: text("stage1_location"),
   stage1Time: timestamp("stage1_time").defaultNow(),
   stage1IsCompleted: boolean("stage1_is_completed").default(false),
   stage2: stageEnums("stage2")
     .notNull()
-    .default("Accepted by SSL regional destination facility "),
+    .default("Accepted by SSS regional destination facility "),
   stage2Location: text("stage2_location"),
   stage2Time: timestamp("stage2_time").defaultNow(),
   stage2IsCompleted: boolean("stage2_is_completed").default(false),
   stage3: stageEnums("stage3").default(
-    "Arrived at SSL regional destination facility",
+    "Arrived at SSS regional destination facility",
   ),
   stage3Location: text("stage3_location"),
   stage3Time: timestamp("stage3_time").defaultNow(),
   stage3IsCompleted: boolean("stage3_is_completed").default(false),
   stage4: stageEnums("stage4").default(
-    "Departed SSL regional destination facility",
+    "Departed SSS regional destination facility",
   ),
   stage4Location: text("stage4_location"),
   stage4Time: timestamp("stage4_time").defaultNow(),
@@ -89,7 +89,7 @@ export const packageTable = pgTable("package", {
   stage5Time: timestamp("stage5_time").defaultNow(),
   stage5IsCompleted: boolean("stage5_is_completed").default(false),
   stage6: stageEnums("stage6").default(
-    "Arrived at SSL regional destination facility",
+    "Arrived at SSS regional destination facility",
   ),
   stage6Location: text("stage6_location"),
   stage6Time: timestamp("stage6_time").defaultNow(),

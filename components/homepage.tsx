@@ -645,12 +645,12 @@ function Footer() {
               </li>
               <li className="flex items-center space-x-2">
                 <Phone size={16} />
-                <span>+(469) 340 2607</span>
+                <span>+44 070 7540 0992</span>
               </li>
               <li className="flex items-center space-x-2">
                 <MapPin className="h-5 w-5 lg:h-7 lg:w-7" />
                 <span>
-                  65 Goldfields Road, Djuan, Queensland, 4352, Australia
+                  7 Scarcroft Road, Porthcurno, United Kingdom, TR19 1YA
                 </span>
               </li>
             </ul>

@@ -1,5 +1,5 @@
-import { eq } from "drizzle-orm";
 import { db } from "@/src/db";
+import { eq } from "drizzle-orm";
 import { packageTable } from "@/src/db/schema";
 
 export async function getPackageByTrackingNumber(trackingNumber: string) {
@@ -23,7 +23,7 @@ export async function updatePackageStage(
   const stageIsCompletedColumn =
     `stage${stageNumber}IsCompleted` as keyof typeof packageTable;
 
-  return await db
+  await db
     .update(packageTable)
     .set({
       [stageColumn]: packageTable[stageColumn],

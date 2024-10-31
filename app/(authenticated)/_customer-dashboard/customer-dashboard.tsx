@@ -8,6 +8,7 @@ import { Input } from "@/components/ui/input";
 import { NoPackage } from "@/components/no-package";
 import { filterPackages } from "../../_action/filter-package";
 import { Loader } from "lucide-react";
+import Link from "next/link";
 
 interface Package {
   userId: string;
@@ -98,6 +99,7 @@ export default function CustomerDashboard({
       )}
       {error && <p className="mt-4 text-red-500">{error}</p>}
       <div className="mb-14 mt-3 grid grid-cols-1 gap-3 lg:grid-cols-3">
+      <Link href={"/track-shipment"} className="text-primary text-sm font-semibold py-4">Track package</Link>
         {packages.map((pkg: Package) => (
           <Card className="p-4" key={pkg.id}>
             <div className="mb-4 grid grid-cols-2 gap-4">

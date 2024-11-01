@@ -12,6 +12,7 @@ async function getData(): Promise<Shipment[]> {
     .select({
       id: packageTable.id,
       user_id: packageTable.userId,
+      created_at: packageTable.created_at,
       tracking_id: packageTable.tracking_number,
       sender: packageTable.sender_full_name,
       receiver: packageTable.receiver_full_name,

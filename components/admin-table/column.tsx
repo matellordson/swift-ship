@@ -344,7 +344,7 @@ export const columns: ColumnDef<Shipment>[] = [
                   Update Delivery Date
                 </DropdownMenuItem>
               </DialogTrigger>
-              <DialogContent className="sm:max-w-[425px] lg:max-w-sm">
+              <DialogContent className="sm:max-w-[425px] lg:max-w-[100px]">
                 <DialogHeader>
                   <DialogTitle>Update Delivery Date</DialogTitle>
                   <DialogDescription>

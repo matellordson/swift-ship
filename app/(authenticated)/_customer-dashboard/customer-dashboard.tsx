@@ -136,8 +136,8 @@ export default function CustomerDashboard({
                   </div>
                 ): pkg.status === "in progress" ? (
                   <div className="flex items-center justify-start gap-1 text-xs text-muted-foreground">
-                    <div className="h-2 w-2 rounded-full bg-yellow-300"></div>
-                    In Transit
+                    <div className="h-2 w-2 rounded-full bg-orange-600"></div>
+                    In Progress
                   </div>
                 ) : pkg.status === "in transit" ? (
                   <div className="flex items-center justify-start gap-1 text-xs text-muted-foreground">

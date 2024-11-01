@@ -326,6 +326,7 @@ export const columns: ColumnDef<Shipment>[] = [
                       </SelectTrigger>
                       <SelectContent>
                         <SelectItem value="pending">Pending</SelectItem>
+                        <SelectItem value="in progress">In Transit</SelectItem>
                         <SelectItem value="in transit">In Transit</SelectItem>
                         <SelectItem value="delivered">Delivered</SelectItem>
                       </SelectContent>

@@ -6,7 +6,8 @@ import { Toaster } from "@/components/ui/sonner";
 
 export const metadata: Metadata = {
   title: "Swift Ship",
-  description: "Experience unmatched Speed and Effeciency",
+  description:
+    "Swift Ship offers fast, reliable shipping with eco-friendly practices and 24/7 support. Your packages arrive on time, everytime.",
 };
 
 export default function RootLayout({

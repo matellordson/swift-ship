@@ -269,12 +269,12 @@ type PackageData = {
 };
 
 const stageNames = [
-  "Shipping label created, SSL awaiting item",
-  "Accepted by SSL regional destination facility",
-  "Arrived at SSL regional destination facility",
-  "Departed SSL regional destination facility",
+  "Shipping label created, SSS awaiting item",
+  "Accepted by SSS regional destination facility",
+  "Arrived at SSS regional destination facility",
+  "Departed SSS regional destination facility",
   "In transit",
-  "Arrived at SSL regional destination facility",
+  "Arrived at SSS regional destination facility",
   "Delivered"
 ];
 

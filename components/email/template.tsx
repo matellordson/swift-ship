@@ -9,8 +9,8 @@ import {
   Section,
   Text,
   Tailwind,
+  Img,
 } from "@react-email/components";
-import { ArrowRight } from "lucide-react";
 import * as React from "react";
 
 export default function Email({ user }: { user: string }) {
@@ -21,15 +21,6 @@ export default function Email({ user }: { user: string }) {
       <Tailwind>
         <Body className="mx-auto my-auto bg-white px-2 font-sans">
           <Container className="mx-auto my-[40px] max-w-[465px] rounded border border-solid border-[#eaeaea] p-[20px]">
-            <Section className="mt-[32px]">
-              {/* <Img
-                src={`${baseUrl}/static/vercel-logo.png`}
-                width="40"
-                height="37"
-                alt="Vercel"
-                className="mx-auto my-0"
-              /> */}
-            </Section>
             <Heading className="mx-0 my-[30px] p-0 text-center text-[24px] font-normal text-black">
               Action Required
             </Heading>

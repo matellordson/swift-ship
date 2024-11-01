@@ -134,6 +134,11 @@ export default function CustomerDashboard({
                     <div className="h-2 w-2 rounded-full bg-muted-foreground"></div>
                     Pending
                   </div>
+                ): pkg.status === "in progress" ? (
+                  <div className="flex items-center justify-start gap-1 text-xs text-muted-foreground">
+                    <div className="h-2 w-2 rounded-full bg-yellow-300"></div>
+                    In Transit
+                  </div>
                 ) : pkg.status === "in transit" ? (
                   <div className="flex items-center justify-start gap-1 text-xs text-muted-foreground">
                     <div className="h-2 w-2 rounded-full bg-amber-600"></div>

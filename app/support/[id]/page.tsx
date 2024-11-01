@@ -9,6 +9,8 @@ import { Badge } from "@/components/ui/badge";
 import { redirect } from "next/navigation";
 import { validateRequest } from "@/utils/auth";
 import Link from "next/link";
+import Image from "next/image";
+import Logo from "@/app/public/logo2.svg";
 
 export const revalidate = 0;
 
@@ -46,7 +48,7 @@ export default async function CustomerSupport({
                 alt="Support Agent"
               />
               <AvatarFallback className="border bg-primary text-primary-foreground">
-                SS
+                <Image src={Logo} alt="logo" />
               </AvatarFallback>
             </Avatar>
             <div>

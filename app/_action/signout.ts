@@ -1,31 +1,64 @@
-"use server";
+// "use server";
 
-import { lucia, validateRequest } from "@/utils/auth";
-import { cookies } from "next/headers";
-import { redirect } from "next/navigation";
+// import { lucia, validateRequest } from "@/utils/auth";
+// import { cookies } from "next/headers";
+// import { redirect } from "next/navigation";
 
-export default async function Signout() {
+// export default async function Signout() {
+//   try {
+//     const { session } = await validateRequest();
+
+//     if (!session) {
+//       return {
+//         error: "unauthorized",
+//       };
+//     }
+
+//     await lucia.invalidateSession(session.id);
+
+//     const sessionCookie = lucia.createBlankSessionCookie();
+
+//     cookies().set(
+//       sessionCookie.name,
+//       sessionCookie.value,
+//       sessionCookie.attributes,
+//     );
+//   } catch (error: any) {
+//     return {
+//       error: error.message,
+//     };
+//   }
+// }
+'use server'
+
+import { lucia, validateRequest } from "@/utils/auth"
+import { cookies } from "next/headers"
+import { redirect } from "next/navigation"
+
+export async function signOut() {
   try {
-    const { session } = await validateRequest();
+    const { session } = await validateRequest()
 
     if (!session) {
       return {
         error: "unauthorized",
-      };
+      }
     }
 
-    await lucia.invalidateSession(session.id);
+    await lucia.invalidateSession(session.id)
 
-    const sessionCookie = lucia.createBlankSessionCookie();
+    const sessionCookie = lucia.createBlankSessionCookie()
 
     cookies().set(
       sessionCookie.name,
       sessionCookie.value,
-      sessionCookie.attributes,
-    );
+      sessionCookie.attributes
+    )
+
+    redirect("/login")
   } catch (error: any) {
     return {
       error: error.message,
-    };
+    }
   }
 }

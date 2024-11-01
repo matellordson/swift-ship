@@ -1,8 +1,8 @@
-"use client";
+'use client'
 
-import Link from "next/link";
-import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar";
-import { Button } from "@/components/ui/button";
+import Link from "next/link"
+import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar"
+import { Button } from "@/components/ui/button"
 import {
   DropdownMenu,
   DropdownMenuContent,
@@ -13,13 +13,24 @@ import {
   DropdownMenuSubContent,
   DropdownMenuSubTrigger,
   DropdownMenuTrigger,
-} from "@/components/ui/dropdown-menu";
-import { useTheme } from "next-themes";
-import { Laptop, Moon, Sun } from "lucide-react";
-import Signout from "../_action/signout";
+} from "@/components/ui/dropdown-menu"
+import { useTheme } from "next-themes"
+import { Laptop, Moon, Sun } from "lucide-react"
+import { signOut } from "../_action/signout"
+import { useTransition } from "react"
 
 export function Nav({ user }: { user: string }) {
-  const { setTheme } = useTheme();
+  const { setTheme } = useTheme()
+  const [isPending, startTransition] = useTransition()
+
+  const handleSignOut = () => {
+    startTransition(async () => {
+      const result = await signOut()
+      if (result?.error) {
+        console.error("Sign out error:", result.error)
+      }
+    })
+  }
 
   return (
     <nav className="mb-5 border-b bg-background">
@@ -91,16 +102,15 @@ export function Nav({ user }: { user: string }) {
                   </DropdownMenuSubContent>
                 </DropdownMenuSub>
                 <DropdownMenuSeparator />
-                <DropdownMenuItem className="py-0">
-                  {/* <form action={Signout}>
-                    <Button
-                      variant={"ghost"}
-                      size={"sm"}
-                      className="my-0 w-full py-0"
-                    >
-                      Log out
-                    </Button>
-                  </form> */}
+                <DropdownMenuItem asChild>
+                  <Button
+                    variant="ghost"
+                    className="w-full justify-start"
+                    onClick={handleSignOut}
+                    disabled={isPending}
+                  >
+                    {isPending ? "Signing out..." : "Log out"}
+                  </Button>
                 </DropdownMenuItem>
               </DropdownMenuContent>
             </DropdownMenu>
@@ -108,5 +118,5 @@ export function Nav({ user }: { user: string }) {
         </div>
       </div>
     </nav>
-  );
+  )
 }

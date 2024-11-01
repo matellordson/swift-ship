@@ -433,7 +433,7 @@ export const columns: ColumnDef<Shipment>[] = [
                 </DialogFooter>
               </DialogContent>
             </Dialog>
-             <Link href={`/track-shipment`}>
+             <Link href={`/track-shipment-admin`}>
               <DropdownMenuItem>Track Package</DropdownMenuItem>
             </Link>
             <DropdownMenuSeparator />

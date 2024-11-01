@@ -410,6 +410,9 @@ export const columns: ColumnDef<Shipment>[] = [
                 </DialogFooter>
               </DialogContent>
             </Dialog>
+             <Link href={`/track-shipment`}>
+              <DropdownMenuItem>Chat Customer</DropdownMenuItem>
+            </Link>
             <DropdownMenuSeparator />
             <Link href={`/admin-support/${shipment.user_id}`}>
               <DropdownMenuItem>Chat Customer</DropdownMenuItem>

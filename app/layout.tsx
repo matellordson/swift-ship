@@ -8,12 +8,10 @@ export const metadata: Metadata = {
   title: "Swift Ship",
   description:
     "Swift Ship offers fast, reliable shipping with eco-friendly practices and 24/7 support. Your packages arrive on time, everytime.",
+  verification: {
+    google: "FyacnK4bdNej-tyaUnkoDmM9O7zVKbCbTFvdD4gUkqc",
+  },
 };
-
-<meta
-  name="google-site-verification"
-  content="FyacnK4bdNej-tyaUnkoDmM9O7zVKbCbTFvdD4gUkqc"
-/>;
 
 export default function RootLayout({
   children,
@@ -21,7 +19,7 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="en" className="">
+    <html lang="en">
       <body className={`${GeistSans.className} antialiased`}>
         <ThemeProvider
           attribute="class"
@@ -29,7 +27,7 @@ export default function RootLayout({
           enableSystem
           disableTransitionOnChange
         >
-          <div className="">{children}</div>
+          <div>{children}</div>
         </ThemeProvider>
         <Toaster />
       </body>

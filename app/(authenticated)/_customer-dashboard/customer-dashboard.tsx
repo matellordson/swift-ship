@@ -141,7 +141,7 @@ export default function CustomerDashboard({
                   </div>
                 ) : pkg.status === "in transit" ? (
                   <div className="flex items-center justify-start gap-1 text-xs text-muted-foreground">
-                    <div className="h-2 w-2 rounded-full bg-amber-600"></div>
+                    <div className="h-2 w-2 rounded-full bg-yellow-400"></div>
                     In Transit
                   </div>
                 ) : pkg.status === "delivered" ? (

@@ -1,3 +1,4 @@
+import Logo from "@/components/logo";
 import { Badge } from "@/components/ui/badge";
 import Link from "next/link";
 
@@ -9,16 +10,7 @@ export default function Component() {
           <div className="flex h-16 items-center justify-between">
             <div className="flex items-center">
               <div className="flex-shrink-0">
-                <Link href="/" className="flex items-center">
-                  <svg
-                    className="h-8 w-8 text-black dark:text-white"
-                    viewBox="0 0 76 65"
-                    fill="currentColor"
-                  >
-                    <path d="M37.5274 0L75.0548 65H0L37.5274 0Z" />
-                  </svg>
-                  <span className="ml-2 text-xl font-bold">Vercel</span>
-                </Link>
+                <Logo />
               </div>
             </div>
           </div>
@@ -188,9 +180,10 @@ export default function Component() {
                 11. Contact Information
               </h2>
               <p className="mt-2 text-sm leading-7 text-muted-foreground [&:not(:first-child)]:mt-6">
-                <span className="font-bold">Swift Ship Services</span> <br /> swiftshiplogistics00@gmail.com <br />
-                +44 070 7540 0992 <br />
-                7 Scarcroft Road, Porthcurno, United Kingdom, TR19 1YA
+                <span className="font-bold">Swift Ship Services</span> <br />{" "}
+                swiftshiplogistics00@gmail.com <br />
+                +44 070 7540 0992 <br />7 Scarcroft Road, Porthcurno, United
+                Kingdom, TR19 1YA
               </p>
             </div>
           </div>

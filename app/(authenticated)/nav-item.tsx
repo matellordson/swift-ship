@@ -1,8 +1,8 @@
-'use client'
+"use client";
 
-import Link from "next/link"
-import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar"
-import { Button } from "@/components/ui/button"
+import Link from "next/link";
+import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar";
+import { Button } from "@/components/ui/button";
 import {
   DropdownMenu,
   DropdownMenuContent,
@@ -13,24 +13,26 @@ import {
   DropdownMenuSubContent,
   DropdownMenuSubTrigger,
   DropdownMenuTrigger,
-} from "@/components/ui/dropdown-menu"
-import { useTheme } from "next-themes"
-import { Laptop, Moon, Sun } from "lucide-react"
-import { signOut } from "../_action/signout"
-import { useTransition } from "react"
+} from "@/components/ui/dropdown-menu";
+import { useTheme } from "next-themes";
+import { Laptop, Moon, Sun } from "lucide-react";
+import { signOut } from "../_action/signout";
+import { useTransition } from "react";
+import Image from "next/image";
+import swiftShipLogo from "@/app/public/logo.svg";
 
 export function Nav({ user }: { user: string }) {
-  const { setTheme } = useTheme()
-  const [isPending, startTransition] = useTransition()
+  const { setTheme } = useTheme();
+  const [isPending, startTransition] = useTransition();
 
   const handleSignOut = () => {
     startTransition(async () => {
-      const result = await signOut()
+      const result = await signOut();
       if (result?.error) {
-        console.error("Sign out error:", result.error)
+        console.error("Sign out error:", result.error);
       }
-    })
-  }
+    });
+  };
 
   return (
     <nav className="mb-5 border-b bg-background">
@@ -38,15 +40,20 @@ export function Nav({ user }: { user: string }) {
         <div className="flex h-16 items-center justify-between">
           <div className="flex items-center">
             <div className="flex-shrink-0">
-              <Link href="/dashboard" className="flex items-center">
-                <svg
-                  className="h-8 w-8 text-black dark:text-white"
-                  viewBox="0 0 76 65"
-                  fill="currentColor"
-                >
-                  <path d="M37.5274 0L75.0548 65H0L37.5274 0Z" />
-                </svg>
-                <span className="ml-2 text-xl font-bold">Vercel</span>
+              <Link href={"/dashboard"}>
+                <div className="flex items-center space-x-2">
+                  <Image
+                    src={swiftShipLogo}
+                    height={50}
+                    width={50}
+                    priority
+                    alt="Swift Ship logo"
+                    className="m-0 h-24 p-0"
+                  />
+                  <p className="text-lg font-semibold tracking-tight text-primary lg:text-base">
+                    Swift Ship
+                  </p>
+                </div>
               </Link>
             </div>
           </div>
@@ -118,5 +125,5 @@ export function Nav({ user }: { user: string }) {
         </div>
       </div>
     </nav>
-  )
+  );
 }

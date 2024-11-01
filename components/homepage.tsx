@@ -40,6 +40,8 @@ import { MapPin } from "lucide-react";
 import { Input } from "@/components/ui/input";
 import Link from "next/link";
 import { Menu, X } from "lucide-react";
+import swiftShipLogo from "@/app/public/logo2.svg";
+import Logo from "./logo";
 
 export default function HomePage() {
   return (
@@ -65,17 +67,8 @@ function Nav() {
       <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
         <div className="flex h-16 items-center justify-between">
           <div className="flex items-center">
-            <div className="flex-shrink-0">
-              <Link href="/" className="flex items-center">
-                <svg
-                  className="h-8 w-8 text-black dark:text-white"
-                  viewBox="0 0 76 65"
-                  fill="currentColor"
-                >
-                  <path d="M37.5274 0L75.0548 65H0L37.5274 0Z" />
-                </svg>
-                <span className="ml-2 text-xl font-bold">Vercel</span>
-              </Link>
+            <div className="">
+              <Logo />
             </div>
             <div className="hidden md:block">
               <div className="ml-10 flex items-baseline space-x-4">
@@ -610,11 +603,16 @@ function Footer() {
           {/* Logo, About Us, and Theme Toggle */}
           <div className="space-y-4">
             <div className="flex items-center justify-between">
-              <div className="flex items-center space-x-2">
-                <div className="flex h-10 w-10 items-center justify-center rounded-full bg-primary text-primary-foreground">
-                  <span className="text-xl font-bold">SS</span>
-                </div>
-                <span className="text-xl font-bold">Swift Ship</span>
+              <div className="flex items-center space-x-2 py-0">
+                <Image
+                  src={swiftShipLogo}
+                  height={50}
+                  width={50}
+                  priority
+                  alt="Swift Ship logo"
+                  className="m-0 p-0"
+                />
+                <p className="text-xl font-semibold">Swift Ship</p>
               </div>
             </div>
             <p className="text-sm text-gray-600 dark:text-gray-400">

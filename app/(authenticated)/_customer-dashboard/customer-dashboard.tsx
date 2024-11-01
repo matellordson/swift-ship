@@ -489,11 +489,15 @@ export default function CustomerDashboard({
         </Link>
         {sortedPackages.map((pkg: Package) => (
           <Card className="p-4" key={pkg.id}>
-            <div className="mb-4 grid grid-cols-2 gap-4">
-              <div>
+            <div className="mb-4 grid grid-cols-2 gap-4 [&>div:first-child]:col-span-2">
+              <div className="col-span-2">
                 <p className="text-sm font-semibold">Tracking ID:</p>
                 <p className="text-sm text-muted-foreground">
                   {pkg.tracking_number}
+                </p>
+                <p className="text-sm font-semibold mt-2">Receiver:</p>
+                <p className="text-sm text-muted-foreground">
+                  {pkg.receiver_full_name || "N/A"}
                 </p>
               </div>
               <div>

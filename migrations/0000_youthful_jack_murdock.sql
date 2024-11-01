@@ -5,7 +5,7 @@ EXCEPTION
 END $$;
 --> statement-breakpoint
 DO $$ BEGIN
- CREATE TYPE "public"."stage" AS ENUM('Shipping label created, SSS awaiting item', 'Accepted by SSS regional destination facility ', 'Arrived at SSS regional destination facility', 'Departed SSS regional destination facility', 'In transit', 'Arrived at SSS regional destination facilities', 'Delivered');
+ CREATE TYPE "public"."stage" AS ENUM('Shipping label created, SSS awaiting item', 'Accepted by SSS regional destination facility ', 'Arrived at SSS regional destination facility', 'Departed SSS regional destination facility', 'In transit', 'Arrived at SSS regional destination facilities', 'Out for delivery', 'Delivered');
 EXCEPTION
  WHEN duplicate_object THEN null;
 END $$;
@@ -57,10 +57,14 @@ CREATE TABLE IF NOT EXISTS "package" (
 	"stage6_location" text,
 	"stage6_time" timestamp DEFAULT now(),
 	"stage6_is_completed" boolean DEFAULT false,
-	"stage7" "stage" DEFAULT 'Delivered',
+	"stage7" "stage" DEFAULT 'Out for delivery',
 	"stage7_location" text,
 	"stage7_time" timestamp DEFAULT now(),
-	"stage7_is_completed" boolean DEFAULT false
+	"stage7_is_completed" boolean DEFAULT false,
+	"stage8" "stage" DEFAULT 'Delivered',
+	"stage8_location" text,
+	"stage8_time" timestamp DEFAULT now(),
+	"stage8_is_completed" boolean DEFAULT false
 );
 --> statement-breakpoint
 CREATE TABLE IF NOT EXISTS "session" (

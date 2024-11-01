@@ -87,6 +87,10 @@ type PackageData = {
   stage7Location: string | null;
   stage7Time: string | null;
   stage7IsCompleted: boolean;
+  stage8: string;
+  stage8Location: string | null;
+  stage8Time: string | null;
+  stage8IsCompleted: boolean;
 };
 
 const stageNames = [

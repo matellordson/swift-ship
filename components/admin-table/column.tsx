@@ -1,9 +1,15 @@
-"use client"
+"use client";
 
-import { useState } from "react"
-import { ColumnDef } from "@tanstack/react-table"
-import { ArrowUpDown, CheckCircle2Icon, CircleX, MoreHorizontal, Trash2 } from "lucide-react"
-import { Button } from "@/components/ui/button"
+import { useState } from "react";
+import { ColumnDef } from "@tanstack/react-table";
+import {
+  ArrowUpDown,
+  CheckCircle2Icon,
+  CircleX,
+  MoreHorizontal,
+  Trash2,
+} from "lucide-react";
+import { Button } from "@/components/ui/button";
 import {
   DropdownMenu,
   DropdownMenuContent,
@@ -11,8 +17,8 @@ import {
   DropdownMenuLabel,
   DropdownMenuSeparator,
   DropdownMenuTrigger,
-} from "@/components/ui/dropdown-menu"
-import Link from "next/link"
+} from "@/components/ui/dropdown-menu";
+import Link from "next/link";
 import {
   Dialog,
   DialogContent,
@@ -21,39 +27,39 @@ import {
   DialogHeader,
   DialogTitle,
   DialogTrigger,
-} from "@/components/ui/dialog"
+} from "@/components/ui/dialog";
 import {
   Select,
   SelectContent,
   SelectItem,
   SelectTrigger,
   SelectValue,
-} from "@/components/ui/select"
-import { Input } from "@/components/ui/input"
-import { Label } from "@/components/ui/label"
-import { updateShipmentStatus } from "@/app/_action/update-package"
-import { updateDeliveryDate } from "@/app/_action/upade-delivery-date"
-import { deletePackage } from "@/app/_action/delete-package"
-import { updatePackageStage } from "@/app/_action/update-stage"
-import { toast } from "sonner"
-import { useRouter } from "next/navigation"
-import { Calendar } from "@/components/ui/calendar"
+} from "@/components/ui/select";
+import { Input } from "@/components/ui/input";
+import { Label } from "@/components/ui/label";
+import { updateShipmentStatus } from "@/app/_action/update-package";
+import { updateDeliveryDate } from "@/app/_action/upade-delivery-date";
+import { deletePackage } from "@/app/_action/delete-package";
+import { updatePackageStage } from "@/app/_action/update-stage";
+import { toast } from "sonner";
+import { useRouter } from "next/navigation";
+import { Calendar } from "@/components/ui/calendar";
 
-import { format, parseISO, isValid } from "date-fns"
+import { format, parseISO, isValid } from "date-fns";
 
 export type Shipment = {
-  id: string
-  user_id: string
-  created_at: Date | null
-  tracking_id: string
-  sender: string | null
-  receiver: string | null
-  package_type: string | null
-  status: string | null
-  origin: string | null
-  destination: string | null
-  delivery_date: string | null
-}
+  id: string;
+  user_id: string;
+  created_at: Date | null;
+  tracking_id: string;
+  sender: string | null;
+  receiver: string | null;
+  package_type: string | null;
+  status: string | null;
+  origin: string | null;
+  destination: string | null;
+  delivery_date: string | null;
+};
 
 export const columns: ColumnDef<Shipment>[] = [
   {
@@ -67,14 +73,14 @@ export const columns: ColumnDef<Shipment>[] = [
           Creation Date
           <ArrowUpDown className="ml-2 h-4 w-4" />
         </Button>
-      )
+      );
     },
     cell: ({ row }) => {
-      const createdAt = row.getValue("created_at") as Date | null
+      const createdAt = row.getValue("created_at") as Date | null;
       if (createdAt) {
-        return format(createdAt, "yyyy-MM-dd")
+        return format(createdAt, "yyyy-MM-dd");
       }
-      return "N/A"
+      return "N/A";
     },
   },
   {
@@ -93,14 +99,14 @@ export const columns: ColumnDef<Shipment>[] = [
     accessorKey: "delivery_date",
     header: "Delivery Date",
     cell: ({ row }) => {
-      const shipment = row.original
+      const shipment = row.original;
       if (shipment.delivery_date) {
-        const date = parseISO(shipment.delivery_date)
+        const date = parseISO(shipment.delivery_date);
         if (isValid(date)) {
-          return format(date, "yyyy-MM-dd")
+          return format(date, "yyyy-MM-dd");
         }
       }
-      return "TBD"
+      return "TBD";
     },
   },
   {
@@ -122,188 +128,220 @@ export const columns: ColumnDef<Shipment>[] = [
   {
     id: "actions",
     cell: ({ row }) => {
-      const shipment = row.original
-      const [isUpdateStageOpen, setIsUpdateStageOpen] = useState(false)
-      const [newStageLocation, setNewStageLocation] = useState("")
-      const [isStatusOpen, setIsStatusOpen] = useState(false)
-      const [isDateOpen, setIsDateOpen] = useState(false)
-      const [isDeleteOpen, setIsDeleteOpen] = useState(false)
-      const [newStatus, setNewStatus] = useState(shipment.status || "")
+      const shipment = row.original;
+      const [isUpdateStageOpen, setIsUpdateStageOpen] = useState(false);
+      const [newStageLocation, setNewStageLocation] = useState("");
+      const [isStatusOpen, setIsStatusOpen] = useState(false);
+      const [isDateOpen, setIsDateOpen] = useState(false);
+      const [isDeleteOpen, setIsDeleteOpen] = useState(false);
+      const [newStatus, setNewStatus] = useState(shipment.status || "");
       const [newDate, setNewDate] = useState<Date | undefined>(() => {
         if (shipment.delivery_date) {
-          const date = parseISO(shipment.delivery_date)
-          return isValid(date) ? date : undefined
+          const date = parseISO(shipment.delivery_date);
+          return isValid(date) ? date : undefined;
         }
-        return undefined
-      })
+        return undefined;
+      });
       const [stages, setStages] = useState([
-        { name: "Shipping label created, SSS awaiting item", isCompleted: false, location: "", time: "" },
-        { name: "Accepted by SSS regional destination facility", isCompleted: false, location: "", time: "" },
-        { name: "Arrived at SSS regional destination facility", isCompleted: false, location: "", time: "" },
-        { name: "Departed SSS regional destination facility", isCompleted: false, location: "", time: "" },
+        {
+          name: "Shipping label created, SSS awaiting item",
+          isCompleted: false,
+          location: "",
+          time: "",
+        },
+        {
+          name: "Accepted by SSS regional destination facility",
+          isCompleted: false,
+          location: "",
+          time: "",
+        },
+        {
+          name: "Arrived at SSS regional destination facility",
+          isCompleted: false,
+          location: "",
+          time: "",
+        },
+        {
+          name: "Departed SSS regional destination facility",
+          isCompleted: false,
+          location: "",
+          time: "",
+        },
         { name: "In transit", isCompleted: false, location: "", time: "" },
-        { name: "Arrived at SSS regional destination facility", isCompleted: false, location: "", time: "" },
+        {
+          name: "Arrived at SSS regional destination facility",
+          isCompleted: false,
+          location: "",
+          time: "",
+        },
+        { name: "Out of delivery", isCompleted: false, location: "", time: "" },
         { name: "Delivered", isCompleted: false, location: "", time: "" },
-      ])
-      const [currentStage, setCurrentStage] = useState(0)
-      const router = useRouter()
+      ]);
+      const [currentStage, setCurrentStage] = useState(0);
+      const router = useRouter();
 
       const handleStatusUpdate = async () => {
-        const result = await updateShipmentStatus(shipment.tracking_id, newStatus)
+        const result = await updateShipmentStatus(
+          shipment.tracking_id,
+          newStatus,
+        );
         if (result.success) {
           toast(
             <p className="flex items-center justify-start gap-1 text-xs text-muted-foreground">
               <CheckCircle2Icon className="size-4 text-green-500" />
               Package status updated successfully
-            </p>
-          )
-          setIsStatusOpen(false)
+            </p>,
+          );
+          setIsStatusOpen(false);
         } else {
           toast(
             <p className="flex items-center justify-start gap-1 text-xs text-muted-foreground">
               <CircleX className="size-4 text-red-500" />
               Unsuccessful status update
-            </p>
-          )
+            </p>,
+          );
         }
-        router.refresh()
-      }
+        router.refresh();
+      };
 
       const handleDateUpdate = async () => {
         if (newDate && isValid(newDate)) {
-          const dateString = format(newDate, "yyyy-MM-dd")
-          const result = await updateDeliveryDate(shipment.tracking_id, dateString)
+          const dateString = format(newDate, "yyyy-MM-dd");
+          const result = await updateDeliveryDate(
+            shipment.tracking_id,
+            dateString,
+          );
           if (result.success) {
             toast(
               <p className="flex items-center justify-start gap-1 text-xs text-muted-foreground">
                 <CheckCircle2Icon className="size-4 text-green-500" />
                 Delivery date updated successfully
-              </p>
-            )
-            setIsDateOpen(false)
+              </p>,
+            );
+            setIsDateOpen(false);
           } else {
             toast(
               <p className="flex items-center justify-start gap-1 text-xs text-muted-foreground">
                 <CircleX className="size-4 text-red-500" />
                 Unsuccessful date update
-              </p>
-            )
+              </p>,
+            );
           }
         } else if (newDate === undefined) {
-          const result = await updateDeliveryDate(shipment.tracking_id, "")
+          const result = await updateDeliveryDate(shipment.tracking_id, "");
           if (result.success) {
             toast(
               <p className="flex items-center justify-start gap-1 text-xs text-muted-foreground">
                 <CheckCircle2Icon className="size-4 text-green-500" />
                 Delivery date cleared successfully
-              </p>
-            )
-            setIsDateOpen(false)
+              </p>,
+            );
+            setIsDateOpen(false);
           } else {
             toast(
               <p className="flex items-center justify-start gap-1 text-xs text-muted-foreground">
                 <CircleX className="size-4 text-red-500" />
                 Unsuccessful date clear
-              </p>
-            )
+              </p>,
+            );
           }
         } else {
           toast(
             <p className="flex items-center justify-start gap-1 text-xs text-muted-foreground">
               <CircleX className="size-4 text-red-500" />
               Invalid date selected
-            </p>
-          )
+            </p>,
+          );
         }
-        router.refresh()
-      }
+        router.refresh();
+      };
 
       const handleDelete = async () => {
-        const result = await deletePackage(shipment.tracking_id)
+        const result = await deletePackage(shipment.tracking_id);
         if (result.success) {
           toast(
             <p className="flex items-center justify-start gap-1 text-xs text-muted-foreground">
               <CheckCircle2Icon className="size-4 text-green-500" />
               Package deleted successfully
-            </p>
-          )
-          setIsDeleteOpen(false)
+            </p>,
+          );
+          setIsDeleteOpen(false);
         } else {
           toast(
             <p className="flex items-center justify-start gap-1 text-xs text-muted-foreground">
               <CircleX className="size-4 text-red-500" />
               Failed to delete package
-            </p>
-          )
+            </p>,
+          );
         }
-        router.refresh()
-      }
+        router.refresh();
+      };
 
       const handleUpdateStage = async () => {
         if (currentStage >= stages.length - 1) {
           // We're at the last stage (Delivered)
-          const updatedStages = [...stages]
+          const updatedStages = [...stages];
           updatedStages[currentStage] = {
             ...updatedStages[currentStage],
             isCompleted: true,
             location: newStageLocation,
             time: new Date().toISOString(),
-          }
+          };
 
           try {
-            await updatePackageStage(shipment.tracking_id, newStageLocation)
-            setStages(updatedStages)
-            setNewStageLocation("")
-            setIsUpdateStageOpen(false)
+            await updatePackageStage(shipment.tracking_id, newStageLocation);
+            setStages(updatedStages);
+            setNewStageLocation("");
+            setIsUpdateStageOpen(false);
             toast(
               <p className="flex items-center justify-start gap-1 text-xs text-muted-foreground">
                 <CheckCircle2Icon className="size-4 text-green-500" />
                 Package delivered successfully
-              </p>
-            )
+              </p>,
+            );
           } catch (error) {
-            console.error("Failed to update package stage:", error)
+            console.error("Failed to update package stage:", error);
             toast(
               <p className="flex items-center justify-start gap-1 text-xs text-muted-foreground">
                 <CircleX className="size-4 text-red-500" />
                 Failed to update package stage
-              </p>
-            )
+              </p>,
+            );
           }
         } else {
           // Existing logic for stages 1-6
-          const updatedStages = [...stages]
+          const updatedStages = [...stages];
           updatedStages[currentStage] = {
             ...updatedStages[currentStage],
             isCompleted: true,
             location: newStageLocation,
             time: new Date().toISOString(),
-          }
+          };
 
           try {
-            await updatePackageStage(shipment.tracking_id, newStageLocation)
-            setStages(updatedStages)
-            setCurrentStage(currentStage + 1)
-            setNewStageLocation("")
-            setIsUpdateStageOpen(false)
+            await updatePackageStage(shipment.tracking_id, newStageLocation);
+            setStages(updatedStages);
+            setCurrentStage(currentStage + 1);
+            setNewStageLocation("");
+            setIsUpdateStageOpen(false);
             toast(
               <p className="flex items-center justify-start gap-1 text-xs text-muted-foreground">
                 <CheckCircle2Icon className="size-4 text-green-500" />
                 Package stage updated successfully
-              </p>
-            )
+              </p>,
+            );
           } catch (error) {
-            console.error("Failed to update package stage:", error)
+            console.error("Failed to update package stage:", error);
             toast(
               <p className="flex items-center justify-start gap-1 text-xs text-muted-foreground">
                 <CircleX className="size-4 text-red-500" />
                 Failed to update package stage
-              </p>
-            )
+              </p>,
+            );
           }
         }
-        router.refresh()
-      }
+        router.refresh();
+      };
 
       return (
         <DropdownMenu>
@@ -316,7 +354,9 @@ export const columns: ColumnDef<Shipment>[] = [
           <DropdownMenuContent align="end">
             <DropdownMenuLabel>Actions</DropdownMenuLabel>
             <DropdownMenuItem
-              onClick={() => navigator.clipboard.writeText(shipment.tracking_id)}
+              onClick={() =>
+                navigator.clipboard.writeText(shipment.tracking_id)
+              }
             >
               Copy tracking ID
             </DropdownMenuItem>
@@ -382,13 +422,17 @@ export const columns: ColumnDef<Shipment>[] = [
                   />
                 </div>
                 <DialogFooter>
-                  <Button onClick={handleDateUpdate}>Update Delivery Date</Button>
+                  <Button onClick={handleDateUpdate}>
+                    Update Delivery Date
+                  </Button>
                 </DialogFooter>
               </DialogContent>
             </Dialog>
-            <Dialog open={isUpdateStageOpen} onOpenChange={setIsUpdateStageOpen}>
+            <Dialog
+              open={isUpdateStageOpen}
+              onOpenChange={setIsUpdateStageOpen}
+            >
               <DialogTrigger asChild>
-                
                 <DropdownMenuItem onSelect={(e) => e.preventDefault()}>
                   Update Stage
                 </DropdownMenuItem>
@@ -416,24 +460,26 @@ export const columns: ColumnDef<Shipment>[] = [
                     />
                   </div>
                   <div className="col-span-4">
-                    <h3 className="font-semibold mb-2">Current Stage:</h3>
+                    <h3 className="mb-2 font-semibold">Current Stage:</h3>
                     <p>{stages[currentStage].name}</p>
                   </div>
                   {currentStage < stages.length - 1 && (
                     <div className="col-span-4">
-                      <h3 className="font-semibold mb-2">Next Stage:</h3>
+                      <h3 className="mb-2 font-semibold">Next Stage:</h3>
                       <p>{stages[currentStage + 1].name}</p>
                     </div>
                   )}
                 </div>
                 <DialogFooter>
                   <Button onClick={handleUpdateStage}>
-                    {currentStage === stages.length - 1 ? "Mark as Delivered" : "Update Stage"}
+                    {currentStage === stages.length - 1
+                      ? "Mark as Delivered"
+                      : "Update Stage"}
                   </Button>
                 </DialogFooter>
               </DialogContent>
             </Dialog>
-             <Link href={`/track-shipment-admin`}>
+            <Link href={`/track-shipment-admin`}>
               <DropdownMenuItem>Track Package</DropdownMenuItem>
             </Link>
             <DropdownMenuSeparator />
@@ -454,11 +500,15 @@ export const columns: ColumnDef<Shipment>[] = [
                 <DialogHeader>
                   <DialogTitle>Delete Package</DialogTitle>
                   <DialogDescription>
-                    Are you sure you want to delete this package? This action cannot be undone.
+                    Are you sure you want to delete this package? This action
+                    cannot be undone.
                   </DialogDescription>
                 </DialogHeader>
                 <DialogFooter>
-                  <Button variant="outline" onClick={() => setIsDeleteOpen(false)}>
+                  <Button
+                    variant="outline"
+                    onClick={() => setIsDeleteOpen(false)}
+                  >
                     Cancel
                   </Button>
                   <Button variant="destructive" onClick={handleDelete}>
@@ -469,7 +519,7 @@ export const columns: ColumnDef<Shipment>[] = [
             </Dialog>
           </DropdownMenuContent>
         </DropdownMenu>
-      )
+      );
     },
   },
-]
+];

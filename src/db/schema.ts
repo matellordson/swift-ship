@@ -15,6 +15,7 @@ export const stageEnums = pgEnum("stage", [
   "Departed SSS regional destination facility",
   "In transit",
   "Arrived at SSS regional destination facilities",
+  "Out for delivery",
   "Delivered",
 ]);
 
@@ -95,8 +96,12 @@ export const packageTable = pgTable("package", {
   stage6Location: text("stage6_location"),
   stage6Time: timestamp("stage6_time").defaultNow(),
   stage6IsCompleted: boolean("stage6_is_completed").default(false),
-  stage7: stageEnums("stage7").default("Delivered"),
+  stage7: stageEnums("stage7").default("Out for delivery"),
   stage7Location: text("stage7_location"),
   stage7Time: timestamp("stage7_time").defaultNow(),
   stage7IsCompleted: boolean("stage7_is_completed").default(false),
+  stage8: stageEnums("stage8").default("Delivered"),
+  stage8Location: text("stage8_location"),
+  stage8Time: timestamp("stage8_time").defaultNow(),
+  stage8IsCompleted: boolean("stage8_is_completed").default(false),
 });

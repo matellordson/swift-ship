@@ -58,6 +58,11 @@ export async function updatePackageStage(
       stage7IsCompleted: true,
       stage7Location: newLocation,
     };
+  } else if (!packages.stage8IsCompleted) {
+    updateData = {
+      stage8IsCompleted: true,
+      stage8Location: newLocation,
+    };
   } else {
     throw new Error("All stages are already completed");
   }

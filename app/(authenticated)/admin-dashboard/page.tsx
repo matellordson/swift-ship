@@ -21,7 +21,7 @@ async function getData(): Promise<Shipment[]> {
       origin: packageTable.sender_country,
       destination: packageTable.receiver_country,
       delivery_date: packageTable.delivery_date,
-      stage1: packageTable.stage1 , 
+      stage1: packageTable.stage1,
       stage1Location: packageTable.stage1Location,
       stage1Time: packageTable.stage1Time,
       stage1IsCompleted: packageTable.stage1IsCompleted,
@@ -48,7 +48,11 @@ async function getData(): Promise<Shipment[]> {
       stage7: packageTable.stage7,
       stage7Location: packageTable.stage7Location,
       stage7Time: packageTable.stage7Time,
-      stage7IsCompleted: packageTable.stage7IsCompleted
+      stage7IsCompleted: packageTable.stage7IsCompleted,
+      stage8: packageTable.stage8,
+      stage8Location: packageTable.stage8Location,
+      stage8Time: packageTable.stage8Time,
+      stage8IsCompleted: packageTable.stage8IsCompleted,
     })
     .from(packageTable);
   return data;

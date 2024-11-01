@@ -1,5 +1,5 @@
 {
-  "id": "28899184-bb2b-433d-b346-160bae8fbb16",
+  "id": "b0a7f70d-c052-41be-aca6-7ac2cbf8bd18",
   "prevId": "00000000-0000-0000-0000-000000000000",
   "version": "7",
   "dialect": "postgresql",
@@ -317,7 +317,7 @@
           "typeSchema": "public",
           "primaryKey": false,
           "notNull": false,
-          "default": "'Delivered'"
+          "default": "'Out for delivery'"
         },
         "stage7_location": {
           "name": "stage7_location",
@@ -334,6 +334,34 @@
         },
         "stage7_is_completed": {
           "name": "stage7_is_completed",
+          "type": "boolean",
+          "primaryKey": false,
+          "notNull": false,
+          "default": false
+        },
+        "stage8": {
+          "name": "stage8",
+          "type": "stage",
+          "typeSchema": "public",
+          "primaryKey": false,
+          "notNull": false,
+          "default": "'Delivered'"
+        },
+        "stage8_location": {
+          "name": "stage8_location",
+          "type": "text",
+          "primaryKey": false,
+          "notNull": false
+        },
+        "stage8_time": {
+          "name": "stage8_time",
+          "type": "timestamp",
+          "primaryKey": false,
+          "notNull": false,
+          "default": "now()"
+        },
+        "stage8_is_completed": {
+          "name": "stage8_is_completed",
           "type": "boolean",
           "primaryKey": false,
           "notNull": false,
@@ -451,6 +479,7 @@
         "Departed SSS regional destination facility",
         "In transit",
         "Arrived at SSS regional destination facilities",
+        "Out for delivery",
         "Delivered"
       ]
     }

@@ -10,6 +10,11 @@ export const metadata: Metadata = {
     "Swift Ship offers fast, reliable shipping with eco-friendly practices and 24/7 support. Your packages arrive on time, everytime.",
 };
 
+<meta
+  name="google-site-verification"
+  content="FyacnK4bdNej-tyaUnkoDmM9O7zVKbCbTFvdD4gUkqc"
+/>;
+
 export default function RootLayout({
   children,
 }: Readonly<{

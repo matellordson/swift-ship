@@ -4,6 +4,7 @@ import PackageTimeline from "@/components/PackageTimeline";
 import Image from "next/image";
 import swiftShipLogo from "@/app/public/logo.svg";
 import { useRouter } from "next/navigation";
+import SmartSupp from "./smartsupp";
 
 export default function TrackShipment() {
   const router = useRouter();
@@ -36,6 +37,7 @@ export default function TrackShipment() {
         </div>
       </nav>
       <PackageTimeline />
+      <SmartSupp />
     </div>
   );
 }

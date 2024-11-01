@@ -219,7 +219,7 @@ export default function PackageTimeline() {
                                     `stage${index + 1}Time` as keyof PackageData
                                   ] as string,
                                 ),
-                                "PPpp",
+                                "PPP",
                               )
                             : "N/A"}
                         </p>

@@ -40,6 +40,7 @@ export const packageTable = pgTable("package", {
   id: text("id")
     .primaryKey()
     .$defaultFn(() => crypto.randomUUID()),
+  created_at: timestamp("created_at").defaultNow(),
   userId: text("userId").notNull(),
   sender_full_name: text("sender_full_name"),
   sender_email: text("sender_email"),

@@ -12,6 +12,7 @@ END $$;
 --> statement-breakpoint
 CREATE TABLE IF NOT EXISTS "package" (
 	"id" text PRIMARY KEY NOT NULL,
+	"created_at" timestamp DEFAULT now(),
 	"userId" text NOT NULL,
 	"sender_full_name" text,
 	"sender_email" text,

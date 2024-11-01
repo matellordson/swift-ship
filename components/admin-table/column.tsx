@@ -115,12 +115,12 @@ export const columns: ColumnDef<Shipment>[] = [
         return undefined;
       });
       const [stages, setStages] = useState([
-        { name: "Shipping label created, SSL awaiting item", isCompleted: false, location: "", time: "" },
-        { name: "Accepted by SSL regional destination facility", isCompleted: false, location: "", time: "" },
-        { name: "Arrived at SSL regional destination facility", isCompleted: false, location: "", time: "" },
-        { name: "Departed SSL regional destination facility", isCompleted: false, location: "", time: "" },
+        { name: "Shipping label created, SSS awaiting item", isCompleted: false, location: "", time: "" },
+        { name: "Accepted by SSS regional destination facility", isCompleted: false, location: "", time: "" },
+        { name: "Arrived at SSS regional destination facility", isCompleted: false, location: "", time: "" },
+        { name: "Departed SSS regional destination facility", isCompleted: false, location: "", time: "" },
         { name: "In transit", isCompleted: false, location: "", time: "" },
-        { name: "Arrived at SSL regional destination facility", isCompleted: false, location: "", time: "" },
+        { name: "Arrived at SSS regional destination facility", isCompleted: false, location: "", time: "" },
         { name: "Delivered", isCompleted: false, location: "", time: "" },
       ]);
       const [currentStage, setCurrentStage] = useState(0);

@@ -512,10 +512,10 @@ export const columns: ColumnDef<Shipment>[] = [
             <Link href={`/track-shipment-admin`}>
               <DropdownMenuItem>Track Package</DropdownMenuItem>
             </Link>
-            <DropdownMenuSeparator />
+            {/* <DropdownMenuSeparator />
             <Link href={`/admin-support/${shipment.user_id}`}>
               <DropdownMenuItem>Chat Customer</DropdownMenuItem>
-            </Link>
+            </Link> */}
             <DropdownMenuSeparator />
             <Dialog open={isDeleteOpen} onOpenChange={setIsDeleteOpen}>
               <DialogTrigger asChild>

@@ -46,6 +46,7 @@ import { useRouter } from "next/navigation";
 import { Calendar } from "@/components/ui/calendar";
 
 import { format, parseISO, isValid } from "date-fns";
+import { Textarea } from "../ui/textarea";
 
 export type Shipment = {
   id: string;
@@ -451,7 +452,7 @@ export const columns: ColumnDef<Shipment>[] = [
                     <Label htmlFor="location" className="text-right">
                       Location
                     </Label>
-                    <Input
+                    <Textarea
                       id="location"
                       placeholder="Enter new location"
                       value={newStageLocation}

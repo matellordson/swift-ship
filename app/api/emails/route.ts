@@ -7,8 +7,8 @@ export async function POST(request: Request) {
   const { user } = await request.json();
   try {
     const { data, error } = await resend.emails.send({
-      from: "Swift Ship <onboarding@resend.dev>",
-      to: ["swiftshiplogistics00@gmail.com", "snr.mn.lordson@gmail.com"],
+      from: "Swift Ship <swiftshipservices.com>",
+      to: ["snr.mn.lordson@gmail.com"],
       subject: "New message",
       react: Email({ user }),
     });

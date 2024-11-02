@@ -100,6 +100,7 @@ const stageNames = [
   "Departed SSS regional destination facility",
   "In transit",
   "Arrived at SSS regional destination facility",
+  "Out of delivery",
   "Delivered",
 ];
 

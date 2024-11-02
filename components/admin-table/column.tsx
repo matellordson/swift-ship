@@ -310,7 +310,6 @@ export const columns: ColumnDef<Shipment>[] = [
             );
           }
         } else {
-          // Existing logic for stages 1-6
           const updatedStages = [...stages];
           updatedStages[currentStage] = {
             ...updatedStages[currentStage],

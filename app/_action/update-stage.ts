@@ -52,11 +52,13 @@ export async function updatePackageStage(
     updateData = {
       stage6IsCompleted: true,
       stage6Location: newLocation,
+      stage7IsCompleted: newLocation,
     };
   } else if (!packages.stage7IsCompleted) {
     updateData = {
       stage7IsCompleted: true,
       stage7Location: newLocation,
+      stage8Location: newLocation,
     };
   } else if (!packages.stage8IsCompleted) {
     updateData = {

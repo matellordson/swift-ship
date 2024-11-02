@@ -181,7 +181,7 @@ export default function Component() {
               </h2>
               <p className="mt-2 text-sm leading-7 text-muted-foreground [&:not(:first-child)]:mt-6">
                 <span className="font-bold">Swift Ship Services</span> <br />{" "}
-                swiftshiplogistics00@gmail.com <br />
+                swiftshipservices@outlook.com <br />
                 +44 070 7540 0992 <br />7 Scarcroft Road, Porthcurno, United
                 Kingdom, TR19 1YA
               </p>

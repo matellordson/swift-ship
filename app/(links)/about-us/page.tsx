@@ -145,7 +145,7 @@ export default function AboutUs() {
             <div className="flex items-center space-x-2">
               <Mail className="text-primary" size={20} />
               <span className="text-gray-600 dark:text-gray-300">
-                support@swiftship.com
+                swiftshipservices@outlook.com
               </span>
             </div>
           </div>

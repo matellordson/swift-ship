@@ -42,6 +42,7 @@ import Link from "next/link";
 import { Menu, X } from "lucide-react";
 import swiftShipLogo from "@/app/public/logo2.svg";
 import Logo from "./logo";
+import SmartSupp from "@/app/(links)/track-shipment/smartsupp";
 
 export default function HomePage() {
   return (
@@ -54,6 +55,7 @@ export default function HomePage() {
         <Products />
         <Benefits />
         <Testimony />
+        <SmartSupp />
       </div>
       <Footer />
     </>

@@ -352,14 +352,11 @@ export default function PackageTimeline() {
                     <strong>Status:</strong> {packageData.status}
                   </p>
                   <p>
-                    <strong>Delivery Date:</strong> {packageData.delivery_date}
-                  </p>
-                  <p>
                     <strong>Tracking Number:</strong>{" "}
                     {packageData.tracking_number}
                   </p>
                   <p>
-                    <strong>Estimated Delivery:</strong>{" "}
+                    <strong>Estimated Delivery Date:</strong>{" "}
                     {packageData.delivery_date}
                   </p>
                 </div>

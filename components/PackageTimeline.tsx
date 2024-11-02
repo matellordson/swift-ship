@@ -358,6 +358,10 @@ export default function PackageTimeline() {
                     <strong>Tracking Number:</strong>{" "}
                     {packageData.tracking_number}
                   </p>
+                  <p>
+                    <strong>Estimated Delivery:</strong>{" "}
+                    {packageData.delivery_date}
+                  </p>
                 </div>
               </CardContent>
             </Card>

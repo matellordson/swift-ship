@@ -5,6 +5,7 @@ import CustomerDashboard from "./customer-dashboard";
 import { redirect } from "next/navigation";
 import { validateRequest } from "@/utils/auth";
 import { Support } from "@/components/support";
+import SmartSupp from "@/app/(links)/track-shipment/smartsupp";
 
 export const revalidate = 0;
 
@@ -24,7 +25,7 @@ export default async function CustomerDashboardPage() {
   return (
     <>
       <CustomerDashboard initialData={data} userId={userId} />
-      <Support userId={userId} />
+      <SmartSupp />
     </>
   );
 }

@@ -43,6 +43,9 @@ import { Menu, X } from "lucide-react";
 import swiftShipLogo from "@/app/public/logo2.svg";
 import Logo from "./logo";
 import SmartSupp from "@/app/(links)/track-shipment/smartsupp";
+import roadFreight from "@/app/public/road-frieght.webp";
+import airFreight from "@/app/public/air-frieght.png";
+import seaFreight from "@/app/public/sea-freight.jpeg"
 
 export default function HomePage() {
   return (
@@ -243,42 +246,90 @@ function Banner() {
   );
 }
 
+// function Freight() {
+//   return (
+//     <div className="border-b border-l border-r">
+//       <div className="grid grid-cols-1 gap-3 px-3 py-5 lg:grid-cols-3">
+//         <div className="rounded-lg border bg-gradient-to-b from-slate-50 to-gray-100 p-4 text-lg dark:from-muted">
+//           <Truck
+//             size={30}
+//             className="text-slate-700 dark:text-secondary-foreground"
+//           />
+//           <p className="text-[1.10rem] leading-6 text-muted-foreground lg:pr-5 [&:not(:first-child)]:mt-2">
+//             We excels in road freight, ensuring timely deliveries with reliable
+//             logistics and excellent customer service.
+//           </p>
+//         </div>
+
+//         <div className="rounded-lg border bg-gradient-to-b from-slate-50 to-gray-100 p-4 text-lg dark:from-muted">
+//           <PlaneTakeoff
+//             size={30}
+//             className="text-slate-700 dark:text-secondary-foreground"
+//           />
+//           <p className="text-[1.10rem] leading-6 text-muted-foreground lg:pr-5 [&:not(:first-child)]:mt-2">
+//             Our air freight services provide swift, reliable deliveries,
+//             utilizing global networks for unmatched efficiency and speed.
+//           </p>
+//         </div>
+
+//         <div className="rounded-lg border bg-gradient-to-b from-slate-50 to-gray-100 p-4 text-lg dark:from-muted">
+//           <Ship
+//             size={30}
+//             className="text-slate-700 dark:text-secondary-foreground"
+//           />
+//           <p className="text-[1.10rem] leading-6 text-muted-foreground lg:pr-5 [&:not(:first-child)]:mt-2">
+//             Sea freight services provide reliable shipping solutions, ensuring
+//             timely transport of goods across global waters.
+//           </p>
+//         </div>
+//       </div>
+//     </div>
+//   );
+// }
 function Freight() {
+  const cards = [
+    {
+      id: 1,
+      imageUrl: roadFreight,
+      alt: "Card 1 image",
+      content:
+        "We excels in road freight, ensuring timely deliveries with reliable logistics and excellent customer service.",
+    },
+    {
+      id: 2,
+      imageUrl: airFreight,
+      alt: "Card 2 image",
+      content:
+        "Our air freight services provide swift, reliable deliveries, utilizing global networks for unmatched efficiency and speed.",
+    },
+    {
+      id: 3,
+      imageUrl: seaFreight,
+      alt: "Card 3 image",
+      content:
+        "Sea freight services provide reliable shipping solutions, ensuring timely transport of goods across global waters.",
+    },
+  ];
+
   return (
-    <div className="border-b border-l border-r">
-      <div className="grid grid-cols-1 gap-3 px-3 py-5 lg:grid-cols-3">
-        <div className="rounded-lg border bg-gradient-to-b from-slate-50 to-gray-100 p-4 text-lg dark:from-muted">
-          <Truck
-            size={30}
-            className="text-slate-700 dark:text-secondary-foreground"
-          />
-          <p className="text-[1.10rem] leading-6 text-muted-foreground lg:pr-5 [&:not(:first-child)]:mt-2">
-            We excels in road freight, ensuring timely deliveries with reliable
-            logistics and excellent customer service.
-          </p>
-        </div>
-
-        <div className="rounded-lg border bg-gradient-to-b from-slate-50 to-gray-100 p-4 text-lg dark:from-muted">
-          <PlaneTakeoff
-            size={30}
-            className="text-slate-700 dark:text-secondary-foreground"
-          />
-          <p className="text-[1.10rem] leading-6 text-muted-foreground lg:pr-5 [&:not(:first-child)]:mt-2">
-            Our air freight services provide swift, reliable deliveries,
-            utilizing global networks for unmatched efficiency and speed.
-          </p>
-        </div>
-
-        <div className="rounded-lg border bg-gradient-to-b from-slate-50 to-gray-100 p-4 text-lg dark:from-muted">
-          <Ship
-            size={30}
-            className="text-slate-700 dark:text-secondary-foreground"
-          />
-          <p className="text-[1.10rem] leading-6 text-muted-foreground lg:pr-5 [&:not(:first-child)]:mt-2">
-            Sea freight services provide reliable shipping solutions, ensuring
-            timely transport of goods across global waters.
-          </p>
-        </div>
+    <div className="container mx-auto border-b border-l border-r px-4 py-8">
+      <div className="grid grid-cols-1 gap-6 md:grid-cols-2 lg:grid-cols-3">
+        {cards.map((card) => (
+          <Card key={card.id} className="overflow-hidden">
+            <CardContent className="p-0">
+              <Image
+                src={card.imageUrl}
+                alt={card.alt}
+                width={300}
+                height={200}
+                className="h-48 w-full object-cover"
+              />
+            </CardContent>
+            <CardFooter className="p-4">
+              <p>{card.content}</p>
+            </CardFooter>
+          </Card>
+        ))}
       </div>
     </div>
   );

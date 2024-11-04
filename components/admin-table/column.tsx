@@ -176,7 +176,7 @@ export const columns: ColumnDef<Shipment>[] = [
           location: "",
           time: "",
         },
-        { name: "Out of delivery", isCompleted: false, location: "", time: "" },
+        { name: "Out for delivery", isCompleted: false, location: "", time: "" },
         { name: "Delivered", isCompleted: false, location: "", time: "" },
       ]);
       const [currentStage, setCurrentStage] = useState(0);

@@ -5,7 +5,7 @@ import { ThemeProvider } from "@/components/theme-provider";
 import { Toaster } from "@/components/ui/sonner";
 
 export const metadata: Metadata = {
-  title: "Swift Ship - Experience unmatched speed and efficiency",
+  title: "Swift Ship",
   description:
     "Swift Ship offers fast, reliable shipping with eco-friendly practices and 24/7 support. Your packages arrive on time, everytime.",
   verification: {

@@ -45,7 +45,7 @@ import Logo from "./logo";
 import SmartSupp from "@/app/(links)/track-shipment/smartsupp";
 import roadFreight from "@/app/public/road-frieght.webp";
 import airFreight from "@/app/public/air-frieght.png";
-import seaFreight from "@/app/public/sea-freight.jpeg"
+import seaFreight from "@/app/public/sea-freight.jpeg";
 
 export default function HomePage() {
   return (
@@ -313,6 +313,15 @@ function Freight() {
 
   return (
     <div className="container mx-auto border-b border-l border-r px-4 py-8">
+      <div className="mb-5">
+        <p className="scroll-m-20 text-center text-xs font-semibold uppercase tracking-tight text-muted-foreground lg:text-sm">
+          Flexible Shipping
+        </p>
+        <p className="mx-auto max-w-xl scroll-m-20 px-4 pt-2 text-center text-xl font-medium tracking-tight lg:px-0 lg:text-2xl lg:font-semibold">
+          Multiple carriers ensure your package is delivered with precision,
+          every time.
+        </p>
+      </div>
       <div className="grid grid-cols-1 gap-6 md:grid-cols-2 lg:grid-cols-3">
         {cards.map((card) => (
           <Card key={card.id} className="overflow-hidden">
@@ -322,7 +331,7 @@ function Freight() {
                 alt={card.alt}
                 width={300}
                 height={200}
-                className="h-48 w-full object-cover"
+                className="h-48 w-full object-cover opacity-80 dark:opacity-70"
               />
             </CardContent>
             <CardFooter className="p-4">

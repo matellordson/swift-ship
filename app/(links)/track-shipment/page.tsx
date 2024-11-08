@@ -21,8 +21,7 @@ export default function TrackShipment() {
                 >
                   <Image
                     src={swiftShipLogo}
-                    height={50}
-                    width={50}
+                    height={100}
                     priority
                     alt="Swift Ship logo"
                     className="m-0 h-36 w-fit p-0"

@@ -2,7 +2,7 @@
 
 import PackageTimeline from "@/components/PackageTimeline";
 import Image from "next/image";
-import swiftShipLogo from "@/app/public/logo.svg";
+import swiftShipLogo from "@/app/public/logo1.svg";
 import { useRouter } from "next/navigation";
 import SmartSupp from "./smartsupp";
 
@@ -25,7 +25,7 @@ export default function TrackShipment() {
                     width={50}
                     priority
                     alt="Swift Ship logo"
-                    className="m-0 h-24 p-0"
+                    className="m-0 h-36 p-0"
                   />
                   <p className="text-lg font-semibold tracking-tight text-primary lg:text-base">
                     Swift Ship

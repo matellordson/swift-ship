@@ -19,7 +19,7 @@ import { Laptop, Moon, Sun } from "lucide-react";
 import { signOut } from "../_action/signout";
 import { useTransition } from "react";
 import Image from "next/image";
-import swiftShipLogo from "@/app/public/logo.svg";
+import swiftShipLogo from "@/app/public/logo1.svg";
 
 export function Nav({ user }: { user: string }) {
   const { setTheme } = useTheme();
@@ -48,7 +48,7 @@ export function Nav({ user }: { user: string }) {
                     width={50}
                     priority
                     alt="Swift Ship logo"
-                    className="m-0 h-24 p-0"
+                    className="m-0 h-36 p-0"
                   />
                   <p className="text-lg font-semibold tracking-tight text-primary lg:text-base">
                     Swift Ship

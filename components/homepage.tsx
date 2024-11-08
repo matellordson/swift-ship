@@ -645,7 +645,7 @@ function Footer() {
                   width={50}
                   priority
                   alt="Swift Ship logo"
-                  className="m-0 p-0"
+                  className="m-0 h-36 p-0"
                 />
                 <p className="text-xl font-semibold">Swift Ship</p>
               </div>

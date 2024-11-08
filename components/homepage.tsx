@@ -40,7 +40,7 @@ import { MapPin } from "lucide-react";
 import { Input } from "@/components/ui/input";
 import Link from "next/link";
 import { Menu, X } from "lucide-react";
-import swiftShipLogo from "@/app/public/logo2.svg";
+import swiftShipLogo from "@/app/public/logo2.png";
 import Logo from "./logo";
 import SmartSupp from "@/app/(links)/track-shipment/smartsupp";
 import roadFreight from "@/app/public/road-frieght.webp";

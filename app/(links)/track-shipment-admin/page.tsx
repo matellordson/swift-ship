@@ -2,7 +2,7 @@
 
 import PackageTimeline from "@/components/PackageTimeline";
 import Image from "next/image";
-import swiftShipLogo from "@/app/public/logo1.svg";
+import swiftShipLogo from "@/app/public/logo1.png";
 import { useRouter } from "next/navigation";
 
 export default function TrackShipment() {

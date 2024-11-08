@@ -19,7 +19,7 @@ import { Laptop, Moon, Sun } from "lucide-react";
 import { signOut } from "../_action/signout";
 import { useTransition } from "react";
 import Image from "next/image";
-import swiftShipLogo from "@/app/public/logo1.svg";
+import swiftShipLogo from "@/app/public/logo1.png";
 
 export function Nav({ user }: { user: string }) {
   const { setTheme } = useTheme();

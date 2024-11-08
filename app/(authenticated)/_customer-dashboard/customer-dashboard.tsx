@@ -1,102 +1,102 @@
-"use client"
+"use client";
 
-import { useState, useCallback, useMemo } from "react"
-import { debounce } from "lodash"
-import { PackageForm } from "@/components/new-package"
-import { Card } from "@/components/ui/card"
-import { Input } from "@/components/ui/input"
-import { NoPackage } from "@/components/no-package"
-import { filterPackages } from "../../_action/filter-package"
-import { Loader } from "lucide-react"
-import Link from "next/link"
+import { useState, useCallback, useMemo } from "react";
+import { debounce } from "lodash";
+import PackageForm from "@/components/new-package";
+import { Card } from "@/components/ui/card";
+import { Input } from "@/components/ui/input";
+import { NoPackage } from "@/components/no-package";
+import { filterPackages } from "../../_action/filter-package";
+import { Loader } from "lucide-react";
+import Link from "next/link";
 import {
   Select,
   SelectContent,
   SelectItem,
   SelectTrigger,
   SelectValue,
-} from "@/components/ui/select"
+} from "@/components/ui/select";
 
 interface Package {
-  userId: string
-  created_at: Date | null
-  id: string
-  sender_full_name: string | null
-  sender_email: string | null
-  sender_phone_number: string | null
-  sender_country: string | null
-  sender_city: string | null
-  receiver_full_name: string | null
-  receiver_email: string | null
-  receiver_phone_number: string | null
-  receiver_country: string | null
-  receiver_city: string | null
-  tracking_number: string
-  package_type: string | null
-  weight: string | null
-  dimension: string | null
-  status: string | null
-  delivery_date: string | null
+  userId: string;
+  created_at: Date | null;
+  id: string;
+  sender_full_name: string | null;
+  sender_email: string | null;
+  sender_phone_number: string | null;
+  sender_country: string | null;
+  sender_city: string | null;
+  receiver_full_name: string | null;
+  receiver_email: string | null;
+  receiver_phone_number: string | null;
+  receiver_country: string | null;
+  receiver_city: string | null;
+  tracking_number: string;
+  package_type: string | null;
+  weight: string | null;
+  dimension: string | null;
+  status: string | null;
+  delivery_date: string | null;
 }
 
 interface CustomerDashboardProps {
-  initialData: Package[]
-  userId: string
+  initialData: Package[];
+  userId: string;
 }
 
 export default function CustomerDashboard({
   initialData,
   userId,
 }: CustomerDashboardProps) {
-  const [packages, setPackages] = useState<Package[]>(initialData)
-  const [trackingFilter, setTrackingFilter] = useState("")
-  const [isLoading, setIsLoading] = useState(false)
-  const [error, setError] = useState<string | null>(null)
-  const [sortOrder, setSortOrder] = useState<"asc" | "desc">("desc")
+  const [packages, setPackages] = useState<Package[]>(initialData);
+  const [trackingFilter, setTrackingFilter] = useState("");
+  const [isLoading, setIsLoading] = useState(false);
+  const [error, setError] = useState<string | null>(null);
+  const [sortOrder, setSortOrder] = useState<"asc" | "desc">("desc");
 
   const debouncedFilterPackages = useCallback(
     debounce(async (userId: string, filterValue: string) => {
-      setIsLoading(true)
-      setError(null)
+      setIsLoading(true);
+      setError(null);
       try {
         const filteredData: Package[] = await filterPackages(
           userId,
           filterValue,
-        )
-        setPackages(filteredData)
+        );
+        setPackages(filteredData);
       } catch (err) {
         setError(
           "An error occurred while filtering packages. Please try again.",
-        )
-        console.error(err)
+        );
+        console.error(err);
       } finally {
-        setIsLoading(false)
+        setIsLoading(false);
       }
     }, 300),
     [],
-  )
+  );
 
   const handleFilterChange = (e: React.ChangeEvent<HTMLInputElement>) => {
-    const filterValue = e.target.value
-    setTrackingFilter(filterValue)
-    debouncedFilterPackages(userId, filterValue)
-  }
+    const filterValue = e.target.value;
+    setTrackingFilter(filterValue);
+    debouncedFilterPackages(userId, filterValue);
+  };
 
   const handleSortChange = (value: string) => {
-    setSortOrder(value as "asc" | "desc")
-  }
+    setSortOrder(value as "asc" | "desc");
+  };
 
   const sortedPackages = useMemo(() => {
     return [...packages].sort((a, b) => {
-      if (!a.created_at || !b.created_at) return 0
-      const aTime = new Date(a.created_at).getTime()
-      const bTime = new Date(b.created_at).getTime()
-      return sortOrder === "asc" ? aTime - bTime : bTime - aTime
-    })
-  }, [packages, sortOrder])
+      if (!a.created_at || !b.created_at) return 0;
+      const aTime = new Date(a.created_at).getTime();
+      const bTime = new Date(b.created_at).getTime();
+      return sortOrder === "asc" ? aTime - bTime : bTime - aTime;
+    });
+  }, [packages, sortOrder]);
 
   if (sortedPackages.length === 0 && !trackingFilter) {
-    return <NoPackage />
+    return <NoPackage />;
   }
 
   return (
@@ -126,14 +126,24 @@ export default function CustomerDashboard({
         </Select>
       </div>
       {isLoading && (
-        <div className="mt-5 flex w-fit items-center justify-center gap-2" aria-live="polite">
+        <div
+          className="mt-5 flex w-fit items-center justify-center gap-2"
+          aria-live="polite"
+        >
           <Loader className="h-6 animate-spin" aria-hidden="true" />
           <p>Filtering...</p>
         </div>
       )}
-      {error && <p className="mt-4 text-red-500" aria-live="assertive">{error}</p>}
+      {error && (
+        <p className="mt-4 text-red-500" aria-live="assertive">
+          {error}
+        </p>
+      )}
       <div className="mb-14 mt-3 grid grid-cols-1 gap-3 lg:grid-cols-3">
-        <Link href="/track-shipment" className="text-primary text-sm font-semibold lg:hidden">
+        <Link
+          href="/track-shipment"
+          className="text-sm font-semibold text-primary lg:hidden"
+        >
           Track package
         </Link>
         {sortedPackages.map((pkg: Package) => (
@@ -148,7 +158,9 @@ export default function CustomerDashboard({
               <div>
                 <p className="text-sm font-semibold">Created At:</p>
                 <p className="text-sm text-muted-foreground">
-                  {pkg.created_at ? new Date(pkg.created_at).toLocaleDateString() : "N/A"}
+                  {pkg.created_at
+                    ? new Date(pkg.created_at).toLocaleDateString()
+                    : "N/A"}
                 </p>
               </div>
               <div>
@@ -173,22 +185,34 @@ export default function CustomerDashboard({
                 <p className="text-sm font-semibold">Status:</p>
                 {pkg.status === "pending" ? (
                   <div className="flex items-center justify-start gap-1 text-xs text-muted-foreground">
-                    <div className="h-2 w-2 rounded-full bg-muted-foreground" aria-hidden="true"></div>
+                    <div
+                      className="h-2 w-2 rounded-full bg-muted-foreground"
+                      aria-hidden="true"
+                    ></div>
                     Pending
                   </div>
                 ) : pkg.status === "in progress" ? (
                   <div className="flex items-center justify-start gap-1 text-xs text-muted-foreground">
-                    <div className="h-2 w-2 rounded-full bg-orange-600" aria-hidden="true"></div>
+                    <div
+                      className="h-2 w-2 rounded-full bg-orange-600"
+                      aria-hidden="true"
+                    ></div>
                     In Progress
                   </div>
                 ) : pkg.status === "in transit" ? (
                   <div className="flex items-center justify-start gap-1 text-xs text-muted-foreground">
-                    <div className="h-2 w-2 rounded-full bg-yellow-400" aria-hidden="true"></div>
+                    <div
+                      className="h-2 w-2 rounded-full bg-yellow-400"
+                      aria-hidden="true"
+                    ></div>
                     In Transit
                   </div>
                 ) : pkg.status === "delivered" ? (
                   <div className="flex items-center justify-start gap-1 text-xs text-muted-foreground">
-                    <div className="h-2 w-2 rounded-full bg-green-300" aria-hidden="true"></div>
+                    <div
+                      className="h-2 w-2 rounded-full bg-green-300"
+                      aria-hidden="true"
+                    ></div>
                     Delivered
                   </div>
                 ) : (
@@ -206,5 +230,5 @@ export default function CustomerDashboard({
         ))}
       </div>
     </div>
-  )
+  );
 }

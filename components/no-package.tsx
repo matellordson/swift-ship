@@ -6,7 +6,7 @@ import {
   CardHeader,
   CardTitle,
 } from "./ui/card";
-import { PackageForm } from "./new-package";
+import PackageForm from "./new-package";
 
 export function NoPackage() {
   return (

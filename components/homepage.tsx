@@ -28,7 +28,7 @@ import {
   UsersRound,
 } from "lucide-react";
 import { Card, CardContent, CardFooter } from "./ui/card";
-import React, { useState } from "react";
+import React, { useState, useEffect, useRef } from "react";
 import { useMediaQuery } from "@/hooks/use-media-query";
 import clothing from "@/app/public/products/clothing.jpg";
 import machinery from "@/app/public/products/machinery.jpg";
@@ -46,6 +46,17 @@ import SmartSupp from "@/app/(links)/track-shipment/smartsupp";
 import roadFreight from "@/app/public/road-frieght.webp";
 import airFreight from "@/app/public/air-frieght.png";
 import seaFreight from "@/app/public/sea-freight.jpeg";
+import createAccount from "@/app/public/create-account.jpg";
+import quote from "@/app/public/quote.jpg";
+import support from "@/app/public/support.avif";
+import recieve from "@/app/public/recieve.avif";
+import delivery from "@/app/public/delivery.jpg";
+import shipping from "@/app/public/ship.jpg";
+import dhl from "@/app/public/collab/dhl-2.svg";
+import ever from "@/app/public/collab/ever.svg";
+import fedex from "@/app/public/collab/fedex.svg";
+import turk from "@/app/public/collab/turk.svg";
+import ups from "@/app/public/collab/ups.svg";
 
 export default function HomePage() {
   return (
@@ -55,7 +66,9 @@ export default function HomePage() {
         <Banner />
         <Freight />
         <Record />
+        <Process />
         <Products />
+        <Collabs />
         <Benefits />
         <Testimony />
         <SmartSupp />
@@ -210,7 +223,7 @@ function Banner() {
             height={500}
             width={500}
             objectFit=""
-            className="h-[500px] w-full max-w-6xl rounded-t-xl object-cover opacity-90 transition dark:opacity-100 dark:mix-blend-overlay lg:relative"
+            className="h-[500px] w-full max-w-7xl rounded-t-xl object-cover opacity-90 transition dark:opacity-100 dark:mix-blend-overlay lg:relative"
           />
         </div>
         <div className="absolute flex flex-col items-center justify-center px-6 lg:px-0">
@@ -246,46 +259,6 @@ function Banner() {
   );
 }
 
-// function Freight() {
-//   return (
-//     <div className="border-b border-l border-r">
-//       <div className="grid grid-cols-1 gap-3 px-3 py-5 lg:grid-cols-3">
-//         <div className="rounded-lg border bg-gradient-to-b from-slate-50 to-gray-100 p-4 text-lg dark:from-muted">
-//           <Truck
-//             size={30}
-//             className="text-slate-700 dark:text-secondary-foreground"
-//           />
-//           <p className="text-[1.10rem] leading-6 text-muted-foreground lg:pr-5 [&:not(:first-child)]:mt-2">
-//             We excels in road freight, ensuring timely deliveries with reliable
-//             logistics and excellent customer service.
-//           </p>
-//         </div>
-
-//         <div className="rounded-lg border bg-gradient-to-b from-slate-50 to-gray-100 p-4 text-lg dark:from-muted">
-//           <PlaneTakeoff
-//             size={30}
-//             className="text-slate-700 dark:text-secondary-foreground"
-//           />
-//           <p className="text-[1.10rem] leading-6 text-muted-foreground lg:pr-5 [&:not(:first-child)]:mt-2">
-//             Our air freight services provide swift, reliable deliveries,
-//             utilizing global networks for unmatched efficiency and speed.
-//           </p>
-//         </div>
-
-//         <div className="rounded-lg border bg-gradient-to-b from-slate-50 to-gray-100 p-4 text-lg dark:from-muted">
-//           <Ship
-//             size={30}
-//             className="text-slate-700 dark:text-secondary-foreground"
-//           />
-//           <p className="text-[1.10rem] leading-6 text-muted-foreground lg:pr-5 [&:not(:first-child)]:mt-2">
-//             Sea freight services provide reliable shipping solutions, ensuring
-//             timely transport of goods across global waters.
-//           </p>
-//         </div>
-//       </div>
-//     </div>
-//   );
-// }
 function Freight() {
   const cards = [
     {
@@ -293,7 +266,7 @@ function Freight() {
       imageUrl: roadFreight,
       alt: "Card 1 image",
       content:
-        "We excels in road freight, ensuring timely deliveries with reliable logistics and excellent customer service.",
+        "We excel in road freight, ensuring timely deliveries with reliable logistics and excellent customer service.",
     },
     {
       id: 2,
@@ -312,7 +285,7 @@ function Freight() {
   ];
 
   return (
-    <div className="container mx-auto border-b border-l border-r px-4 py-8">
+    <div className="mx-auto max-w-7xl border-b border-l border-r px-4 py-8">
       <div className="mb-5">
         <p className="scroll-m-20 text-center text-xs font-semibold uppercase tracking-tight text-muted-foreground lg:text-sm">
           Flexible Shipping
@@ -745,5 +718,158 @@ function Footer() {
         </div>
       </div>
     </footer>
+  );
+}
+
+function Process() {
+  const stages = [
+    {
+      number: 1,
+      title: "Create an account",
+      description:
+        "Sign up by providing your name and password to create an account. This will give you access to all shipping features and tools.",
+      image: createAccount,
+    },
+    {
+      number: 2,
+      title: "Request a quote",
+      description:
+        "Enter your shipment details, such as size, weight, and destination, to get an instant quote for your shipment.",
+      image: quote,
+    },
+    {
+      number: 3,
+      title: "Contact support",
+      description:
+        "Get in touch with customer support to discuss the details of your package and receive personalized assistance with your shipping options and fees.",
+      image: support,
+    },
+    {
+      number: 4,
+      title: "Recieve packages",
+      description:
+        "After finalizing the details with customer support, we’ll arrange to receive your package based on the sender information you provided.",
+      image: recieve,
+    },
+    {
+      number: 5,
+      title: "Ship package",
+      description:
+        "Once we’ve received your package, it will be carefully shipped to the destination using the agreed-upon method and timeline.",
+      image: shipping,
+    },
+    {
+      number: 6,
+      title: "Deliver package",
+      description:
+        "Your package will be delivered to the specified destination, ensuring it arrives safely and on time as per the agreed terms.",
+      image: delivery,
+    },
+  ];
+
+  return (
+    <div className="container mx-auto max-w-7xl border-b border-l border-r p-4">
+      <p className="scroll-m-20 pt-5 text-center text-xs font-semibold uppercase tracking-tight text-muted-foreground lg:text-sm">
+        our delivery process
+      </p>
+      <p className="mx-auto max-w-xl scroll-m-20 px-4 pb-5 pt-2 text-center text-xl font-medium tracking-tight lg:px-0 lg:text-2xl lg:font-semibold">
+        Our delivery is fast, secure, and reliable, with full transparency to
+        ensure your order arrives safely.
+      </p>
+      <div className="grid grid-cols-1 gap-6 md:grid-cols-2 lg:grid-cols-3">
+        {stages.map((stage) => (
+          <Card key={stage.number} className="overflow-hidden">
+            <div className="relative">
+              <Image
+                src={stage.image}
+                alt={`Stage ${stage.number}: ${stage.title}`}
+                width={300}
+                height={200}
+                className="h-48 w-full object-cover opacity-80 dark:opacity-60"
+              />
+              <div className="absolute left-0 top-0 rounded-br-lg bg-gradient-to-br from-primary to-primary-foreground p-2">
+                <span className="text-2xl font-bold text-white">
+                  {stage.number}
+                </span>
+              </div>
+            </div>
+            <CardContent className="p-4">
+              <h2 className="mb-2 font-semibold uppercase">{stage.title}</h2>
+              <p className="text-muted-foreground">{stage.description}</p>
+            </CardContent>
+          </Card>
+        ))}
+      </div>
+    </div>
+  );
+}
+
+function Collabs() {
+  const [api, setApi] = useState<any>();
+  const intervalRef = useRef<NodeJS.Timeout | null>(null);
+
+  const images = [
+    { src: dhl, alt: "DHL" },
+    { src: ever, alt: "Ever" },
+    { src: fedex, alt: "FedEx" },
+    { src: turk, alt: "Turk" },
+    { src: ups, alt: "UPS" },
+  ];
+
+  useEffect(() => {
+    if (!api) return;
+
+    const scrollNext = () => {
+      api.scrollNext();
+      if (api.selectedScrollSnap() === api.scrollSnapList().length - 1) {
+        setTimeout(() => {
+          api.scrollTo(0, { duration: 0 });
+        }, 50);
+      }
+    };
+
+    intervalRef.current = setInterval(scrollNext, 3000); // Increased interval for better visibility
+
+    return () => {
+      if (intervalRef.current) clearInterval(intervalRef.current);
+    };
+  }, [api]);
+
+  return (
+    <div className="mx-auto w-full max-w-7xl border-b border-l border-r px-4 py-8">
+      <p className="scroll-m-20 pt-5 text-center text-xs font-semibold uppercase tracking-tight text-muted-foreground lg:text-sm">
+        our shipping partners
+      </p>
+      <p className="mx-auto max-w-xl scroll-m-20 px-4 pb-5 pt-2 text-center text-xl font-medium tracking-tight lg:px-0 lg:text-2xl lg:font-semibold">
+        We work with trusted shipping partners to ensure fast, reliable
+        delivery.
+      </p>
+      {/* Increased max-width */}
+      <Carousel
+        setApi={setApi}
+        opts={{
+          align: "center",
+          loop: true,
+        }}
+        className="w-full"
+      >
+        <CarouselContent>
+          {[...images, ...images].map((image, index) => (
+            <CarouselItem key={index} className="md:basis-1/5 lg:basis-1/5">
+              <div className="flex h-24 w-full items-center justify-center p-2">
+                <div className="relative h-full w-full">
+                  <Image
+                    src={image.src}
+                    alt={image.alt}
+                    fill
+                    className="object-contain opacity-80 dark:opacity-70"
+                  />
+                </div>
+              </div>
+            </CarouselItem>
+          ))}
+        </CarouselContent>
+      </Carousel>
+    </div>
   );
 }

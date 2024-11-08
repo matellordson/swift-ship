@@ -249,134 +249,147 @@ export function PackageForm() {
   );
 
   return (
-    <div className="flex justify-center items-center gap-3">
-    <Link href={"/track-shipment"} className="text-primary text-sm font-semibold lg:flex hidden">Track package</Link>
-    <Dialog open={isOpen} onOpenChange={setIsOpen}>
-      <DialogTrigger asChild>
-        <Button
-          variant={"outline"}
-          className="flex items-center justify-center gap-1 border-dashed text-xs"
-          size={"sm"}
-        >
-          <Plus className="size-4" />
-          New
-        </Button>
-      </DialogTrigger>
-      <DialogContent className="h-full max-w-xl overflow-y-auto lg:h-[600px]">
-        {/* <DialogHeader>
+    <div className="flex items-center justify-center gap-3">
+      <Link
+        href={"/track-shipment"}
+        className="hidden text-sm font-semibold text-primary lg:flex"
+      >
+        Track package
+      </Link>
+      <Dialog open={isOpen} onOpenChange={setIsOpen}>
+        <DialogTrigger asChild>
+          <Button
+            variant={"outline"}
+            className="flex items-center justify-center gap-1 border-dashed text-xs"
+            size={"sm"}
+          >
+            <Plus className="size-4" />
+            Request a quote
+          </Button>
+        </DialogTrigger>
+        <DialogContent className="h-full max-w-xl overflow-y-auto lg:h-[600px]">
+          {/* <DialogHeader>
           <DialogTitle>Package Submission - Step {step} of 3</DialogTitle>
         </DialogHeader>
         <div className="mb-4">
           <Progress value={progress} className="w-full" />
         </div> */}
-        <form onSubmit={handleSubmit(onSubmit)} className="space-y-8">
-          <Card className="border-none">
-            <CardHeader className="px-0">
-              <CardTitle>
-                {step === 1
-                  ? "Sender"
-                  : step === 2
-                    ? "Receiver"
-                    : step === 3 && "Package"}{" "}
-                Information
-              </CardTitle>
-            </CardHeader>
-            <CardContent className="space-y-4 px-0">
-              {step === 1 && (
-                <>
-                  {renderField("sender_full_name", "Full Name")}
-                  {renderField("sender_email", "Email", "email")}
-                  {renderField("sender_phone_number", "Phone Number")}
-                  {renderSelectField("sender_country", "Country", countries)}
-                  {renderSelectField("sender_city", "City", cities)}
-                  {renderField("sender_address", "Address")}
-                  <p className="flex items-center justify-start gap-1 text-xs text-muted-foreground">
-                    <TriangleAlert className="size-4 text-orange-300" />
-                    Provide City with your Address if not found
-                  </p>
-                </>
-              )}
-              {step === 2 && (
-                <>
-                  {renderField("receiver_full_name", "Full Name")}
-                  {renderField("receiver_email", "Email", "email")}
-                  {renderField("receiver_phone_number", "Phone Number")}
-                  {renderSelectField("receiver_country", "Country", countries)}
-                  {renderSelectField("receiver_city", "City", cities)}
-                  {renderField("receiver_address", "Address")}
-                  <p className="flex items-center justify-start gap-1 text-xs text-muted-foreground">
-                    <TriangleAlert className="size-4 text-orange-300" />
-                    Provide City with your Address if not found
-                  </p>
-                </>
-              )}
-              {step === 3 && (
-                <>
-                  {renderSelectField(
-                    "package_type",
-                    "Package Category",
-                    productCategories,
-                  )}
-                  {renderField(
-                    "dimension",
-                    "Dimension (optional)",
-                    "text",
-                    "Length x Width x Height (e.g., 10cm x 5cm x 3cm)",
-                  )}
-                  {renderField(
-                    "weight",
-                    "Weight (optional)",
-                    "text",
-                    "Weight in kg (e.g., 1.5 kg)",
-                  )}
-                  <div className="space-y-2">
-                    <Label htmlFor="description">Description (optional)</Label>
-                    <Controller
-                      name="description"
-                      control={control}
-                      render={({ field }) => (
-                        <Textarea
-                          {...field}
-                          id="description"
-                          value={field.value ?? ""}
-                          placeholder="Briefly describe the contents of your package"
-                          className={errors.description ? "border-red-500" : ""}
-                          onChange={(e) => {
-                            field.onChange(e);
-                            validateField("description");
-                          }}
-                        />
-                      )}
-                    />
-                    {errors.description && (
-                      <p className="text-sm text-red-500">
-                        {errors.description?.message}
-                      </p>
+          <form onSubmit={handleSubmit(onSubmit)} className="space-y-8">
+            <Card className="border-none">
+              <CardHeader className="px-0">
+                <CardTitle>
+                  {step === 1
+                    ? "Sender"
+                    : step === 2
+                      ? "Receiver"
+                      : step === 3 && "Package"}{" "}
+                  Information
+                </CardTitle>
+              </CardHeader>
+              <CardContent className="space-y-4 px-0">
+                {step === 1 && (
+                  <>
+                    {renderField("sender_full_name", "Full Name")}
+                    {renderField("sender_email", "Email", "email")}
+                    {renderField("sender_phone_number", "Phone Number")}
+                    {renderSelectField("sender_country", "Country", countries)}
+                    {renderSelectField("sender_city", "City", cities)}
+                    {renderField("sender_address", "Address")}
+                    <p className="flex items-center justify-start gap-1 text-xs text-muted-foreground">
+                      <TriangleAlert className="size-4 text-orange-300" />
+                      Provide City with your Address if not found
+                    </p>
+                  </>
+                )}
+                {step === 2 && (
+                  <>
+                    {renderField("receiver_full_name", "Full Name")}
+                    {renderField("receiver_email", "Email", "email")}
+                    {renderField("receiver_phone_number", "Phone Number")}
+                    {renderSelectField(
+                      "receiver_country",
+                      "Country",
+                      countries,
                     )}
-                  </div>
-                </>
+                    {renderSelectField("receiver_city", "City", cities)}
+                    {renderField("receiver_address", "Address")}
+                    <p className="flex items-center justify-start gap-1 text-xs text-muted-foreground">
+                      <TriangleAlert className="size-4 text-orange-300" />
+                      Provide City with your Address if not found
+                    </p>
+                  </>
+                )}
+                {step === 3 && (
+                  <>
+                    {renderSelectField(
+                      "package_type",
+                      "Package Category",
+                      productCategories,
+                    )}
+                    {renderField(
+                      "dimension",
+                      "Dimension (optional)",
+                      "text",
+                      "Length x Width x Height (e.g., 10cm x 5cm x 3cm)",
+                    )}
+                    {renderField(
+                      "weight",
+                      "Weight (optional)",
+                      "text",
+                      "Weight in kg (e.g., 1.5 kg)",
+                    )}
+                    <div className="space-y-2">
+                      <Label htmlFor="description">
+                        Description (optional)
+                      </Label>
+                      <Controller
+                        name="description"
+                        control={control}
+                        render={({ field }) => (
+                          <Textarea
+                            {...field}
+                            id="description"
+                            value={field.value ?? ""}
+                            placeholder="Briefly describe the contents of your package"
+                            className={
+                              errors.description ? "border-red-500" : ""
+                            }
+                            onChange={(e) => {
+                              field.onChange(e);
+                              validateField("description");
+                            }}
+                          />
+                        )}
+                      />
+                      {errors.description && (
+                        <p className="text-sm text-red-500">
+                          {errors.description?.message}
+                        </p>
+                      )}
+                    </div>
+                  </>
+                )}
+              </CardContent>
+            </Card>
+            <div className="flex justify-between">
+              {step > 1 && (
+                <Button type="button" onClick={prevStep}>
+                  Previous
+                </Button>
               )}
-            </CardContent>
-          </Card>
-          <div className="flex justify-between">
-            {step > 1 && (
-              <Button type="button" onClick={prevStep}>
-                Previous
-              </Button>
-            )}
-            {step < 3 ? (
-              <Button type="button" onClick={nextStep}>
-                Next
-              </Button>
-            ) : (
-              <Button type="submit" disabled={!isValid}>
-                Submit
-              </Button>
-            )}
-          </div>
-        </form>
-      </DialogContent>
-    </Dialog>
+              {step < 3 ? (
+                <Button type="button" onClick={nextStep}>
+                  Next
+                </Button>
+              ) : (
+                <Button type="submit" disabled={!isValid}>
+                  Submit
+                </Button>
+              )}
+            </div>
+          </form>
+        </DialogContent>
+      </Dialog>
     </div>
   );
 }

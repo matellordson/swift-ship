@@ -55,6 +55,7 @@ export const packageTable = pgTable("package", {
   receiver_country: text("receiver_country"),
   receiver_city: text("receiver_city"),
   receiver_address: text("receiver_address"),
+  freight_type: text("freight_type"),
   package_type: text("package_type"),
   dimension: text("dimension"),
   weight: text("weight"),

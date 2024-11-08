@@ -1,0 +1,1 @@
+ALTER TABLE "package" ADD COLUMN "freight_type" text;

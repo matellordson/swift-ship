@@ -1,5 +1,5 @@
 import Image from "next/image";
-import swiftShipLogo from "@/app/public/logo2.png";
+import swiftShipLogo from "@/app/public/logo1.png";
 import Link from "next/link";
 
 export default function Logo() {
@@ -11,11 +11,8 @@ export default function Logo() {
           height={100}
           priority
           alt="Swift Ship logo"
-          className="m-0 h-24 object-cover p-0"
+          className="m-0 h-36 w-fit object-cover p-0"
         />
-        <p className="text-lg font-semibold tracking-tight text-primary lg:text-base">
-          Swift Ship
-        </p>
       </div>
     </Link>
   );

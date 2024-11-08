@@ -1,0 +1,500 @@
+{
+  "id": "2c5b8579-abc0-4376-bd5d-69d3ebc7de9c",
+  "prevId": "0da140db-a319-4b9b-a52a-316f625fcf74",
+  "version": "7",
+  "dialect": "postgresql",
+  "tables": {
+    "public.package": {
+      "name": "package",
+      "schema": "",
+      "columns": {
+        "id": {
+          "name": "id",
+          "type": "text",
+          "primaryKey": true,
+          "notNull": true
+        },
+        "created_at": {
+          "name": "created_at",
+          "type": "timestamp",
+          "primaryKey": false,
+          "notNull": false,
+          "default": "now()"
+        },
+        "userId": {
+          "name": "userId",
+          "type": "text",
+          "primaryKey": false,
+          "notNull": true
+        },
+        "sender_full_name": {
+          "name": "sender_full_name",
+          "type": "text",
+          "primaryKey": false,
+          "notNull": false
+        },
+        "sender_email": {
+          "name": "sender_email",
+          "type": "text",
+          "primaryKey": false,
+          "notNull": false
+        },
+        "sender_phone_number": {
+          "name": "sender_phone_number",
+          "type": "text",
+          "primaryKey": false,
+          "notNull": false
+        },
+        "sender_country": {
+          "name": "sender_country",
+          "type": "text",
+          "primaryKey": false,
+          "notNull": false
+        },
+        "sender_city": {
+          "name": "sender_city",
+          "type": "text",
+          "primaryKey": false,
+          "notNull": false
+        },
+        "sender_address": {
+          "name": "sender_address",
+          "type": "text",
+          "primaryKey": false,
+          "notNull": false
+        },
+        "receiver_full_name": {
+          "name": "receiver_full_name",
+          "type": "text",
+          "primaryKey": false,
+          "notNull": false
+        },
+        "receiver_email": {
+          "name": "receiver_email",
+          "type": "text",
+          "primaryKey": false,
+          "notNull": false
+        },
+        "receiver_phone_number": {
+          "name": "receiver_phone_number",
+          "type": "text",
+          "primaryKey": false,
+          "notNull": false
+        },
+        "receiver_country": {
+          "name": "receiver_country",
+          "type": "text",
+          "primaryKey": false,
+          "notNull": false
+        },
+        "receiver_city": {
+          "name": "receiver_city",
+          "type": "text",
+          "primaryKey": false,
+          "notNull": false
+        },
+        "receiver_address": {
+          "name": "receiver_address",
+          "type": "text",
+          "primaryKey": false,
+          "notNull": false
+        },
+        "freight_type": {
+          "name": "freight_type",
+          "type": "text",
+          "primaryKey": false,
+          "notNull": false
+        },
+        "package_type": {
+          "name": "package_type",
+          "type": "text",
+          "primaryKey": false,
+          "notNull": false
+        },
+        "dimension": {
+          "name": "dimension",
+          "type": "text",
+          "primaryKey": false,
+          "notNull": false
+        },
+        "weight": {
+          "name": "weight",
+          "type": "text",
+          "primaryKey": false,
+          "notNull": false
+        },
+        "description": {
+          "name": "description",
+          "type": "text",
+          "primaryKey": false,
+          "notNull": false
+        },
+        "tracking_number": {
+          "name": "tracking_number",
+          "type": "text",
+          "primaryKey": false,
+          "notNull": true
+        },
+        "status": {
+          "name": "status",
+          "type": "text",
+          "primaryKey": false,
+          "notNull": false,
+          "default": "'pending'"
+        },
+        "delivery_date": {
+          "name": "delivery_date",
+          "type": "text",
+          "primaryKey": false,
+          "notNull": false,
+          "default": "'TBD'"
+        },
+        "stage1": {
+          "name": "stage1",
+          "type": "stage",
+          "typeSchema": "public",
+          "primaryKey": false,
+          "notNull": true,
+          "default": "'Shipping label created, SSS awaiting item'"
+        },
+        "stage1_location": {
+          "name": "stage1_location",
+          "type": "text",
+          "primaryKey": false,
+          "notNull": false
+        },
+        "stage1_time": {
+          "name": "stage1_time",
+          "type": "timestamp",
+          "primaryKey": false,
+          "notNull": false,
+          "default": "now()"
+        },
+        "stage1_is_completed": {
+          "name": "stage1_is_completed",
+          "type": "boolean",
+          "primaryKey": false,
+          "notNull": false,
+          "default": false
+        },
+        "stage2": {
+          "name": "stage2",
+          "type": "stage",
+          "typeSchema": "public",
+          "primaryKey": false,
+          "notNull": true,
+          "default": "'Accepted by SSS regional destination facility '"
+        },
+        "stage2_location": {
+          "name": "stage2_location",
+          "type": "text",
+          "primaryKey": false,
+          "notNull": false
+        },
+        "stage2_time": {
+          "name": "stage2_time",
+          "type": "timestamp",
+          "primaryKey": false,
+          "notNull": false,
+          "default": "now()"
+        },
+        "stage2_is_completed": {
+          "name": "stage2_is_completed",
+          "type": "boolean",
+          "primaryKey": false,
+          "notNull": false,
+          "default": false
+        },
+        "stage3": {
+          "name": "stage3",
+          "type": "stage",
+          "typeSchema": "public",
+          "primaryKey": false,
+          "notNull": false,
+          "default": "'Arrived at SSS regional destination facility'"
+        },
+        "stage3_location": {
+          "name": "stage3_location",
+          "type": "text",
+          "primaryKey": false,
+          "notNull": false
+        },
+        "stage3_time": {
+          "name": "stage3_time",
+          "type": "timestamp",
+          "primaryKey": false,
+          "notNull": false,
+          "default": "now()"
+        },
+        "stage3_is_completed": {
+          "name": "stage3_is_completed",
+          "type": "boolean",
+          "primaryKey": false,
+          "notNull": false,
+          "default": false
+        },
+        "stage4": {
+          "name": "stage4",
+          "type": "stage",
+          "typeSchema": "public",
+          "primaryKey": false,
+          "notNull": false,
+          "default": "'Departed SSS regional destination facility'"
+        },
+        "stage4_location": {
+          "name": "stage4_location",
+          "type": "text",
+          "primaryKey": false,
+          "notNull": false
+        },
+        "stage4_time": {
+          "name": "stage4_time",
+          "type": "timestamp",
+          "primaryKey": false,
+          "notNull": false,
+          "default": "now()"
+        },
+        "stage4_is_completed": {
+          "name": "stage4_is_completed",
+          "type": "boolean",
+          "primaryKey": false,
+          "notNull": false,
+          "default": false
+        },
+        "stage5": {
+          "name": "stage5",
+          "type": "stage",
+          "typeSchema": "public",
+          "primaryKey": false,
+          "notNull": false,
+          "default": "'In transit'"
+        },
+        "stage5_location": {
+          "name": "stage5_location",
+          "type": "text",
+          "primaryKey": false,
+          "notNull": false
+        },
+        "stage5_time": {
+          "name": "stage5_time",
+          "type": "timestamp",
+          "primaryKey": false,
+          "notNull": false,
+          "default": "now()"
+        },
+        "stage5_is_completed": {
+          "name": "stage5_is_completed",
+          "type": "boolean",
+          "primaryKey": false,
+          "notNull": false,
+          "default": false
+        },
+        "stage6": {
+          "name": "stage6",
+          "type": "stage",
+          "typeSchema": "public",
+          "primaryKey": false,
+          "notNull": false,
+          "default": "'Arrived at SSS regional destination facility'"
+        },
+        "stage6_location": {
+          "name": "stage6_location",
+          "type": "text",
+          "primaryKey": false,
+          "notNull": false
+        },
+        "stage6_time": {
+          "name": "stage6_time",
+          "type": "timestamp",
+          "primaryKey": false,
+          "notNull": false,
+          "default": "now()"
+        },
+        "stage6_is_completed": {
+          "name": "stage6_is_completed",
+          "type": "boolean",
+          "primaryKey": false,
+          "notNull": false,
+          "default": false
+        },
+        "stage7": {
+          "name": "stage7",
+          "type": "stage",
+          "typeSchema": "public",
+          "primaryKey": false,
+          "notNull": false,
+          "default": "'Out for delivery'"
+        },
+        "stage7_location": {
+          "name": "stage7_location",
+          "type": "text",
+          "primaryKey": false,
+          "notNull": false
+        },
+        "stage7_time": {
+          "name": "stage7_time",
+          "type": "timestamp",
+          "primaryKey": false,
+          "notNull": false,
+          "default": "now()"
+        },
+        "stage7_is_completed": {
+          "name": "stage7_is_completed",
+          "type": "boolean",
+          "primaryKey": false,
+          "notNull": false,
+          "default": false
+        },
+        "stage8": {
+          "name": "stage8",
+          "type": "stage",
+          "typeSchema": "public",
+          "primaryKey": false,
+          "notNull": false,
+          "default": "'Delivered'"
+        },
+        "stage8_location": {
+          "name": "stage8_location",
+          "type": "text",
+          "primaryKey": false,
+          "notNull": false
+        },
+        "stage8_time": {
+          "name": "stage8_time",
+          "type": "timestamp",
+          "primaryKey": false,
+          "notNull": false,
+          "default": "now()"
+        },
+        "stage8_is_completed": {
+          "name": "stage8_is_completed",
+          "type": "boolean",
+          "primaryKey": false,
+          "notNull": false,
+          "default": false
+        }
+      },
+      "indexes": {},
+      "foreignKeys": {},
+      "compositePrimaryKeys": {},
+      "uniqueConstraints": {}
+    },
+    "public.session": {
+      "name": "session",
+      "schema": "",
+      "columns": {
+        "id": {
+          "name": "id",
+          "type": "text",
+          "primaryKey": true,
+          "notNull": true
+        },
+        "user_id": {
+          "name": "user_id",
+          "type": "text",
+          "primaryKey": false,
+          "notNull": true
+        },
+        "expires_at": {
+          "name": "expires_at",
+          "type": "timestamp with time zone",
+          "primaryKey": false,
+          "notNull": true
+        }
+      },
+      "indexes": {},
+      "foreignKeys": {
+        "session_user_id_user_id_fk": {
+          "name": "session_user_id_user_id_fk",
+          "tableFrom": "session",
+          "tableTo": "user",
+          "columnsFrom": [
+            "user_id"
+          ],
+          "columnsTo": [
+            "id"
+          ],
+          "onDelete": "no action",
+          "onUpdate": "no action"
+        }
+      },
+      "compositePrimaryKeys": {},
+      "uniqueConstraints": {}
+    },
+    "public.user": {
+      "name": "user",
+      "schema": "",
+      "columns": {
+        "id": {
+          "name": "id",
+          "type": "text",
+          "primaryKey": true,
+          "notNull": true
+        },
+        "username": {
+          "name": "username",
+          "type": "text",
+          "primaryKey": false,
+          "notNull": true
+        },
+        "password": {
+          "name": "password",
+          "type": "text",
+          "primaryKey": false,
+          "notNull": false
+        },
+        "role": {
+          "name": "role",
+          "type": "role",
+          "typeSchema": "public",
+          "primaryKey": false,
+          "notNull": true,
+          "default": "'customer'"
+        }
+      },
+      "indexes": {},
+      "foreignKeys": {},
+      "compositePrimaryKeys": {},
+      "uniqueConstraints": {
+        "user_username_unique": {
+          "name": "user_username_unique",
+          "nullsNotDistinct": false,
+          "columns": [
+            "username"
+          ]
+        }
+      }
+    }
+  },
+  "enums": {
+    "public.role": {
+      "name": "role",
+      "schema": "public",
+      "values": [
+        "customer",
+        "admin"
+      ]
+    },
+    "public.stage": {
+      "name": "stage",
+      "schema": "public",
+      "values": [
+        "Shipping label created, SSS awaiting item",
+        "Accepted by SSS regional destination facility ",
+        "Arrived at SSS regional destination facility",
+        "Departed SSS regional destination facility",
+        "In transit",
+        "Arrived at SSS regional destination facilities",
+        "Out for delivery",
+        "Delivered"
+      ]
+    }
+  },
+  "schemas": {},
+  "sequences": {},
+  "_meta": {
+    "columns": {},
+    "schemas": {},
+    "tables": {}
+  }
+}

@@ -48,11 +48,8 @@ export function Nav({ user }: { user: string }) {
                     width={50}
                     priority
                     alt="Swift Ship logo"
-                    className="m-0 h-36 p-0"
+                    className="m-0 h-36 w-full p-0"
                   />
-                  <p className="text-lg font-semibold tracking-tight text-primary lg:text-base">
-                    Swift Ship
-                  </p>
                 </div>
               </Link>
             </div>

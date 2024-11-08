@@ -133,8 +133,16 @@ export default async function PackageDetails({
               <p className="text-muted-foreground">{data[0].tracking_number}</p>
             </div>
             <div className="sm flex items-center justify-start gap-3">
-              <p className="scroll-m-20 font-semibold tracking-tight">Type:</p>
+              <p className="scroll-m-20 font-semibold tracking-tight">
+                Package type:
+              </p>
               <p className="text-muted-foreground">{data[0].package_type}</p>
+            </div>
+            <div className="sm flex items-center justify-start gap-3">
+              <p className="scroll-m-20 font-semibold tracking-tight">
+                Freight type:
+              </p>
+              <p className="text-muted-foreground">{data[0].freight_type}</p>
             </div>
             <div className="sm flex items-center justify-start gap-3">
               <p className="scroll-m-20 font-semibold tracking-tight">

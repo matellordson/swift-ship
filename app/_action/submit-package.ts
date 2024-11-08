@@ -36,6 +36,7 @@ export async function submitPackage(formData: FormData) {
     dimension: formData.get("dimension") as string,
     weight: formData.get("weight") as string,
     description: formData.get("description") as string,
+    freight_type: formData.get("freight_type") as string,
   };
   try {
     await db.insert(packageTable).values(packageData);

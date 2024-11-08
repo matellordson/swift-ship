@@ -54,6 +54,7 @@ type PackageData = {
   receiver_city: string | null;
   receiver_address: string | null;
   package_type: string | null;
+  freight_type: string | null;
   dimension: string | null;
   weight: string | null;
   description: string | null;
@@ -323,6 +324,10 @@ export default function PackageTimeline() {
                   <p>
                     <strong>Type:</strong>{" "}
                     {formatValue(packageData.package_type)}
+                  </p>
+                  <p>
+                    <strong>Freight type:</strong>{" "}
+                    {formatValue(packageData.freight_type)}
                   </p>
                   <p>
                     <strong>Dimensions:</strong>{" "}

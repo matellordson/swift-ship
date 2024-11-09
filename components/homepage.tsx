@@ -49,7 +49,7 @@ import seaFreight from "@/app/public/sea-freight.jpeg";
 import createAccount from "@/app/public/create-account.jpg";
 import quote from "@/app/public/quote.jpg";
 import support from "@/app/public/support.avif";
-import recieve from "@/app/public/recieve.avif";
+import receive from "@/app/public/receive.avif";
 import delivery from "@/app/public/delivery.jpg";
 import shipping from "@/app/public/ship.jpg";
 import dhl from "@/app/public/collab/dhl-2.svg";
@@ -641,16 +641,15 @@ function Footer() {
               <div className="flex items-center space-x-2 py-0">
                 <Image
                   src={swiftShipLogo}
-                  height={50}
-                  width={50}
+                  height={100}
                   priority
                   alt="Swift Ship logo"
-                  className="m-0 h-36 p-0"
+                  className="m-0 h-28 w-fit p-0"
                 />
-                <p className="text-xl font-semibold">Swift Ship</p>
+                {/* <p className="font-semiboldt pt[-100px] text-xl">Swift Ship</p> */}
               </div>
             </div>
-            <p className="text-sm text-gray-600 dark:text-gray-400">
+            <p className="pt-[-100px] text-sm text-gray-600 dark:text-gray-400">
               Swift Ship offers fast, reliable shipping with eco-friendly
               practices and 24/7 support. Your packages arrive on time, every
               time.
@@ -746,10 +745,10 @@ function Process() {
     },
     {
       number: 4,
-      title: "Recieve packages",
+      title: "receive packages",
       description:
         "After finalizing the details with customer support, we’ll arrange to receive your package based on the sender information you provided.",
-      image: recieve,
+      image: receive,
     },
     {
       number: 5,

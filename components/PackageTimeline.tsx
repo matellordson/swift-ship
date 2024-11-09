@@ -206,7 +206,7 @@ export default function PackageTimeline() {
                     </div>
                     <div className="flex-grow">
                       <p className="font-medium">{name}</p>
-                      {packageData[
+                      {/* {packageData[
                         `stage${index + 1}IsCompleted` as keyof PackageData
                       ] && (
                         <p className="text-sm text-muted-foreground">
@@ -229,7 +229,7 @@ export default function PackageTimeline() {
                               )
                             : "N/A"}
                         </p>
-                      )}
+                      )} */}
                     </div>
                   </div>
                 ))}

@@ -313,70 +313,6 @@ export const columns: ColumnDef<Shipment>[] = [
         router.refresh();
       };
 
-      // const handleUpdateStage = async () => {
-      //   if (currentStage >= stages.length - 1) {
-      //     // We're at the last stage (Delivered)
-      //     const updatedStages = [...stages];
-      //     updatedStages[currentStage] = {
-      //       ...updatedStages[currentStage],
-      //       isCompleted: true,
-      //       location: newStageLocation,
-      //       time: new Date().toISOString(),
-      //     };
-
-      //     try {
-      //       await updatePackageStage(shipment.tracking_id, newStageLocation);
-      //       setStages(updatedStages);
-      //       setNewStageLocation("");
-      //       setIsUpdateStageOpen(false);
-      //       toast(
-      //         <p className="flex items-center justify-start gap-1 text-xs text-muted-foreground">
-      //           <CheckCircle2Icon className="size-4 text-green-500" />
-      //           Package delivered successfully
-      //         </p>,
-      //       );
-      //     } catch (error) {
-      //       console.error("Failed to update package stage:", error);
-      //       toast(
-      //         <p className="flex items-center justify-start gap-1 text-xs text-muted-foreground">
-      //           <CircleX className="size-4 text-red-500" />
-      //           Failed to update package stage
-      //         </p>,
-      //       );
-      //     }
-      //   } else {
-      //     const updatedStages = [...stages];
-      //     updatedStages[currentStage] = {
-      //       ...updatedStages[currentStage],
-      //       isCompleted: true,
-      //       location: newStageLocation,
-      //       time: new Date().toISOString(),
-      //     };
-
-      //     try {
-      //       await updatePackageStage(shipment.tracking_id, newStageLocation);
-      //       setStages(updatedStages);
-      //       setCurrentStage(currentStage + 1);
-      //       setNewStageLocation("");
-      //       setIsUpdateStageOpen(false);
-      //       toast(
-      //         <p className="flex items-center justify-start gap-1 text-xs text-muted-foreground">
-      //           <CheckCircle2Icon className="size-4 text-green-500" />
-      //           Package stage updated successfully
-      //         </p>,
-      //       );
-      //     } catch (error) {
-      //       console.error("Failed to update package stage:", error);
-      //       toast(
-      //         <p className="flex items-center justify-start gap-1 text-xs text-muted-foreground">
-      //           <CircleX className="size-4 text-red-500" />
-      //           Failed to update package stage
-      //         </p>,
-      //       );
-      //     }
-      //   }
-      //   router.refresh();
-      // };
       const handleUpdateStage = async () => {
         if (currentStage >= stages.length - 1) {
           // We're at the last stage (Delivered)
@@ -439,6 +375,68 @@ export const columns: ColumnDef<Shipment>[] = [
         }
         router.refresh();
       };
+      // const handleUpdateStage = async () => {
+      //   if (currentStage >= stages.length - 1) {
+      //     // We're at the last stage (Delivered)
+      //     const updatedStages = [...stages];
+      //     updatedStages[currentStage] = {
+      //       ...updatedStages[currentStage],
+      //       isCompleted: true,
+      //       location: newStageLocation,
+      //     };
+
+      //     try {
+      //       await updatePackageStage(shipment.tracking_id, newStageLocation);
+      //       setStages(updatedStages);
+      //       setNewStageLocation("");
+      //       setIsUpdateStageOpen(false);
+      //       toast(
+      //         <p className="flex items-center justify-start gap-1 text-xs text-muted-foreground">
+      //           <CheckCircle2Icon className="size-4 text-green-500" />
+      //           Package delivered successfully
+      //         </p>,
+      //       );
+      //     } catch (error) {
+      //       console.error("Failed to update package stage:", error);
+      //       toast(
+      //         <p className="flex items-center justify-start gap-1 text-xs text-muted-foreground">
+      //           <CircleX className="size-4 text-red-500" />
+      //           Failed to update package stage
+      //         </p>,
+      //       );
+      //     }
+      //   } else {
+      //     const updatedStages = [...stages];
+      //     updatedStages[currentStage] = {
+      //       ...updatedStages[currentStage],
+      //       isCompleted: true,
+      //       location: newStageLocation,
+      //     };
+
+      //     try {
+      //       await updatePackageStage(shipment.tracking_id, newStageLocation);
+      //       setStages(updatedStages);
+      //       setCurrentStage(currentStage + 1);
+      //       setNewStageLocation("");
+      //       setIsUpdateStageOpen(false);
+      //       toast(
+      //         <p className="flex items-center justify-start gap-1 text-xs text-muted-foreground">
+      //           <CheckCircle2Icon className="size-4 text-green-500" />
+      //           Package stage updated successfully
+      //         </p>,
+      //       );
+      //     } catch (error) {
+      //       console.error("Failed to update package stage:", error);
+      //       toast(
+      //         <p className="flex items-center justify-start gap-1 text-xs text-muted-foreground">
+      //           <CircleX className="size-4 text-red-500" />
+      //           Failed to update package stage
+      //         </p>,
+      //       );
+      //     }
+      //   }
+      //   router.refresh();
+      // };
 
       return (
         <DropdownMenu>

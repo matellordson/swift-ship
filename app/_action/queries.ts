@@ -18,8 +18,6 @@ export async function updatePackageStage(
   const stageColumn = `stage${stageNumber}` as keyof typeof packageTable;
   const stageLocationColumn =
     `stage${stageNumber}Location` as keyof typeof packageTable;
-  const stageTimeColumn =
-    `stage${stageNumber}Time` as keyof typeof packageTable;
   const stageIsCompletedColumn =
     `stage${stageNumber}IsCompleted` as keyof typeof packageTable;
 
@@ -28,7 +26,6 @@ export async function updatePackageStage(
     .set({
       [stageColumn]: packageTable[stageColumn],
       [stageLocationColumn]: location,
-      [stageTimeColumn]: new Date(),
       [stageIsCompletedColumn]: true,
     })
     .where(eq(packageTable.tracking_number, trackingNumber));

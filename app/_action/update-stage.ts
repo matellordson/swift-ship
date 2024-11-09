@@ -16,54 +16,63 @@ export async function updatePackageStage(
     throw new Error("Package not found");
   }
 
+  const currentTime = new Date().toISOString();
   let updateData = {};
 
   if (!packages.stage1IsCompleted) {
     updateData = {
       stage1IsCompleted: true,
       stage1Location: newLocation,
+      stage1Time: currentTime,
       stage2Location: newLocation,
     };
   } else if (!packages.stage2IsCompleted) {
     updateData = {
       stage2IsCompleted: true,
       stage2Location: newLocation,
+      stage2Time: currentTime,
       stage3Location: newLocation,
     };
   } else if (!packages.stage3IsCompleted) {
     updateData = {
       stage3IsCompleted: true,
       stage3Location: newLocation,
+      stage3Time: currentTime,
       stage4Location: newLocation,
     };
   } else if (!packages.stage4IsCompleted) {
     updateData = {
       stage4IsCompleted: true,
       stage4Location: newLocation,
+      stage4Time: currentTime,
       stage5Location: newLocation,
     };
   } else if (!packages.stage5IsCompleted) {
     updateData = {
       stage5IsCompleted: true,
       stage5Location: newLocation,
+      stage5Time: currentTime,
       stage6Location: newLocation,
     };
   } else if (!packages.stage6IsCompleted) {
     updateData = {
       stage6IsCompleted: true,
       stage6Location: newLocation,
-      stage7IsCompleted: newLocation,
+      stage6Time: currentTime,
+      stage7Location: newLocation,
     };
   } else if (!packages.stage7IsCompleted) {
     updateData = {
       stage7IsCompleted: true,
       stage7Location: newLocation,
+      stage7Time: currentTime,
       stage8Location: newLocation,
     };
   } else if (!packages.stage8IsCompleted) {
     updateData = {
       stage8IsCompleted: true,
       stage8Location: newLocation,
+      stage8Time: currentTime,
     };
   } else {
     throw new Error("All stages are already completed");

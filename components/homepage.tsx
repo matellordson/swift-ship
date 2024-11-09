@@ -49,7 +49,7 @@ import seaFreight from "@/app/public/sea-freight.jpeg";
 import createAccount from "@/app/public/create-account.jpg";
 import quote from "@/app/public/quote.jpg";
 import support from "@/app/public/support.avif";
-import receive from "@/app/public/receive.avif";
+import receive from "@/app/public/recieve.avif";
 import delivery from "@/app/public/delivery.jpg";
 import shipping from "@/app/public/ship.jpg";
 import dhl from "@/app/public/collab/dhl-2.svg";
